@@ -26,7 +26,7 @@
         android:id="@+id/txt_quan_ly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="145dp"
+        android:layout_marginTop="128dp"
         android:text="QUẢN LÝ \nNHÂN VIÊN"
         android:textColor="#000000"
         android:textSize="48sp"
@@ -76,106 +76,106 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="180dp"
+                android:layout_height="140dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/background2"
-                android:backgroundTint="#F6EFC1"
+                android:backgroundTint="#E3F2FD"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/img_them"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="left"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="8dp"
                     android:scaleType="fitStart"
                     app:srcCompat="@drawable/baseline_add_circle_outline_24"
-                    app:tint="#01C11D" />
+                    app:tint="#1976D2" />
 
                 <Button
                     android:id="@+id/btn_them"
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:backgroundTint="#F6EFC1"
+                    android:layout_height="80dp"
+                    android:backgroundTint="#E3F2FD"
                     android:gravity="start"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="5dp"
                     android:paddingRight="0dp"
                     android:text="Thêm \nnhân viên"
                     android:textColor="#000000"
                     android:textColorLink="#000000"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="180dp"
+                android:layout_height="140dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/background2"
-                android:backgroundTint="#F6EFC1"
+                android:backgroundTint="#FFFDE7"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/img_sua"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="left"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="8dp"
                     android:scaleType="fitStart"
                     app:srcCompat="@drawable/baseline_edit_24"
-                    app:tint="#FFC107" />
+                    app:tint="#F9A825" />
 
                 <Button
                     android:id="@+id/btn_sua"
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:backgroundTint="#F6EFC1"
+                    android:layout_height="80dp"
+                    android:backgroundTint="#FFFDE7"
                     android:gravity="start"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="5dp"
                     android:paddingRight="0dp"
                     android:text="Chỉnh sửa \nthông tin"
                     android:textColor="#000000"
                     android:textColorLink="#000000"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="180dp"
+                android:layout_height="140dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/background2"
-                android:backgroundTint="#F6EFC1"
+                android:backgroundTint="#FFEBEE"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/img_xoa"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="left"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="8dp"
                     android:scaleType="fitStart"
                     app:srcCompat="@drawable/baseline_delete_forever_24"
-                    app:tint="#F44336" />
+                    app:tint="#D32F2F" />
 
                 <Button
                     android:id="@+id/btn_xoa"
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:backgroundTint="#F6EFC1"
+                    android:layout_height="80dp"
+                    android:backgroundTint="#FFEBEE"
                     android:gravity="start"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="5dp"
                     android:paddingRight="0dp"
                     android:text="Xóa \nnhân viên"
                     android:textColor="#000000"
                     android:textColorLink="#000000"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
@@ -197,7 +197,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            android:weightSum="2"
+            android:weightSum="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -205,7 +205,7 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="140dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/background2"
@@ -225,23 +225,23 @@
                 <Button
                     android:id="@+id/btn_cham_cong"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="70dp"
                     android:backgroundTint="#E0F7FA"
                     android:gravity="center"
-                    android:text="Chấm \ncông"
+                    android:text="Chấm\ncông"
                     android:textColor="#000000"
                     android:textColorLink="#000000"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="140dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/background2"
-                android:backgroundTint="#E8F5E9"
+                android:backgroundTint="#F1F8E9"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
@@ -252,18 +252,52 @@
                     android:layout_marginTop="16dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/baseline_calendar_month_24"
-                    app:tint="#4CAF50" />
+                    app:tint="#388E3C" />
 
                 <Button
                     android:id="@+id/btn_lich_lam_viec"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#E8F5E9"
+                    android:layout_height="70dp"
+                    android:backgroundTint="#F1F8E9"
                     android:gravity="center"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
                     android:text="Lịch \nlàm việc"
                     android:textColor="#000000"
                     android:textColorLink="#000000"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background2"
+                android:backgroundTint="#DCEDC8"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img_tien_luong"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/baseline_attach_money_24"
+                    app:tint="#689F38" />
+
+                <Button
+                    android:id="@+id/btn_tien_luong"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:backgroundTint="#DCEDC8"
+                    android:gravity="center"
+                    android:text="Tiền \nlương"
+                    android:textColor="#000000"
+                    android:textColorLink="#000000"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
