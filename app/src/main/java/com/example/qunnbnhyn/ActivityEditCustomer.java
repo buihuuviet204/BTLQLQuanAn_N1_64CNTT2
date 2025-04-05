@@ -2,6 +2,7 @@ package com.example.qunnbnhyn;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class ActivityEditCustomer extends AppCompatActivity {
     private CustomerAdapter adapter;
     private List<Customer> customerList;
     private DatabaseReference databaseReference;
+    ImageView imgViewBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,10 @@ public class ActivityEditCustomer extends AppCompatActivity {
         });
         recyclerView.setAdapter(adapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("customers");
+        databaseReference = FirebaseDatabase.getInstance("https://quananbinhyen-cntt2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("customers");
         loadCustomers();
+        imgViewBack = findViewById(R.id.imgViewBackEdit);
+        imgViewBack.setOnClickListener(v -> finish());
     }
 
     private void loadCustomers() {
@@ -49,14 +53,19 @@ public class ActivityEditCustomer extends AppCompatActivity {
                 customerList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Customer customer = snapshot.getValue(Customer.class);
-                    customerList.add(customer);
+                    if (customer != null) {
+                        customerList.add(customer);
+                    }
                 }
                 adapter.notifyDataSetChanged();
+                if (customerList.isEmpty()) {
+                    Toast.makeText(ActivityEditCustomer.this, "Không có khách hàng nào để hiển thị", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ActivityEditCustomer.this, "Lỗi: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityEditCustomer.this, "Lỗi tải dữ liệu: " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

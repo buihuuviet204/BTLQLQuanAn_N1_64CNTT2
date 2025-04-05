@@ -15,10 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivittyAddCustomer"/>
+        <activity android:name=".ActivityAddCustomer"/>
         <activity android:name=".ActivityEditCustomer"/>
         <activity android:name=".ActivityEditCustomerDetail"/>
         <activity android:name=".ActivityDeleteCustomer"/>
         <activity android:name=".ActivityPriorityCustomer"/>
+        <activity android:name=".CustomerDetailActivity" />
     </application>
 </manifest>

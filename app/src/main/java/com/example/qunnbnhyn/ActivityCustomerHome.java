@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
+
 import android.widget.Button;
 
 public class ActivityCustomerHome extends AppCompatActivity {
@@ -22,7 +22,7 @@ public class ActivityCustomerHome extends AppCompatActivity {
         Button btnPriorityCustomer = findViewById(R.id.btnPriorityCustomer);
 
         // Xử lý sự kiện click
-        btnAddCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivittyAddCustomer.class)));
+        btnAddCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityAddCustomer.class)));
         btnEditCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityEditCustomer.class)));
         btnDeleteCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityDeleteCustomer.class)));
         btnPriorityCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityPriorityCustomer.class)));

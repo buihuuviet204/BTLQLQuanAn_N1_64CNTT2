@@ -45,6 +45,7 @@
             android:id="@+id/rcDeleteCustomer"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="-20dp"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"

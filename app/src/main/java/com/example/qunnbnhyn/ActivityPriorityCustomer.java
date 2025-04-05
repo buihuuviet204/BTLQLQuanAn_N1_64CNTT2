@@ -1,6 +1,9 @@
 package com.example.qunnbnhyn;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,10 +19,10 @@ import java.util.List;
 public class ActivityPriorityCustomer extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private PriorityCustomerAdapter adapter;
+    private CustomerAdapter adapter; // Sử dụng CustomerAdapter thay vì PriorityCustomerAdapter
     private List<Customer> customerList;
     private DatabaseReference databaseReference;
-
+    ImageView imgViewBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +32,19 @@ public class ActivityPriorityCustomer extends AppCompatActivity {
         recyclerView = findViewById(R.id.rcPriorityCustomer);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         customerList = new ArrayList<>();
-        adapter = new PriorityCustomerAdapter(customerList);
+        adapter = new CustomerAdapter(customerList, customer -> {
+            // Chuyển sang màn hình chi tiết khi nhấn vào khách hàng
+            Intent intent = new Intent(this, CustomerDetailActivity.class);
+            intent.putExtra("customerId", customer.getId());
+            startActivity(intent);
+        });
         recyclerView.setAdapter(adapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("customers");
+        databaseReference = FirebaseDatabase.getInstance("https://quananbinhyen-cntt2-default-rtdb.asia-southeast1.firebasedatabase.app")
+                .getReference("customers");
         loadCustomers();
+        imgViewBack = findViewById(R.id.imgViewBack);
+        imgViewBack.setOnClickListener(v -> finish());
     }
 
     private void loadCustomers() {
@@ -43,13 +54,19 @@ public class ActivityPriorityCustomer extends AppCompatActivity {
                 customerList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Customer customer = snapshot.getValue(Customer.class);
-                    customerList.add(customer);
+                    if (customer != null && customer.getVisitCount() > 2) {
+                        customerList.add(customer); // Hiển thị tất cả khách hàng
+                    }
                 }
                 adapter.notifyDataSetChanged();
+                if (customerList.isEmpty()) {
+                    Toast.makeText(ActivityPriorityCustomer.this, "Không có khách hàng nào", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(ActivityPriorityCustomer.this, "Lỗi tải dữ liệu: " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

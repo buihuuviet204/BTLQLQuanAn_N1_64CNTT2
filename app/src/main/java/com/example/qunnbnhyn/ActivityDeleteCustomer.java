@@ -2,6 +2,7 @@ package com.example.qunnbnhyn;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +22,7 @@ public class ActivityDeleteCustomer extends AppCompatActivity {
     private CustomerAdapter adapter;
     private List<Customer> customerList;
     private DatabaseReference databaseReference;
-
+    ImageView imgViewBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +35,10 @@ public class ActivityDeleteCustomer extends AppCompatActivity {
         adapter = new CustomerAdapter(customerList, this::showDeleteConfirmation);
         recyclerView.setAdapter(adapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("customers");
+        databaseReference = FirebaseDatabase.getInstance("https://quananbinhyen-cntt2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("customers");
         loadCustomers();
+        imgViewBack = findViewById(R.id.imgViewBackDelete);
+        imgViewBack.setOnClickListener(v -> finish());
     }
 
     private void loadCustomers() {
@@ -45,7 +48,9 @@ public class ActivityDeleteCustomer extends AppCompatActivity {
                 customerList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Customer customer = snapshot.getValue(Customer.class);
-                    customerList.add(customer);
+                    if (customer != null) {
+                        customerList.add(customer);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }
