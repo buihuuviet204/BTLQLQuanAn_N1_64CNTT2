@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="#ffffff"
-    tools:context=".ThemNhanVien">
+    tools:context=".XoaNhanVienChiTiet">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -16,12 +16,11 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/background"
         android:backgroundTint="#F8CFA8"
-        app:layout_constraintBottom_toTopOf="@+id/btn_them"
+        app:layout_constraintBottom_toTopOf="@+id/btn_xoa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton
@@ -42,27 +41,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="THÊM NHÂN VIÊN"
+        android:text="XÓA NHÂN VIÊN"
         android:textColor="#000000"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_back"
         tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/img_btn_avatar"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/circle_background"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_quan_ly"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:ignore="SpeakableTextPresentCheck" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -70,10 +56,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:paddingBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_them"
+        app:layout_constraintBottom_toTopOf="@+id/btn_xoa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_btn_avatar">
+        app:layout_constraintTop_toBottomOf="@+id/txt_quan_ly">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -276,12 +262,12 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btn_them"
+        android:id="@+id/btn_xoa"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#F8CFA8"
-        android:text="Thêm"
+        android:text="Xóa"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
