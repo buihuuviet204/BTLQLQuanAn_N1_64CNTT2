@@ -1,8 +1,6 @@
 package com.example.qunnbnhyn;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,10 +13,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityEditCustomer extends AppCompatActivity {
+public class ActivityPriorityCustomer extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private CustomerAdapter adapter;
+    private PriorityCustomerAdapter adapter;
     private List<Customer> customerList;
     private DatabaseReference databaseReference;
 
@@ -26,16 +24,12 @@ public class ActivityEditCustomer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_edit_customer);
+        setContentView(R.layout.activity_customer_priority);
 
-        recyclerView = findViewById(R.id.rcEditCustomer);
+        recyclerView = findViewById(R.id.rcPriorityCustomer);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         customerList = new ArrayList<>();
-        adapter = new CustomerAdapter(customerList, customer -> {
-            Intent intent = new Intent(this, ActivityEditCustomerDetail.class);
-            intent.putExtra("customerId", customer.getId());
-            startActivity(intent);
-        });
+        adapter = new PriorityCustomerAdapter(customerList);
         recyclerView.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("customers");
@@ -56,7 +50,6 @@ public class ActivityEditCustomer extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ActivityEditCustomer.this, "Lỗi: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

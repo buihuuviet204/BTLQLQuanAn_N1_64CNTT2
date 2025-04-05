@@ -27,7 +27,7 @@
         android:layout_marginStart="-20dp"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/inter_bold"
-        android:text="THÊM KHÁCH HÀNG"
+        android:text="SỬA THÔNG TIN"
         android:textColor="#212121"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -51,7 +51,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="473dp"
+            android:layout_gravity="clip_horizontal|center_horizontal|center_vertical"
             android:padding="16dp">
 
             <!-- Name Field -->

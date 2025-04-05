@@ -1,6 +1,6 @@
 package com.example.qunnbnhyn;
 
-import android.content.Intent;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityEditCustomer extends AppCompatActivity {
+public class ActivityDeleteCustomer extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CustomerAdapter adapter;
@@ -26,16 +26,12 @@ public class ActivityEditCustomer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_edit_customer);
+        setContentView(R.layout.activity_delete_customer);
 
-        recyclerView = findViewById(R.id.rcEditCustomer);
+        recyclerView = findViewById(R.id.rcDeleteCustomer);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         customerList = new ArrayList<>();
-        adapter = new CustomerAdapter(customerList, customer -> {
-            Intent intent = new Intent(this, ActivityEditCustomerDetail.class);
-            intent.putExtra("customerId", customer.getId());
-            startActivity(intent);
-        });
+        adapter = new CustomerAdapter(customerList, this::showDeleteConfirmation);
         recyclerView.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("customers");
@@ -56,8 +52,21 @@ public class ActivityEditCustomer extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ActivityEditCustomer.this, "Lỗi: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityDeleteCustomer.this, "Lỗi: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void showDeleteConfirmation(Customer customer) {
+        new AlertDialog.Builder(this)
+                .setTitle("Xác nhận xóa")
+                .setMessage("Bạn có chắc muốn xóa khách hàng " + customer.getName() + "?")
+                .setPositiveButton("Có", (dialog, which) -> {
+                    databaseReference.child(customer.getId()).removeValue()
+                            .addOnSuccessListener(aVoid -> Toast.makeText(this, "Xóa thành công", Toast.LENGTH_SHORT).show())
+                            .addOnFailureListener(e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                })
+                .setNegativeButton("Không", null)
+                .show();
     }
 }
