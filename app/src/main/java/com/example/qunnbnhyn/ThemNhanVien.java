@@ -1,24 +1,185 @@
 package com.example.qunnbnhyn;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Toast;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import java.util.HashMap;
+import java.util.Map;
+import android.Manifest;
+import android.content.pm.PackageManager;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import java.io.ByteArrayOutputStream;
 
 public class ThemNhanVien extends AppCompatActivity {
+    private TextInputEditText txtMaNhanVien, txtHoTen, txtNgaySinh, txtEmail, txtSoDienThoai, txtQueQuan, txtMatKhau;
+    private AutoCompleteTextView actvGioiTinh, actvChucVu;
+    private ImageButton imgBtnAvatar;
+    private Button btnThem;
+    private DatabaseReference database;
+    private Uri imageUri; // Lưu đường dẫn ảnh được chọn
+
+    // Khởi tạo launcher để chọn ảnh
+    private final ActivityResultLauncher<Intent> imagePickerLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    imageUri = result.getData().getData();
+                    imgBtnAvatar.setImageURI(imageUri); // Hiển thị ảnh lên ImageButton
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_them_nhan_vien);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        // Khởi tạo các view
+        txtMaNhanVien = findViewById(R.id.txt_ma_nhan_vien);
+        txtHoTen = findViewById(R.id.txt_ho_ten);
+        txtNgaySinh = findViewById(R.id.txt_date);
+        txtEmail = findViewById(R.id.txt_email);
+        txtSoDienThoai = findViewById(R.id.txt_so_dien_thoai);
+        txtQueQuan = findViewById(R.id.txt_que_quan);
+        txtMatKhau = findViewById(R.id.txt_mat_khau);
+        actvGioiTinh = findViewById(R.id.actv_gioi_tinh);
+        actvChucVu = findViewById(R.id.actv_chuc_vu);
+        imgBtnAvatar = findViewById(R.id.img_btn_avatar);
+        btnThem = findViewById(R.id.btn_them);
+        ImageButton btnBack = findViewById(R.id.btn_back);
+
+        // Kết nối Firebase Realtime Database (không cần Storage)
+        database = FirebaseDatabase.getInstance().getReference("Employees");
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        }
+
+        // Thiết lập dropdown cho Giới tính
+        String[] gioiTinhOptions = {"Nam", "Nữ", "Khác"};
+        ArrayAdapter<String> gioiTinhAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, gioiTinhOptions);
+        actvGioiTinh.setAdapter(gioiTinhAdapter);
+
+        // Thiết lập dropdown cho Chức vụ
+        String[] chucVuOptions = {"Nhân viên", "Quản lý"};
+        ArrayAdapter<String> chucVuAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, chucVuOptions);
+        actvChucVu.setAdapter(chucVuAdapter);
+
+        // Sự kiện chọn ảnh
+        imgBtnAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                imagePickerLauncher.launch(intent);
+            }
         });
+
+        // Sự kiện nút Back
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Quay lại màn hình trước
+            }
+        });
+
+        // Sự kiện nút Thêm
+        btnThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addEmployee();
+            }
+        });
+    }
+
+    private void addEmployee() {
+        // Lấy dữ liệu từ các trường nhập liệu
+        String maNhanVien = txtMaNhanVien.getText().toString().trim();
+        String hoTen = txtHoTen.getText().toString().trim();
+        String ngaySinh = txtNgaySinh.getText().toString().trim();
+        String gioiTinh = actvGioiTinh.getText().toString().trim();
+        String email = txtEmail.getText().toString().trim();
+        String soDienThoai = txtSoDienThoai.getText().toString().trim();
+        String queQuan = txtQueQuan.getText().toString().trim();
+        String chucVu = actvChucVu.getText().toString().trim();
+        String matKhau = txtMatKhau.getText().toString().trim();
+
+        // Kiểm tra dữ liệu đầu vào
+        if (maNhanVien.isEmpty() || hoTen.isEmpty() || ngaySinh.isEmpty() || gioiTinh.isEmpty() ||
+                email.isEmpty() || soDienThoai.isEmpty() || queQuan.isEmpty() || chucVu.isEmpty() || matKhau.isEmpty()) {
+            Toast.makeText(this, "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Tạo map để lưu dữ liệu nhân viên
+        Map<String, Object> employeeData = new HashMap<>();
+        employeeData.put("name", hoTen);
+        employeeData.put("birthDate", ngaySinh);
+        employeeData.put("gender", gioiTinh);
+        employeeData.put("email", email);
+        employeeData.put("phone", soDienThoai);
+        employeeData.put("hometown", queQuan);
+        employeeData.put("position", chucVu);
+        employeeData.put("password", matKhau);
+
+        // Nếu có ảnh, chuyển thành Base64 và lưu vào employeeData
+        if (imageUri != null) {
+            try {
+                Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos); // Nén ảnh để giảm kích thước
+                byte[] byteArray = baos.toByteArray();
+                String imageBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                employeeData.put("avatarBase64", imageBase64);
+            } catch (Exception e) {
+                Toast.makeText(this, "Lỗi khi xử lý ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
+        // Lưu dữ liệu trực tiếp vào Realtime Database
+        saveEmployeeToDatabase(maNhanVien, employeeData);
+    }
+
+    private void saveEmployeeToDatabase(String maNhanVien, Map<String, Object> employeeData) {
+        // Lưu dữ liệu vào Firebase Realtime Database
+        database.child(maNhanVien).setValue(employeeData)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(this, "Thêm nhân viên thành công!", Toast.LENGTH_SHORT).show();
+                    clearFields(); // Xóa các trường sau khi thêm thành công
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Lỗi khi thêm nhân viên: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void clearFields() {
+        txtMaNhanVien.setText("");
+        txtHoTen.setText("");
+        txtNgaySinh.setText("");
+        actvGioiTinh.setText("");
+        txtEmail.setText("");
+        txtSoDienThoai.setText("");
+        txtQueQuan.setText("");
+        actvChucVu.setText("");
+        txtMatKhau.setText("");
+        imgBtnAvatar.setImageResource(R.drawable.ic_launcher_foreground); // Reset ảnh về mặc định
+        imageUri = null;
     }
 }
