@@ -1,5 +1,6 @@
 package com.example.qunnbnhyn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,12 @@ public class QuanLyNhanVien extends AppCompatActivity {
             }
         });
 
-
+        btnAdd = (Button) findViewById(R.id.btn_them);
+        btnAdd.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Intent themNhanVien = new Intent(QuanLyNhanVien.this, ThemNhanVien.class);
+                startActivity(themNhanVien);
+            }
+        });
     }
 }
