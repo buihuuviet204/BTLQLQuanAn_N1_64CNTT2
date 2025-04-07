@@ -12,17 +12,9 @@ public class NhanVien {
     private String password;
     private String avatarBase64;
 
-    // Constructor rỗng (yêu cầu của Firebase)
     public NhanVien() {
     }
 
-    public NhanVien(String maNhanVien, String name, String avatarBase64) {
-        this.maNhanVien = maNhanVien;
-        this.name = name;
-        this.avatarBase64 = avatarBase64;
-    }
-
-    // Constructor đầy đủ
     public NhanVien(String maNhanVien, String name, String birthDate, String gender, String email,
                     String phone, String hometown, String position, String password, String avatarBase64) {
         this.maNhanVien = maNhanVien;
@@ -37,34 +29,25 @@ public class NhanVien {
         this.avatarBase64 = avatarBase64;
     }
 
-    // Getter và Setter
+    // Getters and Setters
     public String getMaNhanVien() { return maNhanVien; }
     public void setMaNhanVien(String maNhanVien) { this.maNhanVien = maNhanVien; }
-
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
-
     public String getBirthDate() { return birthDate; }
     public void setBirthDate(String birthDate) { this.birthDate = birthDate; }
-
     public String getGender() { return gender; }
     public void setGender(String gender) { this.gender = gender; }
-
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
-
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
-
     public String getHometown() { return hometown; }
     public void setHometown(String hometown) { this.hometown = hometown; }
-
     public String getPosition() { return position; }
     public void setPosition(String position) { this.position = position; }
-
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
-
     public String getAvatarBase64() { return avatarBase64; }
     public void setAvatarBase64(String avatarBase64) { this.avatarBase64 = avatarBase64; }
 }

@@ -46,5 +46,13 @@ public class QuanLyNhanVien extends AppCompatActivity {
             }
         });
 
+        btnDelete = (Button) findViewById(R.id.btn_xoa);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent xoaNhanVien = new Intent(QuanLyNhanVien.this, XoaNhanVien.class);
+                startActivity(xoaNhanVien);
+            }
+        });
     }
 }
