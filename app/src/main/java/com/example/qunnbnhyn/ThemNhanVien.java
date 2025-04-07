@@ -64,7 +64,7 @@ public class ThemNhanVien extends AppCompatActivity {
         btnThem = findViewById(R.id.btn_them);
         ImageButton btnBack = findViewById(R.id.btn_back);
 
-        // Kết nối Firebase Realtime Database (không cần Storage)
+        // Kết nối Firebase Realtime Database
         database = FirebaseDatabase.getInstance().getReference("Employees");
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
