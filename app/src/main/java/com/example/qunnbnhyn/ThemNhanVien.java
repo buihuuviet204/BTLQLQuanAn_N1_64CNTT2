@@ -11,8 +11,15 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
@@ -33,6 +40,8 @@ public class ThemNhanVien extends AppCompatActivity {
     private Button btnThem;
     private DatabaseReference database;
     private Uri imageUri; // Lưu đường dẫn ảnh được chọn
+
+    private FirebaseAuth mAuth;
 
     // Khởi tạo launcher để chọn ảnh
     private final ActivityResultLauncher<Intent> imagePickerLauncher = registerForActivityResult(
@@ -63,6 +72,9 @@ public class ThemNhanVien extends AppCompatActivity {
         imgBtnAvatar = findViewById(R.id.img_btn_avatar);
         btnThem = findViewById(R.id.btn_them);
         ImageButton btnBack = findViewById(R.id.btn_back);
+
+        // Kết nối Firebase Authentication
+        mAuth = FirebaseAuth.getInstance();
 
         // Kết nối Firebase Realtime Database
         database = FirebaseDatabase.getInstance().getReference("Employees");
@@ -152,6 +164,22 @@ public class ThemNhanVien extends AppCompatActivity {
                 return;
             }
         }
+
+        String account = txtEmail.getText().toString().trim();
+        String pass = txtMatKhau.getText().toString().trim();
+
+        mAuth.createUserWithEmailAndPassword(account, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(ThemNhanVien.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         // Lưu dữ liệu trực tiếp vào Realtime Database
         saveEmployeeToDatabase(maNhanVien, employeeData);
