@@ -1,130 +1,117 @@
 package com.example.qunnbnhyn;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import java.util.HashMap;
-import java.util.Map;
-import android.widget.AutoCompleteTextView;
+import com.google.firebase.database.ValueEventListener;
 
 public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
+
+    // Khai báo các trường nhập liệu và thành phần giao diện
     private TextInputEditText txtMaNhanVien, txtHoTen, txtNgaySinh, txtEmail, txtSoDienThoai, txtQueQuan, txtMatKhau;
-    private AutoCompleteTextView actvGioiTinh, actvChucVu;
-    private Button btnSua;
-    private ImageButton btnBack;
-    private DatabaseReference database;
+    private AutoCompleteTextView actvGioiTinh, actvChucVu; // Dropdown cho giới tính và chức vụ
+    private Button btnSua; // Nút cập nhật thông tin
+    private ImageButton btnBack; // Nút quay lại
+    private DatabaseReference database; // Tham chiếu tới Firebase
+    private String maNhanVien; // Mã nhân viên được truyền vào
+    private String currentAvatarBase64; // Lưu trữ avatarBase64 hiện tại của nhân viên
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("ChinhSuaThongTinChiTiet", "onCreate started");
+        setContentView(R.layout.activity_chinh_sua_thong_tin_chi_tiet); // Gán layout cho Activity
 
-        try {
-            setContentView(R.layout.activity_chinh_sua_thong_tin_chi_tiet);
-            Log.d("ChinhSuaThongTinChiTiet", "Layout loaded successfully");
-        } catch (Exception e) {
-            Log.e("ChinhSuaThongTinChiTiet", "Error loading layout: " + e.getMessage());
-            Toast.makeText(this, "Lỗi tải giao diện: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        // Lấy mã nhân viên từ Intent
+        maNhanVien = getIntent().getStringExtra("maNhanVien");
+        if (maNhanVien == null) {
+            // Nếu không có mã nhân viên, hiển thị thông báo và thoát
+            Toast.makeText(this, "Không tìm thấy mã nhân viên", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
 
-        // Khởi tạo các view
-        try {
-            txtMaNhanVien = findViewById(R.id.txt_ma_nhan_vien);
-            txtHoTen = findViewById(R.id.txt_ho_ten);
-            txtNgaySinh = findViewById(R.id.txt_date);
-            txtEmail = findViewById(R.id.txt_email);
-            txtSoDienThoai = findViewById(R.id.txt_so_dien_thoai);
-            txtQueQuan = findViewById(R.id.txt_que_quan);
-            txtMatKhau = findViewById(R.id.txt_mat_khau);
-            actvGioiTinh = findViewById(R.id.actv_gioi_tinh);
-            actvChucVu = findViewById(R.id.actv_chuc_vu);
-            btnSua = findViewById(R.id.btn_sua);
-            btnBack = findViewById(R.id.btn_back);
-            Log.d("ChinhSuaThongTinChiTiet", "Views initialized successfully");
-        } catch (Exception e) {
-            Log.e("ChinhSuaThongTinChiTiet", "Error initializing views: " + e.getMessage());
-            Toast.makeText(this, "Lỗi khởi tạo view: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        }
+        // Khởi tạo các view từ layout
+        txtMaNhanVien = findViewById(R.id.txt_ma_nhan_vien);
+        txtHoTen = findViewById(R.id.txt_ho_ten);
+        txtNgaySinh = findViewById(R.id.txt_date);
+        txtEmail = findViewById(R.id.txt_email);
+        txtSoDienThoai = findViewById(R.id.txt_so_dien_thoai);
+        txtQueQuan = findViewById(R.id.txt_que_quan);
+        txtMatKhau = findViewById(R.id.txt_mat_khau);
+        actvGioiTinh = findViewById(R.id.actv_gioi_tinh);
+        actvChucVu = findViewById(R.id.actv_chuc_vu);
+        btnSua = findViewById(R.id.btn_sua);
+        btnBack = findViewById(R.id.btn_back);
 
-        // Kết nối Firebase
-        database = FirebaseDatabase.getInstance().getReference("Employees");
+        // Kết nối tới node của nhân viên cụ thể trong Firebase
+        database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
 
-        // Thiết lập dropdown cho Giới tính
+        // Thiết lập dropdown cho giới tính
         String[] gioiTinhOptions = {"Nam", "Nữ", "Khác"};
         ArrayAdapter<String> gioiTinhAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, gioiTinhOptions);
         actvGioiTinh.setAdapter(gioiTinhAdapter);
 
-        // Thiết lập dropdown cho Chức vụ
+        // Thiết lập dropdown cho chức vụ
         String[] chucVuOptions = {"Nhân viên", "Quản lý"};
         ArrayAdapter<String> chucVuAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, chucVuOptions);
         actvChucVu.setAdapter(chucVuAdapter);
 
-        // Nhận dữ liệu từ Intent
-        Intent intent = getIntent();
-        String maNhanVien = intent.getStringExtra("maNhanVien");
-        String name = intent.getStringExtra("name");
-        String birthDate = intent.getStringExtra("birthDate");
-        String gender = intent.getStringExtra("gender");
-        String email = intent.getStringExtra("email");
-        String phone = intent.getStringExtra("phone");
-        String hometown = intent.getStringExtra("hometown");
-        String position = intent.getStringExtra("position");
-        String password = intent.getStringExtra("password");
+        // Tải dữ liệu nhân viên từ Firebase
+        loadNhanVienData();
 
-        // Hiển thị dữ liệu lên giao diện
-        try {
-            txtMaNhanVien.setText(maNhanVien);
-            txtHoTen.setText(name);
-            txtNgaySinh.setText(birthDate);
-            actvGioiTinh.setText(gender, false);
-            txtEmail.setText(email);
-            txtSoDienThoai.setText(phone);
-            txtQueQuan.setText(hometown);
-            actvChucVu.setText(position, false);
-            txtMatKhau.setText(password);
-            Log.d("ChinhSuaThongTinChiTiet", "Data loaded: " + maNhanVien);
-        } catch (Exception e) {
-            Log.e("ChinhSuaThongTinChiTiet", "Error setting data to views: " + e.getMessage());
-            Toast.makeText(this, "Lỗi hiển thị dữ liệu: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        }
-
-        // Vô hiệu hóa chỉnh sửa mã nhân viên
+        // Vô hiệu hóa trường mã nhân viên để không chỉnh sửa
         txtMaNhanVien.setEnabled(false);
+        // Xử lý sự kiện nút quay lại
+        btnBack.setOnClickListener(v -> finish());
+        // Xử lý sự kiện nút cập nhật
+        btnSua.setOnClickListener(v -> updateNhanVien());
+    }
 
-        // Sự kiện nút Back
-        btnBack.setOnClickListener(new View.OnClickListener() {
+    // Hàm tải thông tin nhân viên từ Firebase
+    private void loadNhanVienData() {
+        database.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                finish();
+            public void onDataChange(DataSnapshot snapshot) {
+                // Lấy dữ liệu nhân viên từ snapshot
+                NhanVien nhanVien = snapshot.getValue(NhanVien.class);
+                if (nhanVien != null) {
+                    // Gán dữ liệu vào các trường nhập liệu
+                    txtMaNhanVien.setText(maNhanVien);
+                    txtHoTen.setText(nhanVien.getName());
+                    txtNgaySinh.setText(nhanVien.getBirthDate());
+                    actvGioiTinh.setText(nhanVien.getGender(), false);
+                    txtEmail.setText(nhanVien.getEmail());
+                    txtSoDienThoai.setText(nhanVien.getPhone());
+                    txtQueQuan.setText(nhanVien.getHometown());
+                    actvChucVu.setText(nhanVien.getPosition(), false);
+                    txtMatKhau.setText(nhanVien.getPassword());
+                    currentAvatarBase64 = nhanVien.getAvatarBase64(); // Lưu avatarBase64 hiện tại
+                } else {
+                    // Hiển thị thông báo nếu không tìm thấy dữ liệu
+                    Toast.makeText(ChinhSuaThongTinChiTiet.this, "Không tìm thấy thông tin nhân viên", Toast.LENGTH_SHORT).show();
+                }
             }
-        });
 
-        // Sự kiện nút Sửa
-        btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                updateNhanVien(maNhanVien);
+            public void onCancelled(DatabaseError error) {
+                // Hiển thị thông báo lỗi nếu tải dữ liệu thất bại
+                Toast.makeText(ChinhSuaThongTinChiTiet.this, "Lỗi tải dữ liệu: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    private void updateNhanVien(String maNhanVien) {
+    // Hàm cập nhật thông tin nhân viên
+    private void updateNhanVien() {
+        // Lấy dữ liệu từ các trường nhập liệu
         String hoTen = txtHoTen.getText().toString().trim();
         String ngaySinh = txtNgaySinh.getText().toString().trim();
         String gioiTinh = actvGioiTinh.getText().toString().trim();
@@ -134,30 +121,27 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
         String chucVu = actvChucVu.getText().toString().trim();
         String matKhau = txtMatKhau.getText().toString().trim();
 
-        if (hoTen.isEmpty() || ngaySinh.isEmpty() || gioiTinh.isEmpty() ||
-                email.isEmpty() || soDienThoai.isEmpty() || queQuan.isEmpty() ||
-                chucVu.isEmpty() || matKhau.isEmpty()) {
-            Toast.makeText(this, "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+        // Kiểm tra xem các trường có bị bỏ trống hay không
+        if (hoTen.isEmpty() || ngaySinh.isEmpty() || gioiTinh.isEmpty() || email.isEmpty() ||
+                soDienThoai.isEmpty() || queQuan.isEmpty() || chucVu.isEmpty() || matKhau.isEmpty()) {
+            Toast.makeText(this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Map<String, Object> updatedData = new HashMap<>();
-        updatedData.put("name", hoTen);
-        updatedData.put("birthDate", ngaySinh);
-        updatedData.put("gender", gioiTinh);
-        updatedData.put("email", email);
-        updatedData.put("phone", soDienThoai);
-        updatedData.put("hometown", queQuan);
-        updatedData.put("position", chucVu);
-        updatedData.put("password", matKhau);
+        // Tạo đối tượng NhanVien mới với thông tin đã cập nhật, giữ nguyên avatar
+        NhanVien updatedNhanVien = new NhanVien(maNhanVien, hoTen, ngaySinh, gioiTinh, email,
+                soDienThoai, queQuan, chucVu, matKhau, currentAvatarBase64);
 
-        database.child(maNhanVien).updateChildren(updatedData)
+        // Lưu dữ liệu vào Firebase
+        database.setValue(updatedNhanVien)
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(this, "Cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();
+                    // Hiển thị thông báo thành công và thoát
+                    Toast.makeText(this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                     finish();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    // Hiển thị thông báo lỗi nếu cập nhật thất bại
+                    Toast.makeText(this, "Lỗi cập nhật: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
     }
 }

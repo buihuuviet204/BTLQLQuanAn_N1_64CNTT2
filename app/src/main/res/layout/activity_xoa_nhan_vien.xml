@@ -12,7 +12,7 @@
         android:id="@+id/imgb_back"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="25dp"
         android:backgroundTint="#F8CFA8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
@@ -66,6 +66,7 @@
                 android:textSize="24sp" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_xoa_nhan_vien"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
