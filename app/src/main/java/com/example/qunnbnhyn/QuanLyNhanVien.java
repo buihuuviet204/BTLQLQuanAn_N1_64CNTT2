@@ -36,5 +36,15 @@ public class QuanLyNhanVien extends AppCompatActivity {
                 startActivity(themNhanVien);
             }
         });
+
+        btnEdit = (Button) findViewById(R.id.btn_sua);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent suaThongTin = new Intent(QuanLyNhanVien.this, ChinhSuaThongTin.class);
+                startActivity(suaThongTin);
+            }
+        });
+
     }
 }
