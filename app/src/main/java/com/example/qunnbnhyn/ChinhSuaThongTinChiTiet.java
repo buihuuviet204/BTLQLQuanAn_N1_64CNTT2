@@ -27,29 +27,38 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chinh_sua_thong_tin_chi_tiet);
+        Log.d("ChinhSuaThongTinChiTiet", "onCreate started");
 
         try {
             setContentView(R.layout.activity_chinh_sua_thong_tin_chi_tiet);
             Log.d("ChinhSuaThongTinChiTiet", "Layout loaded successfully");
         } catch (Exception e) {
             Log.e("ChinhSuaThongTinChiTiet", "Error loading layout: " + e.getMessage());
+            Toast.makeText(this, "Lỗi tải giao diện: " + e.getMessage(), Toast.LENGTH_LONG).show();
             finish();
             return;
         }
 
         // Khởi tạo các view
-        txtMaNhanVien = findViewById(R.id.txt_ma_nhan_vien);
-        txtHoTen = findViewById(R.id.txt_ho_ten);
-        txtNgaySinh = findViewById(R.id.txt_date);
-        txtEmail = findViewById(R.id.txt_email);
-        txtSoDienThoai = findViewById(R.id.txt_so_dien_thoai);
-        txtQueQuan = findViewById(R.id.txt_que_quan);
-        txtMatKhau = findViewById(R.id.txt_mat_khau);
-        actvGioiTinh = findViewById(R.id.actv_gioi_tinh);
-        actvChucVu = findViewById(R.id.actv_chuc_vu);
-        btnSua = findViewById(R.id.btn_sua);
-        btnBack = findViewById(R.id.btn_back);
+        try {
+            txtMaNhanVien = findViewById(R.id.txt_ma_nhan_vien);
+            txtHoTen = findViewById(R.id.txt_ho_ten);
+            txtNgaySinh = findViewById(R.id.txt_date);
+            txtEmail = findViewById(R.id.txt_email);
+            txtSoDienThoai = findViewById(R.id.txt_so_dien_thoai);
+            txtQueQuan = findViewById(R.id.txt_que_quan);
+            txtMatKhau = findViewById(R.id.txt_mat_khau);
+            actvGioiTinh = findViewById(R.id.actv_gioi_tinh);
+            actvChucVu = findViewById(R.id.actv_chuc_vu);
+            btnSua = findViewById(R.id.btn_sua);
+            btnBack = findViewById(R.id.btn_back);
+            Log.d("ChinhSuaThongTinChiTiet", "Views initialized successfully");
+        } catch (Exception e) {
+            Log.e("ChinhSuaThongTinChiTiet", "Error initializing views: " + e.getMessage());
+            Toast.makeText(this, "Lỗi khởi tạo view: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
 
         // Kết nối Firebase
         database = FirebaseDatabase.getInstance().getReference("Employees");
@@ -77,17 +86,23 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
         String password = intent.getStringExtra("password");
 
         // Hiển thị dữ liệu lên giao diện
-        txtMaNhanVien.setText(maNhanVien);
-        txtHoTen.setText(name);
-        txtNgaySinh.setText(birthDate);
-        actvGioiTinh.setText(gender, false); // false để không hiển thị dropdown ngay
-        txtEmail.setText(email);
-        txtSoDienThoai.setText(phone);
-        txtQueQuan.setText(hometown);
-        actvChucVu.setText(position, false);
-        txtMatKhau.setText(password);
-
-        Log.d("ChinhSuaThongTinChiTiet", "Data loaded: " + maNhanVien);
+        try {
+            txtMaNhanVien.setText(maNhanVien);
+            txtHoTen.setText(name);
+            txtNgaySinh.setText(birthDate);
+            actvGioiTinh.setText(gender, false);
+            txtEmail.setText(email);
+            txtSoDienThoai.setText(phone);
+            txtQueQuan.setText(hometown);
+            actvChucVu.setText(position, false);
+            txtMatKhau.setText(password);
+            Log.d("ChinhSuaThongTinChiTiet", "Data loaded: " + maNhanVien);
+        } catch (Exception e) {
+            Log.e("ChinhSuaThongTinChiTiet", "Error setting data to views: " + e.getMessage());
+            Toast.makeText(this, "Lỗi hiển thị dữ liệu: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
 
         // Vô hiệu hóa chỉnh sửa mã nhân viên
         txtMaNhanVien.setEnabled(false);
@@ -96,7 +111,7 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // Quay lại màn hình trước
+                finish();
             }
         });
 
@@ -110,7 +125,6 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
     }
 
     private void updateNhanVien(String maNhanVien) {
-        // Lấy dữ liệu từ các trường nhập liệu
         String hoTen = txtHoTen.getText().toString().trim();
         String ngaySinh = txtNgaySinh.getText().toString().trim();
         String gioiTinh = actvGioiTinh.getText().toString().trim();
@@ -120,7 +134,6 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
         String chucVu = actvChucVu.getText().toString().trim();
         String matKhau = txtMatKhau.getText().toString().trim();
 
-        // Kiểm tra dữ liệu đầu vào
         if (hoTen.isEmpty() || ngaySinh.isEmpty() || gioiTinh.isEmpty() ||
                 email.isEmpty() || soDienThoai.isEmpty() || queQuan.isEmpty() ||
                 chucVu.isEmpty() || matKhau.isEmpty()) {
@@ -128,7 +141,6 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
             return;
         }
 
-        // Tạo map để lưu dữ liệu cập nhật
         Map<String, Object> updatedData = new HashMap<>();
         updatedData.put("name", hoTen);
         updatedData.put("birthDate", ngaySinh);
@@ -138,13 +150,11 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
         updatedData.put("hometown", queQuan);
         updatedData.put("position", chucVu);
         updatedData.put("password", matKhau);
-        // Giữ nguyên avatarBase64 (không sửa ảnh trong ví dụ này)
 
-        // Cập nhật dữ liệu lên Firebase
         database.child(maNhanVien).updateChildren(updatedData)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(this, "Cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();
-                    finish(); // Quay lại danh sách sau khi sửa
+                    finish();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();

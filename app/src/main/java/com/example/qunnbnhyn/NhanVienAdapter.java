@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,18 +35,25 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
         holder.bind(nhanVien);
 
         holder.itemView.setOnClickListener(v -> {
+            Log.d("NhanVienAdapter", "Clicked on: " + nhanVien.getMaNhanVien());
             Intent intent = new Intent(v.getContext(), ChinhSuaThongTinChiTiet.class);
-            intent.putExtra("maNhanVien", nhanVien.getMaNhanVien());
-            intent.putExtra("name", nhanVien.getName());
-            intent.putExtra("birthDate", nhanVien.getBirthDate());
-            intent.putExtra("gender", nhanVien.getGender());
-            intent.putExtra("email", nhanVien.getEmail());
-            intent.putExtra("phone", nhanVien.getPhone());
-            intent.putExtra("hometown", nhanVien.getHometown());
-            intent.putExtra("position", nhanVien.getPosition());
-            intent.putExtra("password", nhanVien.getPassword());
-            intent.putExtra("avatarBase64", nhanVien.getAvatarBase64());
-            v.getContext().startActivity(intent);
+            try {
+                intent.putExtra("maNhanVien", nhanVien.getMaNhanVien());
+                intent.putExtra("name", nhanVien.getName());
+                intent.putExtra("birthDate", nhanVien.getBirthDate());
+                intent.putExtra("gender", nhanVien.getGender());
+                intent.putExtra("email", nhanVien.getEmail());
+                intent.putExtra("phone", nhanVien.getPhone());
+                intent.putExtra("hometown", nhanVien.getHometown());
+                intent.putExtra("position", nhanVien.getPosition());
+                intent.putExtra("password", nhanVien.getPassword());
+                intent.putExtra("avatarBase64", nhanVien.getAvatarBase64());
+                Log.d("NhanVienAdapter", "Intent prepared for ChinhSuaThongTinChiTiet");
+                v.getContext().startActivity(intent);
+                Log.d("NhanVienAdapter", "Intent started");
+            } catch (Exception e) {
+                Log.e("NhanVienAdapter", "Error starting ChinhSuaThongTinChiTiet: " + e.getMessage());
+            }
         });
     }
 
