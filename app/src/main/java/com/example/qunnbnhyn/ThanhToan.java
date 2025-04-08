@@ -3,12 +3,14 @@ package com.example.qunnbnhyn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 public class ThanhToan extends AppCompatActivity implements View.OnClickListener {
     private CardView btnBan1, btnBan2, btnBan3, btnBan4, btnBan5, btnBan6, btnBan7, btnBan8, btnBan9, btnBan10, btnBan11, btnBan12, btnBan13, btnBan14, btnBan15;
-
+    private ImageButton imbBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,13 @@ public class ThanhToan extends AppCompatActivity implements View.OnClickListener
         btnBan13 = findViewById(R.id.btn_ban13);
         btnBan14 = findViewById(R.id.btn_ban14);
         btnBan15 = findViewById(R.id.btn_ban15);
+        imbBack = findViewById(R.id.imb_back);
+        imbBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // Thiết lập OnClickListener cho từng CardView
         btnBan1.setOnClickListener(this);
