@@ -9,19 +9,26 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnAdd;
+    private Button btnAdd, btnThanhtoan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         btnAdd = (Button) findViewById(R.id.btn_quanly);
-
+        btnThanhtoan = (Button) findViewById(R.id.btn_thanhtoan);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it1 = new Intent(MainActivity.this, QuanLyNhanVien.class);
                 startActivity(it1);
+            }
+        });
+        btnThanhtoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it2 = new Intent(MainActivity.this, ThanhToan.class);
+                startActivity(it2);
             }
         });
     }

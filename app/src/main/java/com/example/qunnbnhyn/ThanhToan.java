@@ -3,52 +3,52 @@ package com.example.qunnbnhyn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.cardview.widget.CardView;
 
-public class ThanhToan extends AppCompatActivity {
-    private Button btnBan1, btnBan2, btnBan3, btnBan4, btnBan5, btnBan6, btnBan7, btnBan8, btnBan9, btnBan10, btnBan11, btnBan12, btnBan13, btnBan14, btnBan15;
+public class ThanhToan extends AppCompatActivity implements View.OnClickListener {
+    private CardView btnBan1, btnBan2, btnBan3, btnBan4, btnBan5, btnBan6, btnBan7, btnBan8, btnBan9, btnBan10, btnBan11, btnBan12, btnBan13, btnBan14, btnBan15;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_thanh_toan);
 
-        btnBan1 = (Button) findViewById(R.id.btn_ban1);
-        btnBan2 = (Button) findViewById(R.id.btn_ban2);
-        btnBan3 = (Button) findViewById(R.id.btn_ban3);
-        btnBan4 = (Button) findViewById(R.id.btn_ban4);
-        btnBan5 = (Button) findViewById(R.id.btn_ban5);
-        btnBan6 = (Button) findViewById(R.id.btn_ban6);
-        btnBan7 = (Button) findViewById(R.id.btn_ban7);
-        btnBan8 = (Button) findViewById(R.id.btn_ban8);
-        btnBan9 = (Button) findViewById(R.id.btn_ban9);
-        btnBan10 = (Button) findViewById(R.id.btn_ban10);
-        btnBan11 = (Button) findViewById(R.id.btn_ban11);
-        btnBan12 = (Button) findViewById(R.id.btn_ban12);
-        btnBan13 = (Button) findViewById(R.id.btn_ban13);
-        btnBan14 = (Button) findViewById(R.id.btn_ban14);
-        btnBan15 = (Button) findViewById(R.id.btn_ban15);
+        btnBan1 = findViewById(R.id.btn_ban1);
+        btnBan2 = findViewById(R.id.btn_ban2);
+        btnBan3 = findViewById(R.id.btn_ban3);
+        btnBan4 = findViewById(R.id.btn_ban4);
+        btnBan5 = findViewById(R.id.btn_ban5);
+        btnBan6 = findViewById(R.id.btn_ban6);
+        btnBan7 = findViewById(R.id.btn_ban7);
+        btnBan8 = findViewById(R.id.btn_ban8);
+        btnBan9 = findViewById(R.id.btn_ban9);
+        btnBan10 = findViewById(R.id.btn_ban10);
+        btnBan11 = findViewById(R.id.btn_ban11);
+        btnBan12 = findViewById(R.id.btn_ban12);
+        btnBan13 = findViewById(R.id.btn_ban13);
+        btnBan14 = findViewById(R.id.btn_ban14);
+        btnBan15 = findViewById(R.id.btn_ban15);
 
-        // Thiết lập OnClickListener cho từng Button
-        btnBan1.setOnClickListener((View.OnClickListener) this);
-        btnBan2.setOnClickListener((View.OnClickListener) this);
-        btnBan3.setOnClickListener((View.OnClickListener) this);
-        btnBan4.setOnClickListener((View.OnClickListener) this);
-        btnBan5.setOnClickListener((View.OnClickListener) this);
-        btnBan6.setOnClickListener((View.OnClickListener) this);
-        btnBan7.setOnClickListener((View.OnClickListener) this);
-        btnBan8.setOnClickListener((View.OnClickListener) this);
-        btnBan9.setOnClickListener((View.OnClickListener) this);
-        btnBan10.setOnClickListener((View.OnClickListener) this);
-        btnBan11.setOnClickListener((View.OnClickListener) this);
-        btnBan12.setOnClickListener((View.OnClickListener) this);
+        // Thiết lập OnClickListener cho từng CardView
+        btnBan1.setOnClickListener(this);
+        btnBan2.setOnClickListener(this);
+        btnBan3.setOnClickListener(this);
+        btnBan4.setOnClickListener(this);
+        btnBan5.setOnClickListener(this);
+        btnBan6.setOnClickListener(this);
+        btnBan7.setOnClickListener(this);
+        btnBan8.setOnClickListener(this);
+        btnBan9.setOnClickListener(this);
+        btnBan10.setOnClickListener(this);
+        btnBan11.setOnClickListener(this);
+        btnBan12.setOnClickListener(this);
+        btnBan13.setOnClickListener(this);
+        btnBan14.setOnClickListener(this);
+        btnBan15.setOnClickListener(this);
     }
+
+    @Override
     public void onClick(View v) {
         Intent intent = new Intent(this, ThanhToanChiTiet.class);
         int soBan = 0;
@@ -77,6 +77,12 @@ public class ThanhToan extends AppCompatActivity {
             soBan = 11;
         } else if (v.getId() == R.id.btn_ban12) {
             soBan = 12;
+        } else if (v.getId() == R.id.btn_ban13) {
+            soBan = 13;
+        } else if (v.getId() == R.id.btn_ban14) {
+            soBan = 14;
+        } else if (v.getId() == R.id.btn_ban15) {
+            soBan = 15;
         }
 
         intent.putExtra("soBan", soBan);
