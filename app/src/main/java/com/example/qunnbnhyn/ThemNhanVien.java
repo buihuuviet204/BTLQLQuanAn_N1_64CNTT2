@@ -37,7 +37,7 @@ public class ThemNhanVien extends AppCompatActivity {
     private TextInputEditText txtMaNhanVien, txtHoTen, txtNgaySinh, txtEmail, txtSoDienThoai, txtQueQuan, txtMatKhau;
     private AutoCompleteTextView actvGioiTinh, actvChucVu;
     private ImageButton imgBtnAvatar;
-    private Button btnThem;
+    private Button btnThem, btnBack;
     private DatabaseReference database;
     private Uri imageUri; // Lưu đường dẫn ảnh được chọn
 
@@ -71,7 +71,7 @@ public class ThemNhanVien extends AppCompatActivity {
         actvChucVu = findViewById(R.id.actv_chuc_vu);
         imgBtnAvatar = findViewById(R.id.img_btn_avatar);
         btnThem = findViewById(R.id.btn_them);
-        ImageButton btnBack = findViewById(R.id.btn_back);
+        btnBack = findViewById(R.id.btn_quaylai);
 
         // Kết nối Firebase Authentication
         mAuth = FirebaseAuth.getInstance();

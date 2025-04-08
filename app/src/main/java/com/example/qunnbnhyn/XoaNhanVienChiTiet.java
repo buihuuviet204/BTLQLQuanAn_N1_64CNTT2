@@ -18,8 +18,7 @@ public class XoaNhanVienChiTiet extends AppCompatActivity {
     // Khai báo các trường nhập liệu và thành phần giao diện
     private TextInputEditText txtMaNhanVien, txtHoTen, txtNgaySinh, txtEmail, txtSoDienThoai, txtQueQuan, txtMatKhau;
     private AutoCompleteTextView actvGioiTinh, actvChucVu; // Dropdown cho giới tính và chức vụ
-    private Button btnXoa;
-    private ImageButton btnBack; // Nút quay lại
+    private Button btnXoa, btnBack;
     private DatabaseReference database; // Tham chiếu tới Firebase
     private String maNhanVien; // Mã nhân viên được truyền vào
 
@@ -48,7 +47,7 @@ public class XoaNhanVienChiTiet extends AppCompatActivity {
         actvGioiTinh = findViewById(R.id.actv_gioi_tinh);
         actvChucVu = findViewById(R.id.actv_chuc_vu);
         btnXoa = findViewById(R.id.btn_xoa);
-        btnBack = findViewById(R.id.btn_back);
+        btnBack = findViewById(R.id.btn_quaylai);
 
         // Kết nối tới node của nhân viên cụ thể trong Firebase
         database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);

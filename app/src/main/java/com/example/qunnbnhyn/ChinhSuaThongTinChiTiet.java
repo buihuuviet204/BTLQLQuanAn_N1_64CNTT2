@@ -19,8 +19,7 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
     // Khai báo các trường nhập liệu và thành phần giao diện
     private TextInputEditText txtMaNhanVien, txtHoTen, txtNgaySinh, txtEmail, txtSoDienThoai, txtQueQuan, txtMatKhau;
     private AutoCompleteTextView actvGioiTinh, actvChucVu; // Dropdown cho giới tính và chức vụ
-    private Button btnSua; // Nút cập nhật thông tin
-    private ImageButton btnBack; // Nút quay lại
+    private Button btnSua, btnQuayLai;
     private DatabaseReference database; // Tham chiếu tới Firebase
     private String maNhanVien; // Mã nhân viên được truyền vào
     private String currentAvatarBase64; // Lưu trữ avatarBase64 hiện tại của nhân viên
@@ -50,7 +49,7 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
         actvGioiTinh = findViewById(R.id.actv_gioi_tinh);
         actvChucVu = findViewById(R.id.actv_chuc_vu);
         btnSua = findViewById(R.id.btn_sua);
-        btnBack = findViewById(R.id.btn_back);
+        btnQuayLai = findViewById(R.id.btn_quaylai);
 
         // Kết nối tới node của nhân viên cụ thể trong Firebase
         database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
@@ -71,7 +70,7 @@ public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
         // Vô hiệu hóa trường mã nhân viên để không chỉnh sửa
         txtMaNhanVien.setEnabled(false);
         // Xử lý sự kiện nút quay lại
-        btnBack.setOnClickListener(v -> finish());
+        btnQuayLai.setOnClickListener(v -> finish());
         // Xử lý sự kiện nút cập nhật
         btnSua.setOnClickListener(v -> updateNhanVien());
     }

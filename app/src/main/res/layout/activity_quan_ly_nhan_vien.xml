@@ -26,7 +26,7 @@
         android:id="@+id/txt_quan_ly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="300dp"
         android:text="QUẢN LÝ \nNHÂN VIÊN"
         android:textColor="#000000"
         android:textSize="48sp"
@@ -88,7 +88,7 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="140dp"
+                android:layout_height="160dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/background2"
@@ -109,7 +109,7 @@
                 <Button
                     android:id="@+id/btn_them"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="110dp"
                     android:backgroundTint="#E3F2FD"
                     android:gravity="start"
                     android:paddingLeft="5dp"
@@ -123,7 +123,7 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="140dp"
+                android:layout_height="160dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/background2"
@@ -144,7 +144,7 @@
                 <Button
                     android:id="@+id/btn_sua"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="110dp"
                     android:backgroundTint="#FFFDE7"
                     android:gravity="start"
                     android:paddingLeft="5dp"
@@ -158,7 +158,7 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="140dp"
+                android:layout_height="160dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/background2"
@@ -179,91 +179,12 @@
                 <Button
                     android:id="@+id/btn_xoa"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="110dp"
                     android:backgroundTint="#FFEBEE"
                     android:gravity="start"
                     android:paddingLeft="5dp"
                     android:paddingRight="0dp"
                     android:text="Xóa \nnhân viên"
-                    android:textColor="#000000"
-                    android:textColorLink="#000000"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_theo_doi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_chuc_nang">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="140dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/background2"
-                android:backgroundTint="#E0F7FA"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/img_cham_cong"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/baseline_access_time_filled_24"
-                    app:tint="#00BCD4" />
-
-                <Button
-                    android:id="@+id/btn_cham_cong"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:backgroundTint="#E0F7FA"
-                    android:gravity="center"
-                    android:text="Chấm\ncông"
-                    android:textColor="#000000"
-                    android:textColorLink="#000000"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="140dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/background2"
-                android:backgroundTint="#F1F8E9"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/img_lich_lam_viec"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/baseline_calendar_month_24"
-                    app:tint="#388E3C" />
-
-                <Button
-                    android:id="@+id/btn_lich_lam_viec"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:backgroundTint="#F1F8E9"
-                    android:gravity="center"
-                    android:paddingLeft="0dp"
-                    android:paddingRight="0dp"
-                    android:text="Lịch \nlàm việc"
                     android:textColor="#000000"
                     android:textColorLink="#000000"
                     android:textSize="20sp"
