@@ -19,7 +19,7 @@ import java.util.List;
 public class ActivityPriorityCustomer extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private CustomerAdapter adapter; // Sử dụng CustomerAdapter thay vì PriorityCustomerAdapter
+    private CustomerAdapter adapter;
     private List<Customer> customerList;
     private DatabaseReference databaseReference;
     ImageView imgViewBack;
@@ -34,7 +34,7 @@ public class ActivityPriorityCustomer extends AppCompatActivity {
         customerList = new ArrayList<>();
         adapter = new CustomerAdapter(customerList, customer -> {
             // Chuyển sang màn hình chi tiết khi nhấn vào khách hàng
-            Intent intent = new Intent(this, CustomerDetailActivity.class);
+            Intent intent = new Intent(this, ActivityCustomerPriorityDetail.class);
             intent.putExtra("customerId", customer.getId());
             startActivity(intent);
         });
@@ -54,7 +54,7 @@ public class ActivityPriorityCustomer extends AppCompatActivity {
                 customerList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Customer customer = snapshot.getValue(Customer.class);
-                    if (customer != null && customer.getVisitCount() > 2) {
+                    if (customer != null) {
                         customerList.add(customer); // Hiển thị tất cả khách hàng
                     }
                 }

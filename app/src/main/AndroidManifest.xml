@@ -20,6 +20,6 @@
         <activity android:name=".ActivityEditCustomerDetail"/>
         <activity android:name=".ActivityDeleteCustomer"/>
         <activity android:name=".ActivityPriorityCustomer"/>
-        <activity android:name=".CustomerDetailActivity" />
+        <activity android:name=".ActivityCustomerPriorityDetail" />
     </application>
 </manifest>

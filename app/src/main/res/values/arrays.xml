@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="time_options">
+        <item>Theo ngày</item>
+        <item>Theo tháng</item>
+    </array>
+</resources>

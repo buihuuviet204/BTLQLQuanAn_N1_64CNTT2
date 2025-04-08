@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +13,7 @@
         android:id="@+id/imgViewBack"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="Back"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +23,8 @@
 
     <TextView
         android:id="@+id/textViewTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="371dp"
+        android:layout_height="107dp"
         android:layout_marginStart="-20dp"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/inter_bold"
@@ -42,8 +43,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         app:cardBackgroundColor="#FAF8F8"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toTopOf="@id/btnAddNewCustomer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,16 +51,26 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="473dp"
+            android:layout_height="match_parent"
             android:layout_gravity="clip_horizontal|center_horizontal|center_vertical"
             android:padding="16dp">
 
             <!-- Name Field -->
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Nhập thông tin cần chỉnh sửa"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textLayoutName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="26dp"
                 app:hintEnabled="true"
                 app:hintTextColor="#757575"
                 app:layout_constraintEnd_toEndOf="parent"
