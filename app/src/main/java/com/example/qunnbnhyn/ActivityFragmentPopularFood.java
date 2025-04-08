@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,7 +18,7 @@ public class ActivityFragmentPopularFood extends Fragment {
     private EditText etDatePickerPopular;
     private Button btnConfirmPopular;
     private LinearLayout llPopularList;
-
+    ImageView imageView;
     public ActivityFragmentPopularFood() {
         // Required empty public constructor
     }
@@ -25,14 +26,13 @@ public class ActivityFragmentPopularFood extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_activity_popular_food, container, false);
-
         spinnerTimePopular = view.findViewById(R.id.spinner_time_popular);
         etDatePickerPopular = view.findViewById(R.id.et_date_picker_popular);
         btnConfirmPopular = view.findViewById(R.id.btn_confirm_popular);
         llPopularList = view.findViewById(R.id.ll_popular_list);
-
+        imageView = view.findViewById(R.id.imageView3);
         btnConfirmPopular.setOnClickListener(v -> updatePopularList());
-
+        imageView.setOnClickListener(v -> requireActivity().finish());
         return view;
     }
 
@@ -44,7 +44,6 @@ public class ActivityFragmentPopularFood extends Fragment {
             etDatePickerPopular.setError("Vui lòng nhập ngày/tháng");
             return;
         }
-
         llPopularList.removeAllViews();
 
         // Dữ liệu mẫu

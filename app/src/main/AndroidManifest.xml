@@ -21,5 +21,7 @@
         <activity android:name=".ActivityDeleteCustomer"/>
         <activity android:name=".ActivityPriorityCustomer"/>
         <activity android:name=".ActivityCustomerPriorityDetail" />
+        <activity android:name=".ActivityShowReport" />
+       
     </application>
 </manifest>

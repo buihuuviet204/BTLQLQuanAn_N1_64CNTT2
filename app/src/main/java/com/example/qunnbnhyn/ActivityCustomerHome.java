@@ -20,11 +20,14 @@ public class ActivityCustomerHome extends AppCompatActivity {
         Button btnEditCustomer = findViewById(R.id.btnEditCustomer);
         Button btnDeleteCustomer = findViewById(R.id.btnDeleteCustomer);
         Button btnPriorityCustomer = findViewById(R.id.btnPriorityCustomer);
+        Button btnTest = findViewById(R.id.button);
 
         // Xử lý sự kiện click
         btnAddCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityAddCustomer.class)));
         btnEditCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityEditCustomer.class)));
         btnDeleteCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityDeleteCustomer.class)));
         btnPriorityCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityPriorityCustomer.class)));
+        btnTest.setOnClickListener(v -> startActivity(new Intent(this, ActivityShowReport.class)));
+
     }
 }
