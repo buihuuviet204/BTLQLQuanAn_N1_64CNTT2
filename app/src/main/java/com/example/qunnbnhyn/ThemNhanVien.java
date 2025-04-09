@@ -171,23 +171,37 @@ public class ThemNhanVien extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(account, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     FirebaseUser user = mAuth.getCurrentUser();
-                    Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(ThemNhanVien.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    String uid = user.getUid(); // Lấy UID của người dùng
+                    Toast.makeText(getApplicationContext(), "Tạo tài khoản thành công: " + user.getEmail(), Toast.LENGTH_SHORT).show();
+
+                    // Lưu dữ liệu vào Realtime Database với UID làm key
+                    saveEmployeeToDatabase(uid, employeeData);
+                } else {
+                    Toast.makeText(ThemNhanVien.this, "Tạo tài khoản thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
         // Lưu dữ liệu trực tiếp vào Realtime Database
-        saveEmployeeToDatabase(maNhanVien, employeeData);
+//        saveEmployeeToDatabase(maNhanVien, employeeData);
     }
+//
+//    private void saveEmployeeToDatabase(String maNhanVien, Map<String, Object> employeeData) {
+//        // Lưu dữ liệu vào Firebase Realtime Database
+//        database.child(maNhanVien).setValue(employeeData)
+//                .addOnSuccessListener(aVoid -> {
+//                    Toast.makeText(this, "Thêm nhân viên thành công!", Toast.LENGTH_SHORT).show();
+//                    clearFields(); // Xóa các trường sau khi thêm thành công
+//                })
+//                .addOnFailureListener(e -> {
+//                    Toast.makeText(this, "Lỗi khi thêm nhân viên: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                });
+//    }
 
-    private void saveEmployeeToDatabase(String maNhanVien, Map<String, Object> employeeData) {
-        // Lưu dữ liệu vào Firebase Realtime Database
-        database.child(maNhanVien).setValue(employeeData)
+    private void saveEmployeeToDatabase(String uid, Map<String, Object> employeeData) {
+        // Lưu dữ liệu vào Firebase Realtime Database với UID làm key
+        database.child(uid).setValue(employeeData)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(this, "Thêm nhân viên thành công!", Toast.LENGTH_SHORT).show();
                     clearFields(); // Xóa các trường sau khi thêm thành công
