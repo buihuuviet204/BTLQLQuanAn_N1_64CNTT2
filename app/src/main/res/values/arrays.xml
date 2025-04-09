@@ -3,5 +3,6 @@
     <array name="time_options">
         <item>Theo ngày</item>
         <item>Theo tháng</item>
+        <item>Tất cả</item>
     </array>
 </resources>

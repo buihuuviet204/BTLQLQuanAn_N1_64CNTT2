@@ -7,13 +7,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -28,6 +32,7 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
     private ImageView imgViewBack;
     private String customerPhoneNumber;
     private long tongDiem = 0;
+    private ChildEventListener invoiceListener; // Listener để lắng nghe thay đổi trong hoa_don
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +55,19 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
         llInvoiceList = findViewById(R.id.llInvoiceList);
         imgViewBack = findViewById(R.id.imgViewBack);
 
+        // Khởi tạo Firebase references
         databaseReference = FirebaseDatabase.getInstance("https://quananbinhyen-cntt2-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("customers").child(customerId);
         invoiceReference = FirebaseDatabase.getInstance("https://quananbinhyen-cntt2-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("hoa_don");
 
+        // Load thông tin khách hàng và hóa đơn
         loadCustomerDetails();
+
+        // Thiết lập listener để lắng nghe thay đổi trong hoa_don
+        setupInvoiceListener();
+
+        // Xử lý nút Back
         imgViewBack.setOnClickListener(v -> finish());
     }
 
@@ -67,10 +79,9 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
                 if (customer != null) {
                     tvName.setText(customer.getName());
                     tvPhone.setText(customer.getPhoneNumber());
-                    tvPoints.setText(String.valueOf(customer.getPoints()));
                     customerPhoneNumber = customer.getPhoneNumber(); // Lưu số điện thoại để so sánh với maKhach
+                    // Load hóa đơn và cập nhật visitCount, points
                     loadInvoices();
-                    //tvPoints.setText(String.valueOf(tongDiem));
                 } else {
                     Toast.makeText(ActivityCustomerPriorityDetail.this, "Không tìm thấy thông tin khách hàng", Toast.LENGTH_SHORT).show();
                 }
@@ -79,6 +90,87 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) {
                 Toast.makeText(ActivityCustomerPriorityDetail.this, "Lỗi tải dữ liệu: " + error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    // Hàm tính điểm từ tổng tiền (1 điểm cho mỗi 20,000 VNĐ)
+    private long calculatePoints(long tongTien) {
+        return tongTien / 20000;
+    }
+
+    // Thiết lập listener để lắng nghe thay đổi trong hoa_don
+    private void setupInvoiceListener() {
+        invoiceListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
+                // Khi có hóa đơn mới được thêm, cập nhật lại visitCount và points
+                updateCustomerStats();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+                // Khi có hóa đơn bị sửa, cập nhật lại visitCount và points
+                updateCustomerStats();
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot snapshot) {
+                // Khi có hóa đơn bị xóa, cập nhật lại visitCount và points
+                updateCustomerStats();
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
+                // Không cần xử lý
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(ActivityCustomerPriorityDetail.this, "Lỗi lắng nghe hóa đơn: " + error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+        invoiceReference.addChildEventListener(invoiceListener);
+    }
+
+    // Cập nhật visitCount và points dựa trên tất cả hóa đơn
+    private void updateCustomerStats() {
+        if (customerPhoneNumber == null) {
+            return; // Chưa có customerPhoneNumber, không thể cập nhật
+        }
+
+        invoiceReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                int visitCount = 0;
+                long totalPoints = 0;
+
+                // Duyệt qua tất cả hóa đơn để tính visitCount và points
+                for (DataSnapshot invoiceSnapshot : snapshot.getChildren()) {
+                    String maKhach = invoiceSnapshot.child("maKhach").getValue(String.class);
+                    if (maKhach != null && maKhach.equals(customerPhoneNumber)) {
+                        visitCount++;
+                        long tongTien = invoiceSnapshot.child("tongTien").getValue(Long.class) != null ?
+                                invoiceSnapshot.child("tongTien").getValue(Long.class) : 0;
+                        totalPoints += calculatePoints(tongTien);
+                    }
+                }
+
+                // Cập nhật visitCount và points vào customers
+                databaseReference.child("visitCount").setValue(visitCount);
+                databaseReference.child("points").setValue(totalPoints);
+
+                // Cập nhật UI
+                tvVisitCount.setText(String.valueOf(visitCount));
+                tvPoints.setText(String.valueOf(totalPoints));
+
+                // Load lại danh sách hóa đơn để cập nhật giao diện
+                loadInvoices();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(ActivityCustomerPriorityDetail.this, "Lỗi tải hóa đơn: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -94,24 +186,11 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
                     String maKhach = invoiceSnapshot.child("maKhach").getValue(String.class);
                     if (maKhach != null && maKhach.equals(customerPhoneNumber)) {
                         visitCount++;
-                        long tongTien = invoiceSnapshot.child("tongtien").getValue(Long.class) != null ?
-                                invoiceSnapshot.child("tongtien").getValue(Long.class) : 0;
-
-
-                        DataSnapshot ngLapSnapshot = invoiceSnapshot.child("ngLap");
-                        long time = ngLapSnapshot.child("time").getValue(Long.class) != null ?
-                                ngLapSnapshot.child("time").getValue(Long.class) : 0;
-                        int timezoneOffset = ngLapSnapshot.child("timezoneOffset").getValue(Integer.class) != null ?
-                                ngLapSnapshot.child("timezoneOffset").getValue(Integer.class) : 0;
-
-                        // Chuyển timestamp thành ngày
-                        long adjustedTime = time + (timezoneOffset * 60 * 1000); // Điều chỉnh múi giờ
-                        String dateStr = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                                .format(new Date(adjustedTime));
+                        long tongTien = invoiceSnapshot.child("tongTien").getValue(Long.class) != null ?
+                                invoiceSnapshot.child("tongTien").getValue(Long.class) : 0;
+                        String dateStr = invoiceSnapshot.child("ngLap").getValue(String.class);
 
                         // Tạo view cho mỗi hóa đơn
-                        View invoiceView = LayoutInflater.from(ActivityCustomerPriorityDetail.this)
-                                .inflate(android.R.layout.simple_list_item_1, null);
                         LinearLayout layout = new LinearLayout(ActivityCustomerPriorityDetail.this);
                         layout.setOrientation(LinearLayout.HORIZONTAL);
                         layout.setPadding(8, 8, 8, 8);
@@ -125,10 +204,8 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
                         TextView tvTotal = new TextView(ActivityCustomerPriorityDetail.this);
                         tvTotal.setText(String.format("%,d VNĐ", tongTien));
                         tvTotal.setTextSize(16);
-                        tongDiem += tongTien;
                         tvTotal.setTextColor(0xFF212121);
                         tvTotal.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-                        tvPoints.setText(String.valueOf(tongDiem/20000));
 
                         TextView tvDate = new TextView(ActivityCustomerPriorityDetail.this);
                         tvDate.setText(dateStr);
@@ -150,9 +227,6 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
                     }
                 }
 
-                // Cập nhật số lần ăn (tvVisitCount) dựa trên tổng số hóa đơn
-                tvVisitCount.setText(String.valueOf(visitCount));
-
                 if (visitCount == 0) {
                     TextView tvNoInvoices = new TextView(ActivityCustomerPriorityDetail.this);
                     tvNoInvoices.setText("Không có hóa đơn nào");
@@ -168,5 +242,14 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
                 Toast.makeText(ActivityCustomerPriorityDetail.this, "Lỗi tải hóa đơn: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Xóa listener khi Activity bị hủy để tránh rò rỉ bộ nhớ
+        if (invoiceListener != null) {
+            invoiceReference.removeEventListener(invoiceListener);
+        }
     }
 }

@@ -23,14 +23,14 @@
 
     <TextView
         android:id="@+id/textViewTitle"
-        android:layout_width="371dp"
-        android:layout_height="107dp"
+        android:layout_width="373dp"
+        android:layout_height="77dp"
         android:layout_marginStart="-20dp"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/inter_bold"
         android:text="SỬA THÔNG TIN"
         android:textColor="#212121"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

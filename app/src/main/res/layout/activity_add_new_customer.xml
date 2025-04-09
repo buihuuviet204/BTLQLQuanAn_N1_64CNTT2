@@ -30,7 +30,7 @@
         android:fontFamily="@font/inter_bold"
         android:text="THÊM KHÁCH HÀNG"
         android:textColor="#212121"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
