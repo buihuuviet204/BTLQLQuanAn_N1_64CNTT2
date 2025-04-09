@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:id="@+id/txt_tenmon"
+        android:fontFamily="@font/comfortaa"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Ten mon an"
+        android:textSize="12dp"/>
+    <TextView
+        android:id="@+id/txt_giaban"
+        android:textSize="12dp"
+        android:fontFamily="@font/comfortaa"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Gia ban"/>
+    <TextView
+        android:id="@+id/txt_soluong"
+        android:textSize="12dp"
+        android:fontFamily="@font/comfortaa"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="So luong"/>
+    <TextView
+        android:id="@+id/txt_ttien"
+        android:textSize="12dp"
+        android:fontFamily="@font/comfortaa"
+        android:gravity="center"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="Thanh tien"/>
+
+</LinearLayout>
