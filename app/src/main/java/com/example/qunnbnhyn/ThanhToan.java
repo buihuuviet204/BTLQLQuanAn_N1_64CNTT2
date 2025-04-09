@@ -39,22 +39,134 @@ public class ThanhToan extends AppCompatActivity implements View.OnClickListener
             }
         });
 
-        // Thiết lập OnClickListener cho từng CardView
-        btnBan1.setOnClickListener(this);
-        btnBan2.setOnClickListener(this);
-        btnBan3.setOnClickListener(this);
-        btnBan4.setOnClickListener(this);
-        btnBan5.setOnClickListener(this);
-        btnBan6.setOnClickListener(this);
-        btnBan7.setOnClickListener(this);
-        btnBan8.setOnClickListener(this);
-        btnBan9.setOnClickListener(this);
-        btnBan10.setOnClickListener(this);
-        btnBan11.setOnClickListener(this);
-        btnBan12.setOnClickListener(this);
-        btnBan13.setOnClickListener(this);
-        btnBan14.setOnClickListener(this);
-        btnBan15.setOnClickListener(this);
+        // Thêm sự kiện nhấn cho từng bàn
+        btnBan1.setOnClickListener(v -> openThanhToanChiTiet(1));
+        btnBan2.setOnClickListener(v -> openThanhToanChiTiet(2));
+        btnBan3.setOnClickListener(v -> openThanhToanChiTiet(3));
+        btnBan4.setOnClickListener(v -> openThanhToanChiTiet(4));
+        btnBan5.setOnClickListener(v -> openThanhToanChiTiet(5));
+        btnBan6.setOnClickListener(v -> openThanhToanChiTiet(6));
+        btnBan7.setOnClickListener(v -> openThanhToanChiTiet(7));
+        btnBan8.setOnClickListener(v -> openThanhToanChiTiet(8));
+        btnBan9.setOnClickListener(v -> openThanhToanChiTiet(9));
+        btnBan10.setOnClickListener(v -> openThanhToanChiTiet(10));
+        btnBan11.setOnClickListener(v -> openThanhToanChiTiet(11));
+        btnBan12.setOnClickListener(v -> openThanhToanChiTiet(12));
+        btnBan13.setOnClickListener(v -> openThanhToanChiTiet(13));
+        btnBan14.setOnClickListener(v -> openThanhToanChiTiet(14));
+        btnBan15.setOnClickListener(v -> openThanhToanChiTiet(15));
+
+        // Thêm sự kiện nhấn cho từng bàn
+        btnBan1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(1); // Truyền số bàn 1
+            }
+        });
+
+        btnBan2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(2); // Truyền số bàn 2
+            }
+        });
+
+        btnBan3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(3); // Truyền số bàn 3
+            }
+        });
+
+        btnBan4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(4);
+            }
+        });
+
+        btnBan5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(5);
+            }
+        });
+
+        btnBan6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(6);
+            }
+        });
+
+        btnBan7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(7);
+            }
+        });
+
+        btnBan8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(8);
+            }
+        });
+
+        btnBan9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(9);
+            }
+        });
+
+        btnBan10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(10);
+            }
+        });
+
+        btnBan11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(11);
+            }
+        });
+
+        btnBan12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(12);
+            }
+        });
+
+        btnBan13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(13);
+            }
+        });
+
+        btnBan14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(14);
+            }
+        });
+
+        btnBan15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThanhToanChiTiet(15);
+            }
+        });
+    }
+
+    private void openThanhToanChiTiet(int soBan) {
+        Intent intent = new Intent(this, ThanhToanChiTiet.class);
+        intent.putExtra("SO_BAN", soBan); // Truyền số bàn qua Intent
+        startActivity(intent);
     }
 
     @Override

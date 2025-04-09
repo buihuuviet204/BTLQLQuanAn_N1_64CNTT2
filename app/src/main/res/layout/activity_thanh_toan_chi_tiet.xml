@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
-    <!-- ScrollView cho nội dung chính -->
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
@@ -30,11 +29,12 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="25dp">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/btn_back"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:src="@drawable/baseline_arrow_back_ios_24"
+                    android:backgroundTint="#ffffff"
                     android:clickable="true"
                     android:focusable="true"
                     android:padding="4dp"
@@ -80,14 +80,32 @@
                     android:textColor="#555555"
                     android:layout_marginBottom="8dp" />
 
-                <TextView
-                    android:id="@+id/tv_so_dien_thoai"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Số điện thoại: 0988888888"
-                    android:textSize="16sp"
-                    android:textColor="#555555"
-                    android:layout_marginBottom="8dp" />
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <EditText
+                        android:id="@+id/et_so_dien_thoai"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Nhập số điện thoại"
+                        android:textSize="16sp"
+                        android:textColor="#555555"
+                        android:background="@drawable/edit_text_background"
+                        android:padding="8dp"
+                        android:inputType="phone" />
+
+                    <Button
+                        android:id="@+id/btn_kiem_tra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kiểm tra"
+                        android:textSize="14sp"
+                        android:layout_marginStart="8dp" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_ngay"
@@ -142,7 +160,7 @@
                             android:text="STT"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            android:textColor="#757575"
+                            android:textColor="#000000"
                             android:gravity="center" />
                         <TextView
                             android:layout_width="0dp"
@@ -151,7 +169,7 @@
                             android:text="Tên món"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            android:textColor="#757575" />
+                            android:textColor="#000000" />
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -159,7 +177,7 @@
                             android:text="SL"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            android:textColor="#757575"
+                            android:textColor="#000000"
                             android:gravity="center" />
                         <TextView
                             android:layout_width="0dp"
@@ -168,7 +186,7 @@
                             android:text="Giá"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            android:textColor="#757575"
+                            android:textColor="#000000"
                             android:gravity="end" />
                         <TextView
                             android:layout_width="0dp"
@@ -177,7 +195,7 @@
                             android:text="Thành tiền"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            android:textColor="#757575"
+                            android:textColor="#000000"
                             android:gravity="end" />
                     </TableRow>
 
@@ -187,175 +205,6 @@
                         android:background="#E0E0E0"
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="4dp" />
-
-                    <!-- Dữ liệu mẫu -->
-                    <TableRow android:padding="8dp">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.75"
-                            android:text="1"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="center" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="TM1"
-                            android:textSize="16sp"
-                            android:textColor="#424242" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:text="1"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="center" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="1000"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="end" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.5"
-                            android:text="1000"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="end" />
-                    </TableRow>
-
-                    <TableRow android:padding="8dp">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.75"
-                            android:text="2"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="center" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="TM1"
-                            android:textSize="16sp"
-                            android:textColor="#424242" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:text="2"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="center" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="1000"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="end" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.5"
-                            android:text="2000"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="end" />
-                    </TableRow>
-
-                    <TableRow android:padding="8dp">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.75"
-                            android:text="3"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="center" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="TM1"
-                            android:textSize="16sp"
-                            android:textColor="#424242" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:text="3"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="center" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="1000"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="end" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.5"
-                            android:text="3000"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="end" />
-                    </TableRow>
-
-                    <TableRow android:padding="8dp">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.75"
-                            android:text="4"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="center" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="TM1"
-                            android:textSize="16sp"
-                            android:textColor="#424242" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:text="4"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="center" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="1000"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="end" />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.5"
-                            android:text="4000"
-                            android:textSize="16sp"
-                            android:textColor="#424242"
-                            android:gravity="end" />
-                    </TableRow>
                 </TableLayout>
             </LinearLayout>
 
@@ -430,7 +279,6 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Nút Thanh toán cố định ở dưới cùng -->
     <LinearLayout
         android:id="@+id/layout_btn_thanh_toan"
         android:layout_width="match_parent"
@@ -454,7 +302,6 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:backgroundTint="#F6EFC1"
-        />
+            android:backgroundTint="#F6EFC1" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

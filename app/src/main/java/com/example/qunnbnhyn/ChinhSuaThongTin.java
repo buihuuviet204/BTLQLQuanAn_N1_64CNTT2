@@ -19,13 +19,13 @@ import java.util.List;
 
 public class ChinhSuaThongTin extends AppCompatActivity {
 
-    private RecyclerView recyclerView; // Khai báo RecyclerView để hiển thị danh sách nhân viên
+    private RecyclerView recyclerView;
     private NhanVienAdapter adapter; // Adapter để liên kết dữ liệu với RecyclerView
     private List<NhanVien> nhanVienList; // Danh sách chứa tất cả nhân viên từ Firebase
     private List<NhanVien> filteredNhanVienList; // Danh sách nhân viên đã lọc để hiển thị
     private DatabaseReference database; // Tham chiếu tới cơ sở dữ liệu Firebase
-    private ImageButton imgbBack; // Nút quay lại
-    private SearchView searchView; // SearchView để tìm kiếm nhân viên
+    private ImageButton imgbBack;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
