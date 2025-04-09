@@ -27,7 +27,7 @@
                 android:id="@+id/tv_popular_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10px"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="MÓN ĂN THỊNH HÀNH"
                 android:textColor="#212121"
@@ -48,8 +48,8 @@
                     android:entries="@array/time_options"
                     android:padding="8dp" />
 
-                <EditText
-                    android:id="@+id/et_date_picker_popular"
+                <TextView
+                    android:id="@+id/tv_date_picker_popular"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

@@ -31,10 +31,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
+import java.util.HashSet;
 import java.util.TimeZone;
 
 public class ActivityFragmentIncome extends Fragment {
@@ -47,7 +49,7 @@ public class ActivityFragmentIncome extends Fragment {
     private TextView tvTotal, tvCashPayment, tvTransferPayment;
     private DatabaseReference databaseReference;
     private List<Invoice> invoiceList;
-    private List<Invoice> filteredInvoiceList;
+    private List<Object> filteredInvoiceList;
     private InvoiceAdapter invoiceAdapter;
     private SimpleDateFormat dayFormat, monthFormat;
     private List<String> dateOptions;
@@ -203,16 +205,13 @@ public class ActivityFragmentIncome extends Fragment {
                             }
                         }
 
-                        Invoice invoice = new Invoice(invoiceId, maKhach, timestamp, tongTien, trangThai != null && trangThai ? "transfer" : "cash");
+                        Invoice invoice = new Invoice(invoiceId, maKhach, timestamp, tongTien, trangThai != null && trangThai ? "Chuyển khoản" : "Tiền mặt");
                         invoiceList.add(invoice);
                         Log.d("Invoice", "Added invoice: " + invoiceId + ", Date: " + (timestamp != null ? dayFormat.format(new Date(timestamp)) : "N/A"));
                     } catch (Exception e) {
                         Toast.makeText(getContext(), "Lỗi khi đọc dữ liệu hóa đơn: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
-
-                Toast.makeText(getContext(), "Số lượng hóa đơn: " + invoiceList.size(), Toast.LENGTH_SHORT).show();
-                Log.d("FetchInvoices", "Số lượng hóa đơn: " + invoiceList.size());
                 updateDateOptions();
             }
 
@@ -252,23 +251,25 @@ public class ActivityFragmentIncome extends Fragment {
         cashPayment = 0;
         transferPayment = 0;
 
-        filteredInvoiceList.addAll(invoiceList);
+        List<Invoice> tempList = new ArrayList<>(invoiceList);
+        Collections.sort(tempList, (i1, i2) -> Long.compare(i2.getTimestamp(), i1.getTimestamp()));
+        filteredInvoiceList.addAll(tempList);
 
-        for (Invoice invoice : filteredInvoiceList) {
-            Long tongTien = invoice.getTongTien();
-            if (tongTien != null) {
-                totalMoney += tongTien;
-                String paymentMethod = invoice.getPaymentMethod();
-                if ("cash".equals(paymentMethod)) {
-                    cashPayment += tongTien;
-                } else if ("transfer".equals(paymentMethod)) {
-                    transferPayment += tongTien;
+        for (Object item : filteredInvoiceList) {
+            if (item instanceof Invoice) {
+                Invoice invoice = (Invoice) item;
+                Long tongTien = invoice.getTongTien();
+                if (tongTien != null) {
+                    totalMoney += tongTien;
+                    String paymentMethod = invoice.getPaymentMethod();
+                    if ("Tiền mặt".equals(paymentMethod)) {
+                        cashPayment += tongTien;
+                    } else if ("Chuyển khoản".equals(paymentMethod)) {
+                        transferPayment += tongTien;
+                    }
                 }
             }
         }
-
-        // Sắp xếp hóa đơn theo thời gian (mới nhất trước)
-        Collections.sort(filteredInvoiceList, (i1, i2) -> Long.compare(i2.getTimestamp(), i1.getTimestamp()));
 
         Log.d("Filter", "Số lượng hóa đơn đã lọc: " + filteredInvoiceList.size());
         invoiceAdapter.notifyDataSetChanged();
@@ -305,25 +306,33 @@ public class ActivityFragmentIncome extends Fragment {
             calendar.set(Calendar.MILLISECOND, 999);
             long endTimestamp = calendar.getTimeInMillis();
 
+            List<Invoice> tempList = new ArrayList<>();
             for (Invoice invoice : invoiceList) {
                 Long timestamp = invoice.getTimestamp();
                 if (timestamp != null && timestamp >= startTimestamp && timestamp <= endTimestamp) {
-                    filteredInvoiceList.add(invoice);
+                    tempList.add(invoice);
+                }
+            }
+
+            // Sắp xếp hóa đơn theo thời gian (mới nhất trước)
+            Collections.sort(tempList, (i1, i2) -> Long.compare(i2.getTimestamp(), i1.getTimestamp()));
+            filteredInvoiceList.addAll(tempList);
+
+            for (Object item : filteredInvoiceList) {
+                if (item instanceof Invoice) {
+                    Invoice invoice = (Invoice) item;
                     Long tongTien = invoice.getTongTien();
                     if (tongTien != null) {
                         totalMoney += tongTien;
                         String paymentMethod = invoice.getPaymentMethod();
-                        if ("cash".equals(paymentMethod)) {
+                        if ("Tiền mặt".equals(paymentMethod)) {
                             cashPayment += tongTien;
-                        } else if ("transfer".equals(paymentMethod)) {
+                        } else if ("Chuyển khoản".equals(paymentMethod)) {
                             transferPayment += tongTien;
                         }
                     }
                 }
             }
-
-            // Sắp xếp hóa đơn theo thời gian (mới nhất trước)
-            Collections.sort(filteredInvoiceList, (i1, i2) -> Long.compare(i2.getTimestamp(), i1.getTimestamp()));
 
             Log.d("Filter", "Số lượng hóa đơn đã lọc: " + filteredInvoiceList.size());
             invoiceAdapter.notifyDataSetChanged();
@@ -365,25 +374,51 @@ public class ActivityFragmentIncome extends Fragment {
             calendar.set(Calendar.MILLISECOND, 999);
             long endTimestamp = calendar.getTimeInMillis();
 
+            // Map để gom nhóm hóa đơn theo ngày
+            Map<String, List<Invoice>> invoicesByDay = new HashMap<>();
+
+            // Lọc hóa đơn trong tháng và gom nhóm theo ngày
             for (Invoice invoice : invoiceList) {
                 Long timestamp = invoice.getTimestamp();
                 if (timestamp != null && timestamp >= startTimestamp && timestamp <= endTimestamp) {
-                    filteredInvoiceList.add(invoice);
+                    String dayKey = dayFormat.format(new Date(timestamp));
+                    invoicesByDay.computeIfAbsent(dayKey, k -> new ArrayList<>()).add(invoice);
+
                     Long tongTien = invoice.getTongTien();
                     if (tongTien != null) {
                         totalMoney += tongTien;
                         String paymentMethod = invoice.getPaymentMethod();
-                        if ("cash".equals(paymentMethod)) {
+                        if ("Tiền mặt".equals(paymentMethod)) {
                             cashPayment += tongTien;
-                        } else if ("transfer".equals(paymentMethod)) {
+                        } else if ("Chuyển khoản".equals(paymentMethod)) {
                             transferPayment += tongTien;
                         }
                     }
                 }
             }
 
-            // Sắp xếp hóa đơn theo thời gian (mới nhất trước)
-            Collections.sort(filteredInvoiceList, (i1, i2) -> Long.compare(i2.getTimestamp(), i1.getTimestamp()));
+            // Sắp xếp các ngày theo thứ tự giảm dần (mới nhất trước)
+            List<String> sortedDays = new ArrayList<>(invoicesByDay.keySet());
+            Collections.sort(sortedDays, (d1, d2) -> {
+                try {
+                    Date date1 = dayFormat.parse(d1);
+                    Date date2 = dayFormat.parse(d2);
+                    return date2.compareTo(date1); // Mới nhất trước
+                } catch (ParseException e) {
+                    return 0;
+                }
+            });
+
+            // Thêm các nhóm vào filteredInvoiceList
+            for (String day : sortedDays) {
+                // Thêm header (ngày)
+                filteredInvoiceList.add("Ngày: " + day);
+                // Thêm danh sách hóa đơn trong ngày đó
+                List<Invoice> dayInvoices = invoicesByDay.get(day);
+                // Sắp xếp hóa đơn trong ngày theo thời gian (mới nhất trước)
+                Collections.sort(dayInvoices, (i1, i2) -> Long.compare(i2.getTimestamp(), i1.getTimestamp()));
+                filteredInvoiceList.addAll(dayInvoices);
+            }
 
             Log.d("Filter", "Số lượng hóa đơn đã lọc: " + filteredInvoiceList.size());
             invoiceAdapter.notifyDataSetChanged();

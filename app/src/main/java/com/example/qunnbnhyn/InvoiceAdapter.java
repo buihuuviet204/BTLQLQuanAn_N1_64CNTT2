@@ -1,5 +1,6 @@
 package com.example.qunnbnhyn;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,33 +12,58 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
-public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.InvoiceViewHolder> {
+public class InvoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Invoice> invoiceList;
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_INVOICE = 1;
+
+    private List<Object> invoiceList;
     private SimpleDateFormat dateFormat;
 
-    public InvoiceAdapter(List<Invoice> invoiceList) {
+    public InvoiceAdapter(List<Object> invoiceList) {
         this.invoiceList = invoiceList;
         this.dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
-        this.dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+7"));
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (invoiceList.get(position) instanceof String) {
+            return TYPE_HEADER;
+        } else {
+            return TYPE_INVOICE;
+        }
     }
 
     @NonNull
     @Override
-    public InvoiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_invoice, parent, false);
-        return new InvoiceViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (viewType == TYPE_HEADER) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_date_header, parent, false);
+            return new HeaderViewHolder(view);
+        } else {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_invoice, parent, false);
+            return new InvoiceViewHolder(view);
+        }
     }
 
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     @Override
-    public void onBindViewHolder(@NonNull InvoiceViewHolder holder, int position) {
-        Invoice invoice = invoiceList.get(position);
-        holder.tvInvoiceId.setText("Mã hóa đơn: " + invoice.getId());
-        holder.tvCustomerId.setText("Mã khách: " + (invoice.getMaKhach() != null && !invoice.getMaKhach().equals("NULL") ? invoice.getMaKhach() : "N/A"));
-        holder.tvInvoiceDate.setText("Ngày: " + (invoice.getTimestamp() != null ? dateFormat.format(invoice.getTimestamp()) : "N/A"));
-        holder.tvInvoiceAmount.setText("Tổng tiền: " + (invoice.getTongTien() != null ? String.format("%,d VNĐ", invoice.getTongTien()) : "N/A"));
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (getItemViewType(position) == TYPE_HEADER) {
+            HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
+            String date = (String) invoiceList.get(position);
+            headerHolder.tvDate.setText(date);
+        } else {
+            InvoiceViewHolder invoiceHolder = (InvoiceViewHolder) holder;
+            Invoice invoice = (Invoice) invoiceList.get(position);
+            invoiceHolder.tvInvoiceId.setText("Mã hóa đơn: " + invoice.getId());
+            invoiceHolder.tvMaKhach.setText("Mã khách hàng: "+invoice.getMaKhach());
+            invoiceHolder.tvTongTien.setText("Tổng tiền: "+(String.format("%,d VNĐ", invoice.getTongTien())));
+            invoiceHolder.tvPaymentMethod.setText("Phương thức thanh toán: "+invoice.getPaymentMethod());
+            Long timestamp = invoice.getTimestamp();
+            invoiceHolder.tvDate.setText("Thời gian: " + (timestamp != null ? dateFormat.format(timestamp) : "N/A"));
+        }
     }
 
     @Override
@@ -45,15 +71,25 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.InvoiceV
         return invoiceList.size();
     }
 
+    static class HeaderViewHolder extends RecyclerView.ViewHolder {
+        TextView tvDate;
+
+        public HeaderViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvDate = itemView.findViewById(R.id.tv_date_header);
+        }
+    }
+
     static class InvoiceViewHolder extends RecyclerView.ViewHolder {
-        TextView tvInvoiceId, tvCustomerId, tvInvoiceDate, tvInvoiceAmount;
+        TextView tvInvoiceId, tvMaKhach, tvTongTien, tvPaymentMethod, tvDate;
 
         public InvoiceViewHolder(@NonNull View itemView) {
             super(itemView);
             tvInvoiceId = itemView.findViewById(R.id.tv_invoice_id);
-            tvCustomerId = itemView.findViewById(R.id.tv_customer_id);
-            tvInvoiceDate = itemView.findViewById(R.id.tv_invoice_date);
-            tvInvoiceAmount = itemView.findViewById(R.id.tv_invoice_amount);
+            tvMaKhach = itemView.findViewById(R.id.tv_ma_khach);
+            tvTongTien = itemView.findViewById(R.id.tv_tong_tien);
+            tvPaymentMethod = itemView.findViewById(R.id.tv_payment_method);
+            tvDate = itemView.findViewById(R.id.tv_date);
         }
     }
 }

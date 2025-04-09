@@ -28,7 +28,7 @@ public class ActivityFragmentSalary extends Fragment {
 
     private static final int HOURLY_RATE = 17000; // 30,000 VNĐ per hour
     private static final int SHIFT_1_HOURS = 5;   // Ca 1: 5 hours
-    private static final int SHIFT_2_HOURS = 6;   // Ca 2: 6 hours
+    private static final int SHIFT_2_HOURS = 4;   // Ca 2: 6 hours
     private static final int DAYS_PER_MONTH = 30; // Assume 30 days for monthly calculation
 
     public ActivityFragmentSalary() {
@@ -67,8 +67,8 @@ public class ActivityFragmentSalary extends Fragment {
                     try {
                         // Safely fetch fields, handling potential type mismatches
                         String name = employeeSnapshot.child("name").getValue(String.class);
-                        String employeeId = employeeSnapshot.child("maNhanVien").getValue(String.class);
-                        String shift = employeeSnapshot.child("caLam").getValue(String.class);
+                        String employeeId = employeeSnapshot.child("email").getValue(String.class);
+                        String shift = employeeSnapshot.child("shift").getValue(String.class);
                         String position = employeeSnapshot.child("position").getValue(String.class);
 
                         if ("Nhân viên".equals(position)) {
