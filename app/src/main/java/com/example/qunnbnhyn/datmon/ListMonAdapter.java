@@ -29,6 +29,14 @@ public class ListMonAdapter extends RecyclerView.Adapter<ListMonAdapter.ListMonV
     private HashMap<MonAn, EditText> dsMongoi = new HashMap<>();
     private List<EditText> allEditTexts = new ArrayList<>();
 
+    private HashMap<String, Integer> ctdh;
+
+    public ListMonAdapter(List<MonAn> listmon, OnTotalChangeListener listener, HashMap<String, Integer> ctdh) {
+        this.listmon = listmon;
+        this.listener = listener;
+        this.ctdh = ctdh;
+    }
+
     public ListMonAdapter(List<MonAn> listmon, OnTotalChangeListener listener) {
         this.listmon = listmon;
         this.listener = listener;
@@ -68,19 +76,24 @@ public class ListMonAdapter extends RecyclerView.Adapter<ListMonAdapter.ListMonV
 
             @Override
             public void afterTextChanged(Editable s) {
-                updateTotal();
-                HashMap<MonAn,Integer> dsmongoii = new HashMap<>();
-                HashMap<String, Integer> listMonGoi = new HashMap<>();
-                List<EditText> listtext = new LinkedList<>();
-                for(MonAn key : dsMongoi.keySet()){
-                    String sluong = dsMongoi.get(key).getText().toString();
-                    if(!sluong.isEmpty()){
-                        dsmongoii.put(key,Integer.parseInt(sluong));
-                        listMonGoi.put(key.getMaMon().toString(),Integer.parseInt(sluong));
+                String sluong = s.toString().trim();
+                if (sluong.isEmpty()) {
+                    ctdh.remove(monAn.getMaMon());
+                } else {
+                    try {
+                        int quantity = Integer.parseInt(sluong);
+                        if (quantity > 0) {
+                            ctdh.put(monAn.getMaMon(), quantity);
+                        } else {
+                            ctdh.remove(monAn.getMaMon());
+                        }
+                    } catch (NumberFormatException e) {
+                        ctdh.remove(monAn.getMaMon());
                     }
                 }
-                if(listener != null)    listener.onSlgChanged(listMonGoi,holder.editSoluong);
-
+                if (listener != null) {
+                    listener.onSlgChanged(ctdh, holder.editSoluong);
+                }
             }
         });
     }

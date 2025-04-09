@@ -94,4 +94,16 @@
             android:textSize="16dp"
             tools:ignore="TextSizeCheck" />
     </com.chinodev.androidneomorphframelayout.NeomorphFrameLayout>
+
+    <TextView
+        android:id="@+id/txt_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/comfortaa"
+        android:gravity="center"
+        android:text="Ten dang nhap hoac mat khau sai!!!"
+        android:textColor="#FD2F2F"
+        android:textSize="20dp"
+        android:visibility="invisible"/>
 </LinearLayout>

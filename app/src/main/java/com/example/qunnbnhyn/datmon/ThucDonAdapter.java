@@ -14,6 +14,7 @@ import com.example.qunnbnhyn.QLM.MonAn;
 import com.example.qunnbnhyn.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ThucDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -21,10 +22,19 @@ public class ThucDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private List<ListMon> items;
     private OnTotalChangeListener listener;
+    private HashMap<String, Integer> ctdh;
 
     public ThucDonAdapter(List<ListMon> items, OnTotalChangeListener listener) {
         this.items = items;
         this.listener = listener;
+    }
+
+    public HashMap<String, Integer> getCtdh() {
+        return ctdh;
+    }
+
+    public void setCtdh(HashMap<String, Integer> ctdh) {
+        this.ctdh = ctdh;
     }
 
     public ThucDonAdapter(List<ListMon> items) {
@@ -59,7 +69,7 @@ public class ThucDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             headerHolder.header.setText(listMon.getLoai());
         } else if (holder instanceof ListViewHolder) {
             ListViewHolder listHolder = (ListViewHolder) holder;
-            listHolder.bind(listMon.getListmon(),listener);
+            listHolder.bind(listMon.getListmon(),listener,ctdh);
 
 
         }
@@ -89,14 +99,11 @@ public class ThucDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             super(itemView);
             ListMon = itemView.findViewById(R.id.subRecyclerView);
             ListMon.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
-            adapter = new ListMonAdapter(null);
-            ListMon.setAdapter(adapter);
         }
 
-
-        public void bind(List<MonAn> listmon, OnTotalChangeListener listener) {
-            adapter.listmon = listmon;
-            adapter.listener = listener;
+        public void bind(List<MonAn> listmon, OnTotalChangeListener listener, HashMap<String, Integer> ctdh) {
+            adapter = new ListMonAdapter(listmon, listener, ctdh);
+            ListMon.setAdapter(adapter);
         }
     }
 }

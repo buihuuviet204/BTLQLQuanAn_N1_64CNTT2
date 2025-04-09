@@ -2,28 +2,40 @@ package com.example.qunnbnhyn.datmon;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 
 public class HoaDon implements Serializable {
     private String maHoaDon;
-    private String soBan;
-    private double tongtien;
     private boolean trangthai;
     private String maKhach;
-    private Date ngLap;
+    private String ngLap;
+    private HashMap<String,Integer> CTDH;
 
-    public HoaDon(String maHoaDon, String soBan, double tongtien, boolean trangthai, String maKhach, Date ngLap) {
+    public HashMap<String, Integer> getCTDH() {
+        return CTDH;
+    }
+
+    public void setCTDH(HashMap<String, Integer> CTDH) {
+        this.CTDH = CTDH;
+    }
+
+    public HoaDon(String maHoaDon,  boolean trangthai, String maKhach, String ngLap, HashMap<String, Integer> CTDH) {
         this.maHoaDon = maHoaDon;
-        this.soBan = soBan;
-        this.tongtien = tongtien;
+        this.trangthai = trangthai;
+        this.maKhach = maKhach;
+        this.ngLap = ngLap;
+        this.CTDH = CTDH;
+    }
+
+    public HoaDon(String maHoaDon,  boolean trangthai, String maKhach, String ngLap) {
+        this.maHoaDon = maHoaDon;
         this.trangthai = trangthai;
         this.maKhach = maKhach;
         this.ngLap = ngLap;
     }
 
-    public HoaDon(String maHoaDon, String soBan, double tongtien, boolean trangthai) {
+    public HoaDon(String maHoaDon, boolean trangthai) {
         this.maHoaDon = maHoaDon;
-        this.soBan = soBan;
-        this.tongtien = tongtien;
         this.trangthai = trangthai;
     }
 
@@ -47,16 +59,25 @@ public class HoaDon implements Serializable {
         this.maHoaDon = maHoaDon;
     }
 
-    public String getSoBan() {
-        return soBan;
+
+
+    private double tongTien;
+
+    public double getTongTien() {
+        return tongTien;
     }
 
-    public void setSoBan(String soBan) {
-        this.soBan = soBan;
+    public void setTongTien(double tongTien) {
+        this.tongTien = tongTien;
     }
 
-    public double getTongtien() {
-        return tongtien;
+    public HoaDon(boolean trangthai, String maHoaDon, String maKhach, String ngLap, HashMap<String, Integer> CTDH, double tongTien) {
+        this.trangthai = trangthai;
+        this.maHoaDon = maHoaDon;
+        this.maKhach = maKhach;
+        this.ngLap = ngLap;
+        this.CTDH = CTDH;
+        this.tongTien = tongTien;
     }
 
     public String getMaKhach() {
@@ -67,22 +88,14 @@ public class HoaDon implements Serializable {
         this.maKhach = maKhach;
     }
 
-    public Date getNgLap() {
+    public String getNgLap() {
         return ngLap;
     }
 
-    public void setNgLap(Date ngLap) {
+    public void setNgLap(String ngLap) {
         this.ngLap = ngLap;
     }
 
-    public void setTongtien(double tongtien) {
-        this.tongtien = tongtien;
-    }
 
-    public HoaDon(String maHoaDon, String soBan, double tongtien) {
-        this.maHoaDon = maHoaDon;
-        this.soBan = soBan;
-        this.tongtien = tongtien;
-        this.trangthai = false;
-    }
+
 }
