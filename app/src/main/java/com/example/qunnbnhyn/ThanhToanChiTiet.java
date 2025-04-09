@@ -5,10 +5,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -18,6 +20,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class ThanhToanChiTiet extends AppCompatActivity {
     private TextView tvSoHoaDon, tvSoBan, tvNgay, tvTrangThai, tvTongTien;
@@ -63,7 +68,7 @@ public class ThanhToanChiTiet extends AppCompatActivity {
         btnKiemTra.setOnClickListener(v -> kiemTraSoDienThoai());
 
         // Nút Thanh toán
-        btnThanhToan.setOnClickListener(v -> thanhToan());
+        btnThanhToan.setOnClickListener(v -> hienChonPhuongThuc());
 
         // Theo dõi thay đổi số điểm đổi
         etDoiDiem.addTextChangedListener(new TextWatcher() {
@@ -228,16 +233,55 @@ public class ThanhToanChiTiet extends AppCompatActivity {
         tvTongTien.setText(String.valueOf(tongTienMoi));
     }
 
-    private void thanhToan() {
+    private void hienChonPhuongThuc() {
         String maHoaDon = tvSoHoaDon.getText().toString().replace("Số hóa đơn: ", "");
         if (maHoaDon.equals("Chưa có")) {
             hienThongBao("Lỗi", "Không có hóa đơn để thanh toán!");
             return;
         }
 
+        new AlertDialog.Builder(this)
+                .setTitle("Chọn phương thức thanh toán")
+                .setMessage("Bạn muốn thanh toán bằng cách nào?")
+                .setPositiveButton("Tiền mặt", (dialog, which) -> xuLyThanhToan("Tiền mặt"))
+                .setNegativeButton("Chuyển khoản", (dialog, which) -> hienMaQR())
+                .setNeutralButton("Hủy", null)
+                .show();
+    }
+
+    private void hienMaQR() {
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_qr_payment, null);
+
+        ImageView qrImage = dialogView.findViewById(R.id.img_qr_code);
+        TextView tvStk = dialogView.findViewById(R.id.tv_stk);
+        TextView tvTongTienThanhToan = dialogView.findViewById(R.id.tv_tong_tien_thanh_toan);
+
         String diemDoiStr = etDoiDiem.getText().toString().trim();
+        int diemDoi = 0;
         if (!diemDoiStr.isEmpty()) {
-            int diemDoi = Integer.parseInt(diemDoiStr);
+            diemDoi = Integer.parseInt(diemDoiStr);
+        }
+        int tienGiam = diemDoi * 1000;
+        int tongTienMoi = tongTien - tienGiam;
+        if (tongTienMoi < 0) tongTienMoi = 0;
+        tvTongTienThanhToan.setText("Tổng tiền: " + tongTienMoi + " VNĐ");
+
+        new AlertDialog.Builder(this)
+                .setTitle("Quét mã QR để thanh toán")
+                .setView(dialogView)
+                .setPositiveButton("Đã thanh toán", (dialog, which) -> xuLyThanhToan("Chuyển khoản"))
+                .setNegativeButton("Hủy", null)
+                .show();
+    }
+
+    private void xuLyThanhToan(String phuongThuc) {
+        String maHoaDon = tvSoHoaDon.getText().toString().replace("Số hóa đơn: ", "");
+
+        // Tính tổng tiền thanh toán (sau khi trừ điểm đổi)
+        String diemDoiStr = etDoiDiem.getText().toString().trim();
+        int diemDoi = 0;
+        if (!diemDoiStr.isEmpty()) {
+            diemDoi = Integer.parseInt(diemDoiStr);
             if (diemDoi > currentPoints) {
                 hienThongBao("Lỗi", "Điểm đổi vượt quá " + currentPoints + "!");
                 return;
@@ -245,19 +289,63 @@ public class ThanhToanChiTiet extends AppCompatActivity {
             currentPoints -= diemDoi;
             databaseReference.child("customers").child(maKhachHang).child("points").setValue(currentPoints);
         }
+        int tienGiam = diemDoi * 1000;
+        final int tongTienThanhToan = Math.max(tongTien - tienGiam, 0); // Tổng tiền thực tế sau khi trừ điểm
 
-        databaseReference.child("hoa_don").child(maHoaDon).child("trangthai").setValue(true);
+        // Lấy ngày hiện tại (định dạng YYYY-MM-DD)
+        String ngayHienTai = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        // Cập nhật trạng thái hóa đơn và thông tin thanh toán trong node hoa_don
+        DatabaseReference hoaDonRef = databaseReference.child("hoa_don").child(maHoaDon);
+        hoaDonRef.child("trangthai").setValue(true);
+        hoaDonRef.child("phuongThucThanhToan").setValue(phuongThuc); // Lưu phương thức thanh toán
+        hoaDonRef.child("ngayThanhToan").setValue(ngayHienTai);      // Lưu ngày thanh toán
+        hoaDonRef.child("tongTienThanhToan").setValue(tongTienThanhToan); // Lưu tổng tiền thanh toán
         tvTrangThai.setText("Trạng thái: Đã thanh toán");
 
+        // Xóa mã hóa đơn khỏi bàn
         int soBan = Integer.parseInt(tvSoBan.getText().toString().replace("Số bàn: ", ""));
         databaseReference.child("ban_an").child(String.valueOf(soBan - 1)).setValue("");
 
+        // Cộng 1 điểm nếu có số điện thoại
         if (maKhachHang != null) {
             currentPoints += 1;
             databaseReference.child("customers").child(maKhachHang).child("points").setValue(currentPoints);
         }
 
-        String thongBao = "Thanh toán hoàn tất!";
+        // Lưu thông tin thanh toán lên node thanh_toan_lich_su (giữ nguyên logic cũ)
+        String phuongThucNode = phuongThuc.equals("Tiền mặt") ? "tien_mat" : "chuyen_khoan";
+        DatabaseReference thanhToanRef = databaseReference.child("thanh_toan_lich_su").child(ngayHienTai).child(phuongThucNode);
+
+        thanhToanRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                int soLan = 0;
+                int tongTienHienTai = 0;
+
+                // Lấy dữ liệu hiện tại (nếu có)
+                if (snapshot.exists()) {
+                    Long soLanLong = snapshot.child("so_lan").getValue(Long.class);
+                    Long tongTienLong = snapshot.child("tong_tien").getValue(Long.class);
+                    soLan = soLanLong != null ? soLanLong.intValue() : 0;
+                    tongTienHienTai = tongTienLong != null ? tongTienLong.intValue() : 0;
+                }
+
+                // Cập nhật số lần và tổng tiền
+                soLan += 1;
+                tongTienHienTai += tongTienThanhToan;
+
+                // Lưu lại lên Firebase
+                thanhToanRef.child("so_lan").setValue(soLan);
+                thanhToanRef.child("tong_tien").setValue(tongTienHienTai);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {}
+        });
+
+        // Hiển thị thông báo thành công
+        String thongBao = "Thanh toán bằng " + phuongThuc + " hoàn tất!";
         if (maKhachHang != null) {
             thongBao += " Đã cộng 1 điểm, bạn có " + currentPoints + " điểm.";
         }
