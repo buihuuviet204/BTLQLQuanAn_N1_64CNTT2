@@ -1,5 +1,6 @@
 package com.example.qunnbnhyn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuNVActivity extends AppCompatActivity {
 
-    private ImageView diningTableImageView;
+    private ImageView diningTableImageView, logout;
     private ImageView order, happyClient, payment;
 
     @Override
@@ -21,6 +22,7 @@ public class MenuNVActivity extends AppCompatActivity {
         order = findViewById(R.id.fram1).findViewById(R.id.order);
         happyClient = findViewById(R.id.fram2).findViewById(R.id.happy_client);
         payment = findViewById(R.id.fram2).findViewById(R.id.payment);
+        logout = findViewById(R.id.logout);
 
         // Gắn sự kiện onClick cho ImageView "Quản lý bàn ăn"
         diningTableImageView.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +31,15 @@ public class MenuNVActivity extends AppCompatActivity {
                 // Chuyển sang ManageTableActivity
                 //   Intent intent = new Intent(MenuNVActivity.this, ManageTableActivity.class);
                 //    startActivity(intent);
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển sang LogoutActivity
+                Intent intent = new Intent(MenuNVActivity.this, LogoutActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8CFA8"
+    android:padding="16dp"
+    tools:context=".GanCaActivity">
+
+    <!-- Nút quay lại -->
+    <ImageButton
+        android:id="@+id/imagebtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="#F8CFA8"
+        android:contentDescription="Back button"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Xếp ca làm"
+        android:textSize="30sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Container cho thông tin nhân viên và lựa chọn ca làm -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/layout_background"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Trường mã nhân viên -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_ma_nhan_vien"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Mã nhân viên"
+            android:textColorHint="#666666">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_ma_nhan_vien"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:paddingVertical="12dp"
+                android:textColor="#000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Trường họ và tên -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_ho_ten"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Họ và tên"
+            android:textColorHint="#666666">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_ho_ten"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:paddingVertical="12dp"
+                android:textColor="#000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Phần lựa chọn ca làm -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Chọn ca làm:"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/rgShifts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbMorning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Ca sáng (6h - 14h)"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbAfternoon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Ca chiều (14h - 22h)"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbEvening"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ca tối (22h - 6h)"
+                android:textSize="16sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <!-- Nút xác nhận -->
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="Xác nhận" />
+</LinearLayout>

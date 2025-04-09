@@ -21,9 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".EmployeeListActivity"/>
         <activity android:name=".LogoutActivity"/>
+        <activity android:name=".EmployeeListActivity"/>
+        <activity android:name="GanCaActivity"/>
         <activity android:name=".MenuNVActivity"/>
 
     </application>

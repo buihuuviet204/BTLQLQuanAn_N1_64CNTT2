@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         diningTableImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Chuyển sang ManageTableActivity
-                //    Intent intent = new Intent(MainActivity.this, ManageTableActivity.class);
-                //    startActivity(intent);
+                // Chuyển sang EmployeeListActivity
+                    Intent intent = new Intent(MainActivity.this, EmployeeListActivity.class);
+                    startActivity(intent);
             }
         });
 
