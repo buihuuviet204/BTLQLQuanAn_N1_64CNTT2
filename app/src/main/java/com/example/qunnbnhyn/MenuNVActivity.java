@@ -1,15 +1,15 @@
 package com.example.qunnbnhyn;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MenuNVActivity extends AppCompatActivity {
 
-    private ImageView diningTableImageView, logout;
-    private ImageView supplies, customService, happyClient, discount;
+    private ImageView diningTableImageView;
+    private ImageView order, happyClient, payment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,39 +18,21 @@ public class MainActivity extends AppCompatActivity {
 
         // Ánh xạ ImageView "Quản lý bàn ăn" từ GridLayout
         diningTableImageView = findViewById(R.id.fram1).findViewById(R.id.dining_table_image);
-        supplies = findViewById(R.id.fram1).findViewById(R.id.supplies);
-        customService = findViewById(R.id.fram2).findViewById(R.id.custom_service);
+        order = findViewById(R.id.fram1).findViewById(R.id.order);
         happyClient = findViewById(R.id.fram2).findViewById(R.id.happy_client);
-        discount = findViewById(R.id.fram3).findViewById(R.id.discount);
-        logout = findViewById(R.id.logout);
+        payment = findViewById(R.id.fram2).findViewById(R.id.payment);
 
         // Gắn sự kiện onClick cho ImageView "Quản lý bàn ăn"
         diningTableImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Chuyển sang ManageTableActivity
-                //    Intent intent = new Intent(MainActivity.this, ManageTableActivity.class);
+                //   Intent intent = new Intent(MenuNVActivity.this, ManageTableActivity.class);
                 //    startActivity(intent);
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chuyển sang LogoutActivity
-                Intent intent = new Intent(MainActivity.this, LogoutActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        supplies.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        customService.setOnClickListener(new View.OnClickListener() {
+        order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -64,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        discount.setOnClickListener(new View.OnClickListener() {
+        payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
