@@ -23,13 +23,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.qunnbnhyn.R;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseUserMetadata;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Login extends AppCompatActivity {
     private Button btn_login;
@@ -71,7 +75,16 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = myAuth.getCurrentUser();
+                                    FirebaseUserMetadata metadata = user.getMetadata();
+                                    long lastSignInTimestamp = metadata.getLastSignInTimestamp();
+                                    Date lastSignInDate = new Date(lastSignInTimestamp);
+                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+                                    String giodn = sdf.format(lastSignInDate);
                                     uid = user.getUid();
+                                    Map<String,String> cong = new HashMap<>();
+                                    cong.put("gio_dang_nhap",giodn);
+                                    cong.put("gio_dang_xuat","");
+                                    FirebaseDatabase.getInstance().getReference("cong").child(uid).setValue(cong);
                                     getFullName(uid);
                                 } else {
                                     txtMessage.setVisibility(View.VISIBLE);
@@ -115,13 +128,14 @@ public class Login extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 fullName = (String) snapshot.getValue(String.class);
+                changActivityByRole();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("Login", "Lỗi khi lấy tên: " + error.getMessage());
                 fullName = null;
-                changActivityByRole();
+
             }
         });
     }
