@@ -95,6 +95,7 @@ public class Login extends AppCompatActivity {
                     intent = new Intent(Login.this, MainActivity.class);
                 }
                 Log.d("name: ", fullName);
+                intent.putExtra("maNhanVien",uid);
                 intent.putExtra("full_name", fullName);
                 startActivity(intent);
                 finish();

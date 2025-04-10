@@ -24,41 +24,48 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class XacNhanDat extends AppCompatActivity {
     private TextView txtTongTien;
     private Button btnXacNhan;
     private HoaDon hoadon;
     private Intent intent;
-    DatabaseReference myRef ;
+    DatabaseReference myRef;
+    private Map<String, Integer> CTOD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xac_nhan_dat);
+        CTOD = new HashMap<>();
         myRef = FirebaseDatabase.getInstance().getReference();
 
         intent = getIntent();
-        hoadon =(HoaDon) intent.getSerializableExtra("hoa_don");
-        HashMap<String,MonAn> menu = (HashMap<String, MonAn>) intent.getSerializableExtra("menu");
-        if(hoadon != null)  Log.d("Tong tien",hoadon.getTongTien() + "");
+        hoadon = (HoaDon) intent.getSerializableExtra("hoa_don");
+        HashMap<String, MonAn> menu = (HashMap<String, MonAn>) intent.getSerializableExtra("menu");
+        if (hoadon != null) Log.d("Tong tien", hoadon.getTongTien() + "");
         RecyclerView recyclerView = findViewById(R.id.rcl_cthd);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<ItemCTHD> data = new ArrayList<>();
-        for(String key : hoadon.getCTDH().keySet()){
-            ItemCTHD itemCTHD = new ItemCTHD(menu.get(key).getName().toString(),menu.get(key).getGiaban() + "", hoadon.getCTDH().get(key) + "");
+        for (String key : hoadon.getCTDH().keySet()) {
+            ItemCTHD itemCTHD = new ItemCTHD(menu.get(key).getName().toString(), menu.get(key).getGiaban() + "", hoadon.getCTDH().get(key) + "");
+            CTOD.put(menu.get(key).getName().toString(), hoadon.getCTDH().get(key));
             data.add(itemCTHD);
         }
-        for(String key : hoadon.getCTDH().keySet()){
-            Log.d(key,hoadon.getCTDH().get(key).toString());
+        for (String key : hoadon.getCTDH().keySet()) {
+            Log.d(key, hoadon.getCTDH().get(key).toString());
         }
         CTHDAdapter adapter = new CTHDAdapter(data);
         recyclerView.setAdapter(adapter);
         txtTongTien = findViewById(R.id.txt_tongtien);
-        txtTongTien.setText("Tong tien: " + hoadon.getTongTien() +"VND");
+        txtTongTien.setText("Tong tien: " + hoadon.getTongTien() + "VND");
         btnXacNhan = findViewById(R.id.btn_xacnhandat);
         btnXacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,20 +76,53 @@ public class XacNhanDat extends AppCompatActivity {
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                String maHD = snapshot.getValue(String.class).toString();
-                                if(maHD.equals("")) addHoaDon(soBan);
-                                else updateHD(maHD);
+                                String maHD = "";
+                                if (snapshot.child("So hoa don").exists()) {
+                                    maHD = snapshot.child("So hoa don").getValue(String.class);
+                                }
+                                if (maHD == null || maHD.isEmpty()) {
+                                    addHoaDon(soBan);
+                                } else {
+                                    updateHD(maHD, soBan);
+                                }
                             }
+
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
-                                Log.d("LOI","LOI");
+                                Log.d("LOI", "LOI");
                             }
                         });
             }
         });
 
     }
-    private void updateHD(String maHD) {
+    private void updateCTODCTOD(String soban){
+        myRef.child("ban_an").child(soban).child("chi tiet order").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Map<String, Integer> CTDHtrc = new HashMap<>();
+                for(DataSnapshot key : snapshot.getChildren()){
+                    CTDHtrc.put(key.getKey(),key.getValue(Integer.class));
+                }
+                for(String key : CTOD.keySet()){
+                    if(CTDHtrc.containsKey(key))    CTDHtrc.put(key,CTDHtrc.get(key) + CTOD.get(key));
+                    else CTDHtrc.put(key,CTOD.get(key));
+                }
+                myRef.child("ban_an").child(soban).child("chi tiet order").setValue(CTDHtrc).addOnSuccessListener(
+                        aVoid->{
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void updateHD(String maHD, String soban) {
         myRef.child("hoa_don").child(maHD).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -92,7 +132,7 @@ public class XacNhanDat extends AppCompatActivity {
                         Toast.makeText(XacNhanDat.this, "Không lấy được hóa đơn từ Firebase", Toast.LENGTH_LONG).show();
                         return;
                     }
-                    existingHoaDon.setTongTien(existingHoaDon.getTongTien() + hoadon.getTongTien()) ;
+                    existingHoaDon.setTongTien(existingHoaDon.getTongTien() + hoadon.getTongTien());
                     HashMap<String, Integer> existingCTDH = existingHoaDon.getCTDH();
                     HashMap<String, Integer> updateCTHD = hoadon.getCTDH();
                     for (String key : updateCTHD.keySet()) {
@@ -107,13 +147,14 @@ public class XacNhanDat extends AppCompatActivity {
                     existingHoaDon.setCTDH(existingCTDH);
                     myRef.child("hoa_don").child(maHD).setValue(existingHoaDon)
                             .addOnSuccessListener(aVoid -> {
+                                updateCTODCTOD(soban);
                                 Toast.makeText(XacNhanDat.this, "Cập nhật hóa đơn thành công", Toast.LENGTH_LONG).show();
-                                setResult(RESULT_OK);
-                                finish();
+
                             })
                             .addOnFailureListener(e -> {
                                 Toast.makeText(XacNhanDat.this, "Lỗi khi cập nhật hóa đơn: " + e.getMessage(), Toast.LENGTH_LONG).show();
                             });
+
                 } else {
                     Toast.makeText(XacNhanDat.this, "Hóa đơn không tồn tại", Toast.LENGTH_LONG).show();
                 }
@@ -127,27 +168,33 @@ public class XacNhanDat extends AppCompatActivity {
         });
     }
 
-    private void addHoaDon(String soban){
+    private void addHoaDon(String soban) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
+        String ngayLap = sdf.format(new Date());
+        hoadon.setNgLap(ngayLap);
         DatabaseReference newHoaDonRef = myRef.child("hoa_don").push();
-        String maHD = newHoaDonRef.getKey();
+        String soHD = newHoaDonRef.getKey();
         newHoaDonRef.setValue(hoadon)
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(XacNhanDat.this, "Thêm thành công", Toast.LENGTH_LONG).show();
+                    myRef.child("ban_an").child(soban).child("So hoa don").setValue(soHD).addOnSuccessListener(
+                            av->{
+                                myRef.child("ban_an").child(soban).child("chi tiet order").setValue(CTOD).
+                                        addOnSuccessListener(avoid->{
+                                                    setResult(RESULT_OK);
+                                                    finish();
+                                                }
+                                        );
+                            }
+
+                    );
+
 
                 })
                 .addOnFailureListener(aVoid -> {
                     Toast.makeText(XacNhanDat.this, "Thêm thành công", Toast.LENGTH_LONG).show();
                 });
-        myRef.child("ban_an").child(soban).setValue(maHD)
-                .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(XacNhanDat.this, "Thêm thành công", Toast.LENGTH_LONG).show();
-                    setResult(RESULT_OK);
-                    finish();
-                })
-                .addOnFailureListener(aVoid -> {
-                    Toast.makeText(XacNhanDat.this, "Thêm thành công", Toast.LENGTH_LONG).show();
-                });
-
     }
 
+
 }
+

@@ -20,11 +20,11 @@ import java.util.List;
 public class ThucDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
-    private List<ListMon> items;
-    private OnTotalChangeListener listener;
+    private List<ItemThucDon> items;
+    private OnChangeListener listener;
     private HashMap<String, Integer> ctdh;
 
-    public ThucDonAdapter(List<ListMon> items, OnTotalChangeListener listener) {
+    public ThucDonAdapter(List<ItemThucDon> items, OnChangeListener listener) {
         this.items = items;
         this.listener = listener;
     }
@@ -37,7 +37,7 @@ public class ThucDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.ctdh = ctdh;
     }
 
-    public ThucDonAdapter(List<ListMon> items) {
+    public ThucDonAdapter(List<ItemThucDon> items) {
         this.items = (items != null) ? items : new ArrayList<>();
     }
 
@@ -49,11 +49,11 @@ public class ThucDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (viewType == ListMon.TYPE_HEADER) {
+        if (viewType == ItemThucDon.TYPE_HEADER) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_list_header, parent, false);
             return new HeaderViewHolder(view);
-        } else if (viewType == ListMon.TYPE_LIST) {
+        } else if (viewType == ItemThucDon.TYPE_LIST) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_list_mon_an_theo_loai, parent, false);
             return new ListViewHolder(view);
@@ -63,13 +63,13 @@ public class ThucDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ListMon listMon = items.get(position);
+        ItemThucDon itemThucDon = items.get(position);
         if (holder instanceof HeaderViewHolder) {
             HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
-            headerHolder.header.setText(listMon.getLoai());
+            headerHolder.header.setText(itemThucDon.getLoai());
         } else if (holder instanceof ListViewHolder) {
             ListViewHolder listHolder = (ListViewHolder) holder;
-            listHolder.bind(listMon.getListmon(),listener,ctdh);
+            listHolder.bind(itemThucDon.getListmon(),listener,ctdh);
 
 
         }
@@ -101,7 +101,7 @@ public class ThucDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             ListMon.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         }
 
-        public void bind(List<MonAn> listmon, OnTotalChangeListener listener, HashMap<String, Integer> ctdh) {
+        public void bind(List<MonAn> listmon, OnChangeListener listener, HashMap<String, Integer> ctdh) {
             adapter = new ListMonAdapter(listmon, listener, ctdh);
             ListMon.setAdapter(adapter);
         }

@@ -3,7 +3,6 @@ package com.example.qunnbnhyn.datmon;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -29,14 +28,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
-public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
+public class DatMon extends AppCompatActivity implements OnChangeListener {
     private Button btnXacNhan;
     private HashMap<String, Integer> ctdh;
     private HashMap<String, MonAn> menu;
@@ -44,7 +41,7 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
     private HoaDon hoadon;
     private DatabaseReference monAnRef;
     private RecyclerView recyclerView;
-    private List<ListMon> thucdon;
+    private List<ItemThucDon> thucdon;
     private TextView txttongtien;
     private List<MonAn> listMiCay, listTraSua, listTraHQua, listDAVat, listCombo;
     private List<EditText> listEditText;
@@ -167,41 +164,41 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
     private void filter(String loai){
         if (loai.equals("Tat ca")) {
             if (!listMiCay.isEmpty()) {
-                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Mi Kay", null));
-                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listMiCay));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Mi Kay", null));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listMiCay));
             }
             if (!listTraSua.isEmpty()) {
-                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Tra sua", null));
-                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraSua));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Tra sua", null));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listTraSua));
             }
             if (!listTraHQua.isEmpty()) {
-                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Tra hoa qua", null));
-                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraHQua));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Tra hoa qua", null));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listTraHQua));
             }
             if (!listDAVat.isEmpty()) {
-                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Do an vat", null));
-                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listDAVat));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Do an vat", null));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listDAVat));
             }
             if (!listCombo.isEmpty()) {
-                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Combo", null));
-                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listCombo));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Combo", null));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listCombo));
             }
         } else {
             if (loai.equals("Mi Kay") && !listMiCay.isEmpty()) {
-                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Mi cay", null));
-                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listMiCay));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Mi cay", null));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listMiCay));
             } else if (loai.equals("Tra sua") && !listTraSua.isEmpty()) {
-                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Trà sữa", null));
-                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraSua));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Trà sữa", null));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listTraSua));
             } else if (loai.equals("Tra hoa qua") && !listTraHQua.isEmpty()) {
-                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Trà hoa quả", null));
-                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraHQua));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Trà hoa quả", null));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listTraHQua));
             } else if (loai.equals("Do an vat") && !listDAVat.isEmpty()) {
-                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Đồ ăn vặt", null));
-                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listDAVat));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Đồ ăn vặt", null));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listDAVat));
             } else if (loai.equals("Combo") && !listCombo.isEmpty()) {
-                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Combo", null));
-                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listCombo));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Combo", null));
+                thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listCombo));
             }
         }
     }
@@ -264,24 +261,24 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
                     menu.put(dataSnapshot.getKey().toString(), monAn);
                 }
                 if (!listMiCay.isEmpty()) {
-                    thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Mì cay", null));
-                    thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listMiCay));
+                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Mì cay", null));
+                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listMiCay));
                 }
                 if (!listTraSua.isEmpty()) {
-                    thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Trà sữa", null));
-                    thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraSua));
+                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Trà sữa", null));
+                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listTraSua));
                 }
                 if (!listTraHQua.isEmpty()) {
-                    thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Trà hoa quả", null));
-                    thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraHQua));
+                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Trà hoa quả", null));
+                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listTraHQua));
                 }
                 if (!listDAVat.isEmpty()) {
-                    thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Đồ ăn vặt", null));
-                    thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listDAVat));
+                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Đồ ăn vặt", null));
+                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listDAVat));
                 }
                 if (!listCombo.isEmpty()) {
-                    thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Combo", null));
-                    thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listCombo));
+                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Combo", null));
+                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listCombo));
                 }
                 thucDonAdapter.notifyDataSetChanged();
             }
@@ -322,7 +319,7 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
         list.add(monAn);
         thucdon.clear();
         recyclerView1.setVisibility(View.GONE);
-        thucdon.add(new ListMon(ListMon.TYPE_LIST,null,list));
+        thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST,null,list));
         btnAll.setVisibility(View.VISIBLE);
         thucDonAdapter.notifyDataSetChanged();
     }
@@ -340,11 +337,8 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
             }
         }
         hoadon.setTongTien(tong);
-        hoadon.setTrangthai(false);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        String ngayLap = sdf.format(new Date());
-        hoadon.setNgLap(ngayLap);
+
 
         hoadon.setMaKhach("NULL");
         listEditText.add(editText);

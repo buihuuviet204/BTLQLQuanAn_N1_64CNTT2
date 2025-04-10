@@ -6,7 +6,7 @@ import com.example.qunnbnhyn.QLM.MonAn;
 
 import java.util.HashMap;
 
-public interface OnTotalChangeListener {
+public interface OnChangeListener {
     void onTotalChanged(double total);
     void onSlgMAChanged(HashMap<MonAn, Integer> dsMongoi);
     void monAnSearched(MonAn monAn);

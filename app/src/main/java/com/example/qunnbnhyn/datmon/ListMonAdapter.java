@@ -19,25 +19,24 @@ import com.example.qunnbnhyn.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 public class ListMonAdapter extends RecyclerView.Adapter<ListMonAdapter.ListMonViewHolder> {
 
     public List<MonAn> listmon;
-    public OnTotalChangeListener listener;
+    public OnChangeListener listener;
     private HashMap<MonAn, EditText> dsMongoi = new HashMap<>();
     private List<EditText> allEditTexts = new ArrayList<>();
 
     private HashMap<String, Integer> ctdh;
 
-    public ListMonAdapter(List<MonAn> listmon, OnTotalChangeListener listener, HashMap<String, Integer> ctdh) {
+    public ListMonAdapter(List<MonAn> listmon, OnChangeListener listener, HashMap<String, Integer> ctdh) {
         this.listmon = listmon;
         this.listener = listener;
         this.ctdh = ctdh;
     }
 
-    public ListMonAdapter(List<MonAn> listmon, OnTotalChangeListener listener) {
+    public ListMonAdapter(List<MonAn> listmon, OnChangeListener listener) {
         this.listmon = listmon;
         this.listener = listener;
     }

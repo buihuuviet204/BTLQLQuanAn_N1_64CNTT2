@@ -3,6 +3,7 @@ package com.example.qunnbnhyn.QLM;
 import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -11,15 +12,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
@@ -96,6 +100,21 @@ public class ThemMonFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, options);
         spinner.setAdapter(adapter);
         imgbt = view.findViewById(R.id.img_bt);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (view instanceof TextView) {
+                    Typeface myCustomFont = ResourcesCompat.getFont(requireContext(), R.font.comfortaa);
+                    ((TextView) view).setTypeface(myCustomFont);
+                }
+                // Xử lý item được chọn
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Không làm gì
+            }
+        });
 
         imgpickerlauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 result -> {

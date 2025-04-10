@@ -2,22 +2,30 @@ package com.example.qunnbnhyn.QLM;
 
 import static android.app.Activity.RESULT_OK;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,10 +65,24 @@ public class SuaMonAdapter extends RecyclerView.Adapter<SuaMonAdapter.ViewHolder
         holder.editTen.setText(monAn.getName());
 
         String[] options = {"Mi Kay", "Tra sua", "Tra hoa qua", "Nuoc co ga", "Do an vat", "Combo"};
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(holder.itemView.getContext(),
-                android.R.layout.simple_spinner_dropdown_item, options);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(holder.itemView.getContext(),android.R.layout.simple_spinner_dropdown_item, options);
         holder.spinner.setAdapter(spinnerAdapter);
         holder.spinner.setSelection(getSpinnerIndex(monAn.getLoai(), options));
+        holder.spinner.setEnabled(false);
+        holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (view instanceof TextView) {
+                    Typeface myCustomFont = ResourcesCompat.getFont(holder.itemView.getContext(), R.font.comfortaa);
+                    ((TextView) view).setTypeface(myCustomFont);
+                    ((TextView) view).setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         Glide.with(holder.img)
                 .load(monAn.getImageMonAn())
@@ -87,15 +109,14 @@ public class SuaMonAdapter extends RecyclerView.Adapter<SuaMonAdapter.ViewHolder
             String giaMoiStr = holder.editGia.getText().toString().trim();
             String loaiMoi = holder.spinner.getSelectedItem().toString();
 
-            // Kiểm tra dữ liệu đầu vào
             if (tenMoi.isEmpty() || giaMoiStr.isEmpty()) {
                 Toast.makeText(holder.itemView.getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            int giaMoi;
+            double giaMoi;
             try {
-                giaMoi = Integer.parseInt(giaMoiStr);
+                giaMoi = Double.parseDouble(giaMoiStr);
             } catch (NumberFormatException e) {
                 Toast.makeText(holder.itemView.getContext(), "Giá phải là số", Toast.LENGTH_SHORT).show();
                 return;
@@ -186,7 +207,6 @@ public class SuaMonAdapter extends RecyclerView.Adapter<SuaMonAdapter.ViewHolder
         ((FragmentActivity) holder.itemView.getContext()).runOnUiThread(action);
     }
 
-    // Lấy vị trí của loại món trong spinner
     private int getSpinnerIndex(String loai, String[] options) {
         for (int i = 0; i < options.length; i++) {
             if (options[i].equals(loai)) {
@@ -196,14 +216,29 @@ public class SuaMonAdapter extends RecyclerView.Adapter<SuaMonAdapter.ViewHolder
         return 0;
     }
 
-    // Trích xuất public_id từ URL ảnh
     private String extractPublicId(String imageUrl) {
         if (imageUrl == null || imageUrl.isEmpty()) return null;
-        String prefix = "https://res.cloudinary.com/dr94s8psw/image/upload/v1743941617/";
-        if (imageUrl.startsWith(prefix)) {
-            return imageUrl.replace(prefix, "");
+
+        String prefix = "https://res.cloudinary.com/dr94s8psw/image/upload/";
+        if (!imageUrl.startsWith(prefix)) return null;
+
+        String path = imageUrl.replace(prefix, "");
+
+        int versionIndex = path.indexOf("v");
+        if (versionIndex == 0) {
+            int slashIndex = path.indexOf("/");
+            if (slashIndex != -1) {
+                path = path.substring(slashIndex + 1);
+            }
         }
-        return null;
+
+        // Loại bỏ phần đuôi file (ví dụ: .jpg, .png)
+        int lastDotIndex = path.lastIndexOf(".");
+        if (lastDotIndex != -1) {
+            return path.substring(0, lastDotIndex);
+        }
+
+        return path; // Trả về public parejasId nếu không có đuôi file
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

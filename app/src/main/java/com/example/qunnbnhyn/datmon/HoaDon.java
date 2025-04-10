@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 public class HoaDon implements Serializable {
     private String maHoaDon;
-    private boolean trangthai;
     private String maKhach;
     private String ngLap;
     private HashMap<String,Integer> CTDH;
@@ -19,36 +18,26 @@ public class HoaDon implements Serializable {
         this.CTDH = CTDH;
     }
 
-    public HoaDon(String maHoaDon,  boolean trangthai, String maKhach, String ngLap, HashMap<String, Integer> CTDH) {
+    public HoaDon(String maHoaDon,   String maKhach, String ngLap, HashMap<String, Integer> CTDH) {
         this.maHoaDon = maHoaDon;
-        this.trangthai = trangthai;
         this.maKhach = maKhach;
         this.ngLap = ngLap;
         this.CTDH = CTDH;
     }
 
-    public HoaDon(String maHoaDon,  boolean trangthai, String maKhach, String ngLap) {
+    public HoaDon(String maHoaDon,   String maKhach, String ngLap) {
         this.maHoaDon = maHoaDon;
-        this.trangthai = trangthai;
         this.maKhach = maKhach;
         this.ngLap = ngLap;
     }
 
-    public HoaDon(String maHoaDon, boolean trangthai) {
+    public HoaDon(String maHoaDon) {
         this.maHoaDon = maHoaDon;
-        this.trangthai = trangthai;
     }
 
-    public boolean isTrangthai() {
-        return trangthai;
-    }
 
-    public void setTrangthai(boolean trangthai) {
-        this.trangthai = trangthai;
-    }
 
     public HoaDon() {
-        trangthai = false;
     }
 
     public String getMaHoaDon() {
@@ -71,8 +60,7 @@ public class HoaDon implements Serializable {
         this.tongTien = tongTien;
     }
 
-    public HoaDon(boolean trangthai, String maHoaDon, String maKhach, String ngLap, HashMap<String, Integer> CTDH, double tongTien) {
-        this.trangthai = trangthai;
+    public HoaDon( String maHoaDon, String maKhach, String ngLap, HashMap<String, Integer> CTDH, double tongTien) {
         this.maHoaDon = maHoaDon;
         this.maKhach = maKhach;
         this.ngLap = ngLap;

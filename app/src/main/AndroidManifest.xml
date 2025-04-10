@@ -17,11 +17,20 @@
         android:theme="@style/Theme.QuánĂnBìnhYên"
         tools:targetApi="31">
         <activity
+            android:name=".dondat.DonDatActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ActivityMainNV"
-            android:exported="false" />
+            android:exported="false"></activity>
         <activity
             android:name=".login.Login"
-            android:exported="false" >
+            android:exported="false">
 
         </activity>
         <activity
@@ -30,17 +39,11 @@
         <activity
             android:name=".datmon.DatMon"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".QLM.QLMON"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="false" />

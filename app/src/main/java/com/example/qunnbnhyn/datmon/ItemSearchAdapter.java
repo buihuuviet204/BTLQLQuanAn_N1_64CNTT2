@@ -18,9 +18,9 @@ import java.util.List;
 
 public class ItemSearchAdapter extends RecyclerView.Adapter<ItemSearchAdapter.ViewHolder> {
     private List<MonAn> listMon;
-    private OnTotalChangeListener listener;
+    private OnChangeListener listener;
 
-    public ItemSearchAdapter(List<MonAn> listMon, OnTotalChangeListener listener) {
+    public ItemSearchAdapter(List<MonAn> listMon, OnChangeListener listener) {
         this.listMon = listMon;
         this.listener = listener;
     }

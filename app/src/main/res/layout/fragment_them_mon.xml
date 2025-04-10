@@ -111,11 +111,15 @@
                     app:neomorph_background_color="@color/white"
                     android:layout_marginTop="10dp">
                     <Spinner
+                        style="@style/CustomSpinnerStyle"
+
                         android:id="@+id/spinneradd"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        tools:ignore="TouchTargetSizeCheck"
+                        />
+
                 </com.chinodev.androidneomorphframelayout.NeomorphFrameLayout>
 
                 <TextView
