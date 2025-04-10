@@ -35,6 +35,16 @@ android {
 dependencies {
     implementation ("androidx.cardview:cardview:1.0.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("com.github.4inodev:Neomorphic-FrameLayout-Android:1.03")
+    implementation("com.cloudinary:cloudinary-android:3.0.2")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+// Thêm thư viện NeomorphFrameLayout
+
+    implementation ("com.github.4inodev:Neomorphic-FrameLayout-Android:1.03")
+//    implementation(libs.credentials)
+//    implementation(libs.credentials.play.services.auth)
+//    implementation(libs.googleid)
+
 
     implementation ("androidx.appcompat:appcompat:1.6.1")
     implementation ("com.google.android.material:material:1.11.0")

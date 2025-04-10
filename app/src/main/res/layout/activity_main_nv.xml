@@ -24,11 +24,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/menu"
-            android:layout_width="20dp"
-            android:layout_height="18dp"
+            android:id="@+id/finger"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:contentDescription="Menu"
-            android:src="@drawable/menu_burger" />
+            android:src="@drawable/fingerprint" />
 
         <FrameLayout
             android:id="@+id/frameLayout2"
@@ -80,7 +80,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="46dp"
         android:text="Trang chủ"
         android:textColor="@android:color/black"
         android:textSize="48sp"
