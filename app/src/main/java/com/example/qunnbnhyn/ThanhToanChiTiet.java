@@ -87,7 +87,7 @@ public class ThanhToanChiTiet extends AppCompatActivity {
     }
 
     private void taiDuLieu(int soBan) {
-        databaseReference.child("ban_an").child(String.valueOf(soBan - 1)).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("ban_an").child(String.valueOf(soBan)).child("So hoa don").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 String maHoaDon = snapshot.getValue(String.class);
