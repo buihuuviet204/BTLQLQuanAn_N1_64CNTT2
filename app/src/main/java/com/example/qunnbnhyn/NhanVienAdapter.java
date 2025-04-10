@@ -38,7 +38,7 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
         NhanVien nhanVien = nhanVienList.get(position); // Lấy nhân viên tại vị trí position
 
         // Hiển thị thông tin cơ bản của nhân viên
-        holder.txtMaNhanVien.setText(nhanVien.getMaNhanVien()); // Gán mã nhân viên vào TextView
+        holder.txtMaNhanVien.setText(nhanVien.getEmail()); // Gán mã nhân viên vào TextView
         holder.txtHoTen.setText(nhanVien.getName()); // Gán tên nhân viên vào TextView
 
         // Xử lý hiển thị ảnh đại diện
