@@ -52,9 +52,7 @@ public class Login extends AppCompatActivity {
         txtMessage = findViewById(R.id.txt_message);
         editPassword = findViewById(R.id.edit_password);
         editUsername = findViewById(R.id.edit_username);
-        menu = new HashMap<>();
         myAuth = FirebaseAuth.getInstance();
-
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,34 +66,22 @@ public class Login extends AppCompatActivity {
                     editPassword.setError("Vui long nhap mat khau");
                     return;
                 }
-
                 myAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = myAuth.getCurrentUser();
-                                    FirebaseUserMetadata metadata = user.getMetadata();
-                                    long lastSignInTimestamp = metadata.getLastSignInTimestamp();
-                                    Date lastSignInDate = new Date(lastSignInTimestamp);
-                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
-                                    String giodn = sdf.format(lastSignInDate);
                                     uid = user.getUid();
-                                    Map<String,String> cong = new HashMap<>();
-                                    cong.put("gio_dang_nhap",giodn);
-                                    cong.put("gio_dang_xuat","");
-                                    FirebaseDatabase.getInstance().getReference("cong").child(uid).setValue(cong);
                                     getFullName(uid);
                                 } else {
                                     txtMessage.setVisibility(View.VISIBLE);
-                                    txtMessage.setText("Đăng nhập thất bại: " + task.getException().getMessage());
                                 }
                             }
                         });
             }
         });
     }
-
     private void changActivityByRole() {
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Employees").child(uid).child("position");
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -116,12 +102,9 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("Login", "Lỗi khi lấy vai trò: " + error.getMessage());
-                Toast.makeText(Login.this, "Lỗi khi lấy vai trò.", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
     private void getFullName(String uid) {
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Employees").child(uid).child("name");
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -135,7 +118,6 @@ public class Login extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("Login", "Lỗi khi lấy tên: " + error.getMessage());
                 fullName = null;
-
             }
         });
     }

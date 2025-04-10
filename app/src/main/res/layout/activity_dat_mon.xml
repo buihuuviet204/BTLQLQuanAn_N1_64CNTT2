@@ -32,35 +32,43 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_filter"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </FrameLayout>
         <com.chinodev.androidneomorphframelayout.NeomorphFrameLayout
-            android:layout_gravity="center"
-            android:layout_width="200dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="220dp"
             android:layout_height="60dp"
             app:neomorph_background_color="#F6F5F3"
             app:neomorph_corner_radius="50dp"
             app:neomorph_elevation="3dp"
             app:neomorph_shadow_type="inner"
             app:neomorph_view_type="rectangular">
-            <EditText
-                android:id="@+id/edit_ten"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Nhap ten mon an"
-                android:background="@null"
-                android:textSize="16dp"
-                android:fontFamily="@font/comfortaa"
-                android:layout_marginLeft="15dp"/>
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_search"
+                    android:scaleType="centerCrop"/>
+                <EditText
+                    android:id="@+id/edit_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Nhap ten mon an"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_marginLeft="15dp"/>
+            </LinearLayout>
+
         </com.chinodev.androidneomorphframelayout.NeomorphFrameLayout>
 
-        <ImageButton
-            android:id="@+id/btn_search"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_vertical"
-            android:backgroundTint="@android:color/transparent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_search"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
 
@@ -72,6 +80,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header"
         app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcl_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        android:visibility="gone"/>
 
     <com.chinodev.androidneomorphframelayout.NeomorphFrameLayout
         android:id="@+id/footer"
@@ -123,4 +138,16 @@
             android:layout_marginLeft="20dp"
             android:visibility="gone"/>
     </com.chinodev.androidneomorphframelayout.NeomorphFrameLayout>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="372dp"
+        android:backgroundTint="#FFF369"
+        android:text="Tat ca"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/rcl_menu"
+        app:layout_constraintTop_toTopOf="@+id/header" />
 </androidx.constraintlayout.widget.ConstraintLayout>

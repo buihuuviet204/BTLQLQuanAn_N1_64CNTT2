@@ -1,9 +1,15 @@
 package com.example.qunnbnhyn.datmon;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,12 +18,10 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.qunnbnhyn.QLM.MonAn;
 import com.example.qunnbnhyn.R;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +29,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,9 +38,9 @@ import java.util.Locale;
 
 public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
     private Button btnXacNhan;
-    private HashMap<String, Integer> ctdh; // Đổi tên từ CTHD thành ctdh để nhất quán
+    private HashMap<String, Integer> ctdh;
     private HashMap<String, MonAn> menu;
-    private com.example.qunnbnhyn.datmon.CTHD cthd;
+
     private HoaDon hoadon;
     private DatabaseReference monAnRef;
     private RecyclerView recyclerView;
@@ -45,9 +48,14 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
     private TextView txttongtien;
     private List<MonAn> listMiCay, listTraSua, listTraHQua, listDAVat, listCombo;
     private List<EditText> listEditText;
+    private boolean isRecyclerViewTouched = false;
     private ThucDonAdapter thucDonAdapter;
-    private ImageButton btnFilter, btnHome, btnSearch;
+    private ImageButton btnFilter, btnHome;
+    private Button btnAll;
     private Spinner spinnerLoai;
+    private EditText editSearch;
+    RecyclerView recyclerView1;
+    private MonAn monAnSearched;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +64,11 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
         btnXacNhan = findViewById(R.id.btn_xacnhan);
         btnFilter = findViewById(R.id.btn_filter);
         btnHome = findViewById(R.id.btn_home);
-        btnSearch = findViewById(R.id.btn_search);
         monAnRef = FirebaseDatabase.getInstance().getReference("thuc_don");
         txttongtien = findViewById(R.id.txt_tongtien);
         listEditText = new ArrayList<>();
         recyclerView = findViewById(R.id.rcl_menu);
+        btnAll = findViewById(R.id.btn_back);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listDAVat = new ArrayList<>();
         listCombo = new ArrayList<>();
@@ -72,61 +80,57 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
         String[] options = {"Mi Kay", "Tra sua", "Tra hoa qua", "Nuoc co ga", "Do an vat", "Combo", "Tat ca"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, options);
         spinnerLoai.setAdapter(adapter);
-        ctdh = new HashMap<>(); // Khởi tạo ctdh
-        cthd = new CTHD();
+        ctdh = new HashMap<>();
         menu = new HashMap<>();
         thucDonAdapter = new ThucDonAdapter(thucdon, this);
-        thucDonAdapter.setCtdh(ctdh); // Truyền ctdh vào adapter
+        thucDonAdapter.setCtdh(ctdh);
         hoadon = new HoaDon();
         hoadon.setCTDH(ctdh);
-
+        editSearch = findViewById(R.id.edit_search);
         btnHome.setOnClickListener(v -> finish());
+        recyclerView1 = findViewById(R.id.rcl_search);
+        btnAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thucdon.clear();
+                filter("Tat ca");
+                thucDonAdapter.notifyDataSetChanged();
+                btnAll.setVisibility(View.GONE);
+            }
+        });
+        editSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String tenSearch = editSearch.getText().toString();
+                List<MonAn> listMonSearch = new ArrayList<>();
+                for(String key: menu.keySet()){
+                    if(isSubStringIgnoreCase(menu.get(key).getName(),tenSearch)){
+                        listMonSearch.add(menu.get(key));
+                    }
+                }
+                ItemSearchAdapter itemSearchAdapter = new ItemSearchAdapter(listMonSearch,DatMon.this);
+
+                recyclerView1.setLayoutManager(new LinearLayoutManager(DatMon.this));
+                recyclerView1.setAdapter(itemSearchAdapter);
+                recyclerView1.setVisibility(View.VISIBLE);
+
+            }
+        });
         spinnerLoai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 thucdon.clear();
                 String selectedCategory = (String) parent.getItemAtPosition(position);
-
-                if (selectedCategory.equals("Tat ca")) {
-                    if (!listMiCay.isEmpty()) {
-                        thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Mi Kay", null));
-                        thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listMiCay));
-                    }
-                    if (!listTraSua.isEmpty()) {
-                        thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Tra saa", null));
-                        thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraSua));
-                    }
-                    if (!listTraHQua.isEmpty()) {
-                        thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Tra hoa qua", null));
-                        thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraHQua));
-                    }
-                    if (!listDAVat.isEmpty()) {
-                        thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Do an vat", null));
-                        thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listDAVat));
-                    }
-                    if (!listCombo.isEmpty()) {
-                        thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Combo", null));
-                        thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listCombo));
-                    }
-                } else {
-                    if (selectedCategory.equals("Mi Kay") && !listMiCay.isEmpty()) {
-                        thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Mi cay", null));
-                        thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listMiCay));
-                    } else if (selectedCategory.equals("Tra sua") && !listTraSua.isEmpty()) {
-                        thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Trà sữa", null));
-                        thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraSua));
-                    } else if (selectedCategory.equals("Tra hoa qua") && !listTraHQua.isEmpty()) {
-                        thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Trà hoa quả", null));
-                        thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraHQua));
-                    } else if (selectedCategory.equals("Do an vat") && !listDAVat.isEmpty()) {
-                        thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Đồ ăn vặt", null));
-                        thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listDAVat));
-                    } else if (selectedCategory.equals("Combo") && !listCombo.isEmpty()) {
-                        thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Combo", null));
-                        thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listCombo));
-                    }
-                }
+                filter(selectedCategory);
                 thucDonAdapter.notifyDataSetChanged();
             }
 
@@ -149,12 +153,89 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
             Intent intent = new Intent(DatMon.this, XacNhanDat.class);
             intent.putExtra("hoa_don", hoadon);
             intent.putExtra("menu", menu);
-            Log.d("TT = ", hoadon.getTongTien() + "");
             startActivityForResult(intent, 1);
         });
 
         readThucDonData();
     }
+    public boolean isSubStringIgnoreCase(String main, String sub) {
+        if (main == null || sub == null) {
+            return false;
+        }
+        return main.toLowerCase().contains(sub.toLowerCase());
+    }
+    private void filter(String loai){
+        if (loai.equals("Tat ca")) {
+            if (!listMiCay.isEmpty()) {
+                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Mi Kay", null));
+                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listMiCay));
+            }
+            if (!listTraSua.isEmpty()) {
+                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Tra sua", null));
+                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraSua));
+            }
+            if (!listTraHQua.isEmpty()) {
+                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Tra hoa qua", null));
+                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraHQua));
+            }
+            if (!listDAVat.isEmpty()) {
+                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Do an vat", null));
+                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listDAVat));
+            }
+            if (!listCombo.isEmpty()) {
+                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Combo", null));
+                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listCombo));
+            }
+        } else {
+            if (loai.equals("Mi Kay") && !listMiCay.isEmpty()) {
+                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Mi cay", null));
+                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listMiCay));
+            } else if (loai.equals("Tra sua") && !listTraSua.isEmpty()) {
+                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Trà sữa", null));
+                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraSua));
+            } else if (loai.equals("Tra hoa qua") && !listTraHQua.isEmpty()) {
+                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Trà hoa quả", null));
+                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listTraHQua));
+            } else if (loai.equals("Do an vat") && !listDAVat.isEmpty()) {
+                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Đồ ăn vặt", null));
+                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listDAVat));
+            } else if (loai.equals("Combo") && !listCombo.isEmpty()) {
+                thucdon.add(new ListMon(ListMon.TYPE_HEADER, "Combo", null));
+                thucdon.add(new ListMon(ListMon.TYPE_LIST, null, listCombo));
+            }
+        }
+    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View currentFocus = getCurrentFocus();
+            boolean isTouchOnEditText = isTouchInsideView(event, editSearch);
+            boolean isTouchOnRecyclerView = isTouchInsideView(event, recyclerView1);
+            boolean isRecyclerViewVisible = recyclerView1.getVisibility() == View.VISIBLE;
+
+            if (isRecyclerViewVisible && !isTouchOnEditText && !isTouchOnRecyclerView) {
+                recyclerView1.setVisibility(View.GONE);
+                if (currentFocus == editSearch) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
+                    editSearch.clearFocus();
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event);
+    }
+    private boolean isTouchInsideView(MotionEvent event, View view) {
+        if (view == null || view.getVisibility() != View.VISIBLE) {
+            return false;
+        }
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        int x = location[0];
+        int y = location[1];
+        return (event.getX() >= x && event.getX() <= x + view.getWidth() &&
+                event.getY() >= y && event.getY() <= y + view.getHeight());
+    }
+
 
     private void readThucDonData() {
         monAnRef.addValueEventListener(new ValueEventListener() {
@@ -207,7 +288,6 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("FirebaseError", "Lỗi đọc dữ liệu: " + error.getMessage());
                 Toast.makeText(DatMon.this, "Lỗi khi tải dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
@@ -217,17 +297,13 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            // Reset CTDH và tổng tiền
             ctdh.clear();
             hoadon.setCTDH(ctdh);
             hoadon.setTongTien(0);
             txttongtien.setText("Tổng tiền: 0 VND");
-
-            // Cập nhật CTDH trong adapter để reset giao diện
             thucDonAdapter.setCtdh(ctdh);
             thucDonAdapter.notifyDataSetChanged();
 
-            // Reset listEditText
             listEditText.clear();
         }
     }
@@ -241,14 +317,21 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
     }
 
     @Override
+    public void monAnSearched(MonAn monAn) {
+        List<MonAn> list = new ArrayList<>();
+        list.add(monAn);
+        thucdon.clear();
+        recyclerView1.setVisibility(View.GONE);
+        thucdon.add(new ListMon(ListMon.TYPE_LIST,null,list));
+        btnAll.setVisibility(View.VISIBLE);
+        thucDonAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void onSlgChanged(HashMap<String, Integer> dsMongoi, EditText editText) {
-        // Gộp dsMongoi vào CTDH
         ctdh.putAll(dsMongoi);
-        // Xóa các món có số lượng 0
-        ctdh.entrySet().removeIf(entry -> entry.getValue() <= 0);
         hoadon.setCTDH(ctdh);
 
-        // Tính tổng tiền dựa trên CTDH hoàn chỉnh
         double tong = 0;
         for (String key : ctdh.keySet()) {
             MonAn monAn = menu.get(key);
@@ -259,7 +342,6 @@ public class DatMon extends AppCompatActivity implements OnTotalChangeListener {
         hoadon.setTongTien(tong);
         hoadon.setTrangthai(false);
 
-        // Định dạng ngày thành chuỗi
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String ngayLap = sdf.format(new Date());
         hoadon.setNgLap(ngayLap);

@@ -117,9 +117,7 @@ public class ListMonAdapter extends RecyclerView.Adapter<ListMonAdapter.ListMonV
             txtTongtien = itemView.findViewById(R.id.txt_tongtien);
         }
     }
-//    private void updataCTHD(){
-//        if(listener != null)    listener.onTotalChanged(dsMongoi);
-//    }
+
     private void updateTotal() {
         double total = 0;
         for (EditText editText : allEditTexts) {
@@ -128,7 +126,6 @@ public class ListMonAdapter extends RecyclerView.Adapter<ListMonAdapter.ListMonV
                 try {
                     total += Double.parseDouble(text);
                 } catch (NumberFormatException e) {
-                    // Bỏ qua nếu không phải số hợp lệ
                 }
             }
         }
