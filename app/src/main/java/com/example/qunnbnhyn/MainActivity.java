@@ -31,13 +31,7 @@ public class MainActivity extends AppCompatActivity {
         // Lấy maNhanVien từ Intent trước
         Intent intent = getIntent();
         maNhanVien = intent.getStringExtra("maNhanVien");
-        if (maNhanVien == null || maNhanVien.isEmpty()) {
-            Toast.makeText(this, "Không tìm thấy mã nhân viên. Vui lòng đăng nhập lại.", Toast.LENGTH_SHORT).show();
-            Intent loginIntent = new Intent(MainActivity.this, Login.class);
-            startActivity(loginIntent);
-            finish();
-            return;
-        }
+
         // Kết nối tới node Employees trên Firebase (sau khi maNhanVien đã được gán)
         database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
 
