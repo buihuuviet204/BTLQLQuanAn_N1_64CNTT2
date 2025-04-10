@@ -27,12 +27,13 @@
             android:id="@+id/finger"
             android:layout_width="34dp"
             android:layout_height="34dp"
+            android:layout_marginStart="10dp"
             android:contentDescription="Menu"
-            android:src="@drawable/fingerprint" />
+            android:src="@drawable/checkin" />
 
         <FrameLayout
             android:id="@+id/frameLayout2"
-            android:layout_width="211dp"
+            android:layout_width="282dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
@@ -66,14 +67,6 @@
             </LinearLayout>
         </FrameLayout>
 
-        <ImageView
-            android:id="@+id/logout"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="40dp"
-            android:layout_gravity="end"
-            android:contentDescription="Logout"
-            android:src="@drawable/sign_out_alt" />
     </LinearLayout>
 
 
@@ -280,12 +273,31 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="180dp"
+                        android:layout_width="158dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="20dp"
                         android:gravity="center"
-                        android:orientation="vertical"/>
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/logout"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/sign_out_alt" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Đăng xuất"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
+
+
             </FrameLayout>
 
         </GridLayout>

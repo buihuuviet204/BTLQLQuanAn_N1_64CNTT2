@@ -7,7 +7,7 @@
     android:background="#F8CFA8"
     android:clickable="true"
     android:focusable="true"
-    tools:context=".MenuNVActivity">
+    tools:context=".MainActivity">
 
 
 
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -27,12 +27,13 @@
             android:id="@+id/finger"
             android:layout_width="34dp"
             android:layout_height="34dp"
+            android:layout_marginStart="10dp"
             android:contentDescription="Menu"
-            android:src="@drawable/fingerprint" />
+            android:src="@drawable/checkin" />
 
         <FrameLayout
             android:id="@+id/frameLayout2"
-            android:layout_width="wrap_content"
+            android:layout_width="282dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
@@ -66,13 +67,6 @@
             </LinearLayout>
         </FrameLayout>
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="60dp"
-            android:layout_gravity="end"
-            android:contentDescription="Logout"
-            android:src="@drawable/sign_out_alt" />
     </LinearLayout>
 
 
@@ -80,7 +74,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="8dp"
         android:text="Trang chủ"
         android:textColor="@android:color/black"
         android:textSize="48sp"
@@ -95,6 +89,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,9 +97,9 @@
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="546dp"
+            android:layout_height="match_parent"
             android:columnCount="2"
-            android:rowCount="2">
+            android:rowCount="3">
 
             <FrameLayout
                 android:id="@+id/fram1"
@@ -227,12 +222,68 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Quản lý khách hàng"
+                            android:text="Thanh toán"
                             android:textColor="#000000"
                             android:textSize="18sp" />
 
                     </LinearLayout>
                 </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fram3"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/background_layout">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="158dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/logout"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/sign_out_alt" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Đăng xuất"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="158dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
             </FrameLayout>
 
         </GridLayout>
