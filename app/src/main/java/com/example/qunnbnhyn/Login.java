@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.qunnbnhyn.MenuNVActivity;
+import com.example.qunnbnhyn.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -68,10 +70,15 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = myAuth.getCurrentUser();
-                                    maNhanVien = user.getUid();
-                                    getFullName(maNhanVien);
+                                    if (user != null) {
+                                        maNhanVien = user.getUid(); // Lấy UID từ FirebaseUser
+                                        getFullName(maNhanVien);
+                                    } else {
+                                        Toast.makeText(Login.this, "Không lấy được thông tin người dùng", Toast.LENGTH_SHORT).show();
+                                    }
                                 } else {
                                     txtMessage.setVisibility(View.VISIBLE);
+                                    Toast.makeText(Login.this, "Đăng nhập thất bại: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -79,19 +86,32 @@ public class Login extends AppCompatActivity {
         });
     }
     private void changActivityByRole() {
+        if (maNhanVien == null || maNhanVien.isEmpty()) {
+            Log.e("Login", "maNhanVien is null or empty");
+            Toast.makeText(Login.this, "Không tìm thấy mã nhân viên", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Login.this, MainActivity.class);
+            intent.putExtra("full_name", fullName != null ? fullName : "Khách");
+            intent.putExtra("maNhanVien", maNhanVien != null ? maNhanVien : "");
+            startActivity(intent);
+            finish();
+            return;
+        }
+
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien).child("position");
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String role = (String) snapshot.getValue(String.class);
+                String role = snapshot.getValue(String.class);
                 Intent intent;
                 if (role != null && role.equals("Nhân viên")) {
+                    Log.d("Login", "Vai trò: Nhân viên, chuyển sang MenuNVActivity");
                     intent = new Intent(Login.this, MenuNVActivity.class);
                 } else {
+                    Log.d("Login", "Vai trò không phải Nhân viên hoặc không tồn tại, chuyển sang MainActivity");
                     intent = new Intent(Login.this, MainActivity.class);
                 }
-                Log.d("name: ", fullName);
-                intent.putExtra("full_name", fullName);
+                intent.putExtra("full_name", fullName != null ? fullName : "Khách");
+                intent.putExtra("maNhanVien", maNhanVien);
                 startActivity(intent);
                 finish();
             }
@@ -101,22 +121,36 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
     private void getFullName(String maNhanVien) {
+        if (maNhanVien == null || maNhanVien.isEmpty()) {
+            Log.e("Login", "maNhanVien is null or empty");
+            Toast.makeText(Login.this, "Không tìm thấy mã nhân viên", Toast.LENGTH_LONG).show();
+            fullName = "Khách"; // Giá trị mặc định
+            changActivityByRole();
+            return;
+        }
+
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien).child("name");
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                fullName = (String) snapshot.getValue(String.class);
+                fullName = snapshot.getValue(String.class);
+                if (fullName == null) {
+                    Log.w("Login", "Tên người dùng không tồn tại, gán giá trị mặc định");
+                    Toast.makeText(Login.this, "Không tìm thấy tên người dùng", Toast.LENGTH_SHORT).show();
+                    fullName = "Khách"; // Giá trị mặc định
+                }
                 changActivityByRole();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("Login", "Lỗi khi lấy tên: " + error.getMessage());
-                fullName = null;
+                Toast.makeText(Login.this, "Lỗi khi lấy tên: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                fullName = "Khách"; // Giá trị mặc định nếu có lỗi
+                changActivityByRole();
             }
         });
     }
-
-
 }

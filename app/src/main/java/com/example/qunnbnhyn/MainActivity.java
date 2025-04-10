@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,13 +27,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Lấy maNhanVien từ Intent trước
         Intent intent = getIntent();
+        maNhanVien = intent.getStringExtra("maNhanVien");
+        if (maNhanVien == null || maNhanVien.isEmpty()) {
+            Toast.makeText(this, "Không tìm thấy mã nhân viên. Vui lòng đăng nhập lại.", Toast.LENGTH_SHORT).show();
+            Intent loginIntent = new Intent(MainActivity.this, Login.class);
+            startActivity(loginIntent);
+            finish();
+            return;
+        }
+        // Kết nối tới node Employees trên Firebase (sau khi maNhanVien đã được gán)
+        database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
 
+        // Ánh xạ các view
         txtName = findViewById(R.id.txtName);
-        Log.d("name",intent.getStringExtra("full_name"));
-        txtName.setText(intent.getStringExtra("full_name"));
+        String fullName = intent.getStringExtra("full_name");
+        Log.d("name", fullName != null ? fullName : "null");
+        txtName.setText(fullName != null ? fullName : "Khách");
 
-        // Ánh xạ ImageView "Quản lý bàn ăn" từ GridLayout
         diningTableImageView = findViewById(R.id.fram1).findViewById(R.id.dining_table_image);
         supplies = findViewById(R.id.fram1).findViewById(R.id.supplies);
         customService = findViewById(R.id.fram2).findViewById(R.id.custom_service);
@@ -44,21 +55,30 @@ public class MainActivity extends AppCompatActivity {
         logout = findViewById(R.id.logout);
         finger = findViewById(R.id.finger);
 
-        // Kết nối tới node Employees trên Firebase
-        database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
 
-        //Lấy maNV từ Intent
-        Intent inter = getIntent();
-        maNhanVien = inter.getStringExtra("maNhanVien");
+        // Gắn sự kiện onClick cho ImageView "Quản lý bàn ăn"
+        diningTableImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, EmployeeListActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LogoutActivity.class);
+                startActivity(intent);
+            }
+        });
 
-
-        finger.setOnClickListener(new View.OnClickListener() {
+    /*    finger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
 
-                // Lưu thời gian check-in vào Firebase
+                // Lưu thời gian check-in vào Firebase/
                 database.child("checkIn").setValue(currentTime).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         // Hiển thị thông báo "Xin cảm ơn"
@@ -68,55 +88,30 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        });
-
-        // Gắn sự kiện onClick cho ImageView "Quản lý bàn ăn"
-        diningTableImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chuyển sang EmployeeListActivity
-                    Intent intent = new Intent(MainActivity.this, EmployeeListActivity.class);
-                    startActivity(intent);
-            }
-        });
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chuyển sang LogoutActivity
-                Intent intent = new Intent(MainActivity.this, LogoutActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        });*/
 
         supplies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
 
         customService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
 
         happyClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
 
         discount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
-
     }
 }
