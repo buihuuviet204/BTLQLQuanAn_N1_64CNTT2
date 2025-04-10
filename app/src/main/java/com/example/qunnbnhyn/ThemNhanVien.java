@@ -40,15 +40,13 @@ public class ThemNhanVien extends AppCompatActivity {
     private Button btnThem, btnBack;
     private DatabaseReference database;
     private Uri imageUri; // Lưu đường dẫn ảnh được chọn
-
     private FirebaseAuth mAuth;
 
-    // Khởi tạo launcher để chọn ảnh
+    // Khởi tạo launcher để chọn ảnh từ thư viện
     private final ActivityResultLauncher<Intent> imagePickerLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
+            new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                    imageUri = result.getData().getData();
+                    imageUri = (result.getData()).getData();
                     imgBtnAvatar.setImageURI(imageUri); // Hiển thị ảnh lên ImageButton
                 }
             }
@@ -165,6 +163,7 @@ public class ThemNhanVien extends AppCompatActivity {
             }
         }
 
+        // firebase authentication
         String account = txtEmail.getText().toString().trim();
         String pass = txtMatKhau.getText().toString().trim();
 
