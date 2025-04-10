@@ -29,8 +29,8 @@ public class MenuNVActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Chuyển sang ManageTableActivity
-                //   Intent intent = new Intent(MenuNVActivity.this, ManageTableActivity.class);
-                //    startActivity(intent);
+                   Intent intent = new Intent(MenuNVActivity.this, NVListActivity.class);
+                    startActivity(intent);
             }
         });
 

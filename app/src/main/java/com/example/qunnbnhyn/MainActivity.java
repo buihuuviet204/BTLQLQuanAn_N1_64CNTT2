@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView diningTableImageView, logout;
+    private ImageView diningTableImageView, logout, timetable;
     private ImageView supplies, customService, happyClient, discount;
 
     @Override
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         happyClient = findViewById(R.id.fram2).findViewById(R.id.happy_client);
         discount = findViewById(R.id.fram3).findViewById(R.id.discount);
         logout = findViewById(R.id.logout);
+        timetable = findViewById(R.id.timetable);
 
         // Gắn sự kiện onClick cho ImageView "Quản lý bàn ăn"
         diningTableImageView.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
                 // Chuyển sang LogoutActivity
                 Intent intent = new Intent(MainActivity.this, LogoutActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        timetable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

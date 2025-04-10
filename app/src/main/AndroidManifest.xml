@@ -25,6 +25,8 @@
         <activity android:name=".EmployeeListActivity"/>
         <activity android:name="GanCaActivity"/>
         <activity android:name=".MenuNVActivity"/>
+        <activity android:name=".NVListActivity"/>
+        <activity android:name=".CheckCaActivity"/>
 
     </application>
 

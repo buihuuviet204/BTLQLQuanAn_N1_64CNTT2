@@ -24,12 +24,12 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Xếp ca làm"
-        android:textSize="50dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="50dp"
+        android:text="Xem ca làm"
+        android:textSize="50dp"
+        android:textStyle="bold" />
 
     <!-- Container cho thông tin nhân viên và lựa chọn ca làm -->
     <LinearLayout
@@ -46,7 +46,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="18dp"
             android:hint="Mã nhân viên"
             android:textColorHint="#666666">
 
@@ -65,7 +65,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="22dp"
             android:hint="Họ và tên"
             android:textColorHint="#666666">
 
@@ -78,53 +78,26 @@
                 android:textColor="#000000" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Phần lựa chọn ca làm -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="Chọn ca làm:"
-            android:textSize="18sp" />
-
-        <RadioGroup
-            android:id="@+id/rgShifts"
+        <!--Trường ca làm-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_shift"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="18dp"
+            android:hint="Ca làm việc"
+            android:textColorHint="#666666">
 
-            <RadioButton
-                android:id="@+id/rbMorning"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_shift"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Ca sáng (6h - 14h)"
-                android:textSize="16sp" />
-
-            <RadioButton
-                android:id="@+id/rbAfternoon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Ca chiều (14h - 22h)"
-                android:textSize="16sp" />
-
-            <RadioButton
-                android:id="@+id/rbEvening"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ca tối (22h - 6h)"
-                android:textSize="16sp" />
-        </RadioGroup>
+                android:inputType="text"
+                android:paddingVertical="12dp"
+                android:textColor="#000000" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
-    <!-- Nút xác nhận -->
-    <Button
-        android:id="@+id/btnConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:padding="10dp"
-        android:text="Xác nhận" />
+
 </LinearLayout>
