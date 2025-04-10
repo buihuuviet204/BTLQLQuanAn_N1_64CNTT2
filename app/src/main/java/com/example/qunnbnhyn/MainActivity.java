@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    /*    finger.setOnClickListener(new View.OnClickListener() {
+        finger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        });*/
+        });
 
         supplies.setOnClickListener(new View.OnClickListener() {
             @Override

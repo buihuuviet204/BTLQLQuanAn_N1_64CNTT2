@@ -68,8 +68,8 @@
 
         <ImageView
             android:id="@+id/logout"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginStart="40dp"
             android:layout_gravity="end"
             android:contentDescription="Logout"
