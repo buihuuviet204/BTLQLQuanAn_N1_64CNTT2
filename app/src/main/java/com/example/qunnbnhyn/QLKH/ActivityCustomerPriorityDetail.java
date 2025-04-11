@@ -11,7 +11,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.qunnbnhyn.R;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,8 +26,6 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
     private LinearLayout llInvoiceList;
     private ImageView imgViewBack;
     private String customerPhoneNumber;
-    private long tongDiem = 0;
-    private ChildEventListener invoiceListener; // Listener để lắng nghe thay đổi trong hoa_don
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +57,6 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
         // Load thông tin khách hàng và hóa đơn
         loadCustomerDetails();
 
-        // Thiết lập listener để lắng nghe thay đổi trong hoa_don
-        setupInvoiceListener();
-
         // Xử lý nút Back
         imgViewBack.setOnClickListener(v -> finish());
     }
@@ -73,10 +67,21 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 Customer customer = snapshot.getValue(Customer.class);
                 if (customer != null) {
+                    // Hiển thị thông tin khách hàng
                     tvName.setText(customer.getName());
                     tvPhone.setText(customer.getPhoneNumber());
                     customerPhoneNumber = customer.getPhoneNumber(); // Lưu số điện thoại để so sánh với maKhach
-                    // Load hóa đơn và cập nhật visitCount, points
+
+                    // Lấy visitCount và points trực tiếp từ Firebase và cập nhật UI
+                    long visitCount = snapshot.child("visitCount").getValue(Long.class) != null ?
+                            snapshot.child("visitCount").getValue(Long.class) : 0;
+                    long points = snapshot.child("points").getValue(Long.class) != null ?
+                            snapshot.child("points").getValue(Long.class) : 0;
+
+                    tvVisitCount.setText(String.valueOf(visitCount));
+                    tvPoints.setText(String.valueOf(points));
+
+                    // Load danh sách hóa đơn
                     loadInvoices();
                 } else {
                     Toast.makeText(ActivityCustomerPriorityDetail.this, "Không tìm thấy thông tin khách hàng", Toast.LENGTH_SHORT).show();
@@ -86,87 +91,6 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) {
                 Toast.makeText(ActivityCustomerPriorityDetail.this, "Lỗi tải dữ liệu: " + error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    // Hàm tính điểm từ tổng tiền (1 điểm cho mỗi 20,000 VNĐ)
-    private long calculatePoints(long tongTien) {
-        return tongTien / 20000;
-    }
-
-    // Thiết lập listener để lắng nghe thay đổi trong hoa_don
-    private void setupInvoiceListener() {
-        invoiceListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
-                // Khi có hóa đơn mới được thêm, cập nhật lại visitCount và points
-                updateCustomerStats();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
-                // Khi có hóa đơn bị sửa, cập nhật lại visitCount và points
-                updateCustomerStats();
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot snapshot) {
-                // Khi có hóa đơn bị xóa, cập nhật lại visitCount và points
-                updateCustomerStats();
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
-                // Không cần xử lý
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Toast.makeText(ActivityCustomerPriorityDetail.this, "Lỗi lắng nghe hóa đơn: " + error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        };
-        invoiceReference.addChildEventListener(invoiceListener);
-    }
-
-    // Cập nhật visitCount và points dựa trên tất cả hóa đơn
-    private void updateCustomerStats() {
-        if (customerPhoneNumber == null) {
-            return; // Chưa có customerPhoneNumber, không thể cập nhật
-        }
-
-        invoiceReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                int visitCount = 0;
-                long totalPoints = 0;
-
-                // Duyệt qua tất cả hóa đơn để tính visitCount và points
-                for (DataSnapshot invoiceSnapshot : snapshot.getChildren()) {
-                    String maKhach = invoiceSnapshot.child("maKhach").getValue(String.class);
-                    if (maKhach != null && maKhach.equals(customerPhoneNumber)) {
-                        visitCount++;
-                        long tongTien = invoiceSnapshot.child("tongTien").getValue(Long.class) != null ?
-                                invoiceSnapshot.child("tongTien").getValue(Long.class) : 0;
-                        totalPoints += calculatePoints(tongTien);
-                    }
-                }
-
-                // Cập nhật visitCount và points vào customers
-                databaseReference.child("visitCount").setValue(visitCount);
-                databaseReference.child("points").setValue(totalPoints);
-
-                // Cập nhật UI
-                tvVisitCount.setText(String.valueOf(visitCount));
-                tvPoints.setText(String.valueOf(totalPoints));
-
-                // Load lại danh sách hóa đơn để cập nhật giao diện
-                loadInvoices();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Toast.makeText(ActivityCustomerPriorityDetail.this, "Lỗi tải hóa đơn: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -238,14 +162,5 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
                 Toast.makeText(ActivityCustomerPriorityDetail.this, "Lỗi tải hóa đơn: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // Xóa listener khi Activity bị hủy để tránh rò rỉ bộ nhớ
-        if (invoiceListener != null) {
-            invoiceReference.removeEventListener(invoiceListener);
-        }
     }
 }
