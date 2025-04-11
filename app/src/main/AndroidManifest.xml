@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +16,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuánĂnBìnhYên"
         tools:targetApi="31">
+        <activity
+            android:name=".TT.ThanhToanChiTiet"
+            android:exported="false" />
+        <activity
+            android:name=".TT.ThanhToan"
+            android:exported="false" />
+        <activity
+            android:name=".QLNV.XoaNhanVienChiTiet"
+            android:exported="false" />
+        <activity
+            android:name=".QLNV.XoaNhanVien"
+            android:exported="false" />
+        <activity
+            android:name=".QLNV.ChinhSuaThongTinChiTiet"
+            android:exported="false" />
+        <activity
+            android:name=".QLNV.ChinhSuaThongTin"
+            android:exported="false" />
+        <activity
+            android:name=".QLNV.ThemNhanVien"
+            android:exported="false" />
+        <activity
+            android:name=".QLNV.QuanLyNhanVien"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="16dp">
+
+        <!-- Icon khách hàng -->
+        <ImageView
+            android:id="@+id/imgCustomerIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="Customer Icon"
+            android:src="@drawable/ic_customer"
+            app:tint="#4CAF50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- Tên khách hàng -->
+        <TextView
+            android:id="@+id/tvCustomerName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="Nguyễn Văn A"
+            android:textColor="#212121"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/imgCustomerIcon"
+            app:layout_constraintTop_toTopOf="@id/imgCustomerIcon"
+            app:layout_constraintEnd_toStartOf="@id/tvStatus"/>
+
+        <!-- Số điện thoại -->
+
+        <!-- Dòng phân cách nhỏ -->
+        <TextView
+            android:id="@+id/tvPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/inter"
+            android:text="0123 456 789"
+            android:textColor="#757575"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@id/tvStatus"
+            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintStart_toEndOf="@id/imgCustomerIcon"
+            app:layout_constraintTop_toBottomOf="@id/tvCustomerName" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="#E0E0E0"
+            app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber"/>
+
+        <!-- Trạng thái -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/status_background"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="Hoạt động"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

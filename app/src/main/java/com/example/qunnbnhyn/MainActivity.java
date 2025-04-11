@@ -23,6 +23,9 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import com.example.qunnbnhyn.QLNV.QuanLyNhanVien;
+import com.example.qunnbnhyn.TT.ThanhToan;
+
 public class MainActivity extends AppCompatActivity {
 
     private ImageView diningTableImageView, logout, finger;
