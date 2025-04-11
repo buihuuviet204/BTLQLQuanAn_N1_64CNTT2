@@ -2,14 +2,14 @@ package com.example.qunnbnhyn.ThongKe;
 
 public class Invoice {
     private String id;
-    private String maKhach;
+    private String tenKhach; // Thay maKhach thành tenKhach
     private Long timestamp;
     private Long tongTien;
     private String paymentMethod, dateStr;
 
-    public Invoice(String id, String maKhach, Long timestamp, Long tongTien, String paymentMethod, String dateStr) {
+    public Invoice(String id, String tenKhach, Long timestamp, Long tongTien, String paymentMethod, String dateStr) {
         this.id = id;
-        this.maKhach = maKhach;
+        this.tenKhach = tenKhach; // Thay maKhach thành tenKhach
         this.timestamp = timestamp;
         this.tongTien = tongTien;
         this.paymentMethod = paymentMethod;
@@ -17,7 +17,7 @@ public class Invoice {
     }
 
     public String getId() { return id; }
-    public String getMaKhach() { return maKhach; }
+    public String getTenKhach() { return tenKhach; } // Thay getMaKhach thành getTenKhach
     public Long getTimestamp() { return timestamp; }
     public Long getTongTien() { return tongTien; }
     public String getPaymentMethod() { return paymentMethod; }
