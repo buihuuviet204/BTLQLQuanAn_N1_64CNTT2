@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:2:1-80:12
-INJECTED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:2:1-80:12
-INJECTED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:2:1-80:12
-INJECTED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:2:1-80:12
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:2:1-82:12
+INJECTED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:2:1-82:12
+INJECTED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:2:1-82:12
+INJECTED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:2:1-82:12
 MERGED from [com.cloudinary:cloudinary-android:3.0.2] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\54964f6fbb2a95bd17cfa840e1bda5fb\transformed\jetified-cloudinary-android-3.0.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.cloudinary:cloudinary-android-ui:3.0.2] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\ad8bfd3fe40d62b0e465046a338389f7\transformed\jetified-cloudinary-android-ui-3.0.2\AndroidManifest.xml:2:1-16:12
 MERGED from [com.cloudinary:cloudinary-android-preprocess:3.0.2] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\97aaa3cab74a9be5df868522afa9fb12\transformed\jetified-cloudinary-android-preprocess-3.0.2\AndroidManifest.xml:2:1-11:12
@@ -152,8 +152,8 @@ ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:7:5-
 	android:name
 		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:7:22-78
 application
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:9:5-78:19
-INJECTED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:9:5-78:19
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:9:5-80:19
+INJECTED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:9:5-80:19
 MERGED from [com.cloudinary:cloudinary-android-ui:3.0.2] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\ad8bfd3fe40d62b0e465046a338389f7\transformed\jetified-cloudinary-android-ui-3.0.2\AndroidManifest.xml:9:5-14:19
 MERGED from [com.cloudinary:cloudinary-android-ui:3.0.2] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\ad8bfd3fe40d62b0e465046a338389f7\transformed\jetified-cloudinary-android-ui-3.0.2\AndroidManifest.xml:9:5-14:19
 MERGED from [com.cloudinary:cloudinary-android-core:3.0.2] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\6dfb8db31f451000fa07642d0f424864\transformed\jetified-cloudinary-android-core-3.0.2\AndroidManifest.xml:11:5-20
@@ -244,144 +244,150 @@ ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:19:9
 		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:20:13-37
 	android:name
 		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:19:19-47
-activity#com.example.qunnbnhyn.datmon.DatMon
+activity#com.example.qunnbnhyn.datmon.XacNhanDat
 ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:21:9-22:39
 	android:exported
 		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:22:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:21:19-48
-activity#com.example.qunnbnhyn.QLKH.ActivityCustomerHome
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:21:19-52
+activity#com.example.qunnbnhyn.datmon.DatMon
 ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:23:9-24:39
 	android:exported
 		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:24:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:23:19-60
-activity#com.example.qunnbnhyn.ThongKe.ActivityShowReport
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:23:19-48
+activity#com.example.qunnbnhyn.QLKH.ActivityCustomerHome
 ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:25:9-26:39
 	android:exported
 		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:26:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:25:19-61
-activity#com.example.qunnbnhyn.QLM.QLMON
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:25:19-60
+activity#com.example.qunnbnhyn.ThongKe.ActivityShowReport
 ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:27:9-28:39
 	android:exported
 		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:28:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:27:19-44
-activity#com.example.qunnbnhyn.QLNV.QuanLyNhanVien
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:27:19-61
+activity#com.example.qunnbnhyn.QLM.QLMON
 ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:29:9-30:39
 	android:exported
 		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:30:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:29:19-54
-activity#com.example.qunnbnhyn.TT.ThanhToanChiTiet
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:31:9-33:40
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:29:19-44
+activity#com.example.qunnbnhyn.QLNV.QuanLyNhanVien
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:31:9-32:39
 	android:exported
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:33:13-37
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:32:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:32:13-48
-activity#com.example.qunnbnhyn.dondat.DonDatActivity
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:34:9-35:39
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:31:19-54
+activity#com.example.qunnbnhyn.TT.ThanhToanChiTiet
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:33:9-35:40
 	android:exported
 		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:35:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:34:19-56
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:34:13-48
+activity#com.example.qunnbnhyn.dondat.DonDatActivity
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:36:9-37:39
+	android:exported
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:37:13-37
+	android:name
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:36:19-56
 activity#com.example.qunnbnhyn.QLNV.XoaNhanVienChiTiet
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:36:9-38:40
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:38:9-40:40
 	android:exported
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:38:13-37
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:40:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:37:13-52
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:39:13-52
 activity#com.example.qunnbnhyn.QLNV.XoaNhanVien
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:39:9-41:40
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:41:9-43:40
 	android:exported
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:41:13-37
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:43:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:40:13-45
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:42:13-45
 activity#com.example.qunnbnhyn.QLNV.ChinhSuaThongTinChiTiet
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:42:9-44:40
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:44:9-46:40
 	android:exported
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:44:13-37
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:46:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:43:13-57
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:45:13-57
 activity#com.example.qunnbnhyn.QLNV.ChinhSuaThongTin
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:45:9-47:40
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:47:9-49:40
 	android:exported
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:47:13-37
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:49:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:46:13-50
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:48:13-50
 activity#com.example.qunnbnhyn.QLNV.ThemNhanVien
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:48:9-50:40
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:50:9-52:40
 	android:exported
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:50:13-37
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:52:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:49:13-46
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:51:13-46
 activity#com.example.qunnbnhyn.MainActivity
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:52:9-56:20
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:54:9-58:20
 	android:exported
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:54:13-37
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:56:13-37
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:53:13-41
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:55:13-41
 activity#com.example.qunnbnhyn.EmployeeListActivity
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:58:9-57
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:60:9-57
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:58:19-55
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:60:19-55
 activity#com.example.qunnbnhyn.GanCaActivity
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:59:9-49
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:61:9-49
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:59:19-47
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:61:19-47
 activity#com.example.qunnbnhyn.MenuNVActivity
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:60:9-51
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:62:9-51
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:60:19-49
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:62:19-49
 activity#com.example.qunnbnhyn.NVListActivity
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:61:9-51
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:63:9-51
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:61:19-49
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:63:19-49
 activity#com.example.qunnbnhyn.CheckCaActivity
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:62:9-52
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:64:9-52
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:62:19-50
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:64:19-50
 activity#com.example.qunnbnhyn.login.Login
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:63:9-70:20
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:65:9-72:20
 	android:exported
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:64:13-36
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:66:13-36
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:63:19-46
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:65:19-46
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:65:13-69:29
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:67:13-71:29
 action#android.intent.action.MAIN
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:66:17-69
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:68:17-69
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:66:25-66
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:68:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:68:17-77
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:70:17-77
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:68:27-74
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:70:27-74
 activity#com.example.qunnbnhyn.QLKH.ActivityAddCustomer
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:71:9-62
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:73:9-62
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:71:19-59
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:73:19-59
 activity#com.example.qunnbnhyn.QLKH.ActivityCustomerPriorityDetail
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:72:9-73
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:74:9-73
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:72:19-70
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:74:19-70
 activity#com.example.qunnbnhyn.QLKH.ActivityDeleteCustomer
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:73:9-65
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:75:9-65
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:73:19-62
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:75:19-62
 activity#com.example.qunnbnhyn.QLKH.ActivityEditCustomer
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:74:9-63
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:76:9-63
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:74:19-60
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:76:19-60
 activity#com.example.qunnbnhyn.QLKH.ActivityEditCustomerDetail
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:75:9-69
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:77:9-69
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:75:19-66
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:77:19-66
 activity#com.example.qunnbnhyn.QLKH.ActivityPriorityCustomer
-ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:76:9-67
+ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:78:9-67
 	android:name
-		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:76:19-64
+		ADDED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml:78:19-64
 uses-sdk
 INJECTED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\LAPTRINH\Project Push github\app\src\main\AndroidManifest.xml

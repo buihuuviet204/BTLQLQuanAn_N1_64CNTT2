@@ -40,6 +40,9 @@
             android:name="com.example.qunnbnhyn.TT.ThanhToan"
             android:exported="false" />
         <activity
+            android:name="com.example.qunnbnhyn.datmon.XacNhanDat"
+            android:exported="false" />
+        <activity
             android:name="com.example.qunnbnhyn.datmon.DatMon"
             android:exported="false" />
         <activity
