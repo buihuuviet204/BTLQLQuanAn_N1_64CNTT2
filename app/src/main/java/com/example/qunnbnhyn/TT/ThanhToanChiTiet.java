@@ -322,6 +322,9 @@ public class ThanhToanChiTiet extends AppCompatActivity {
         hoaDonRef.child("phuongThucThanhToan").setValue(phuongThuc); // Lưu phương thức thanh toán
         hoaDonRef.child("ngayThanhToan").setValue(ngayHienTai);      // Lưu ngày thanh toán
         hoaDonRef.child("tongTienThanhToan").setValue(tongTienThanhToan); // Lưu tổng tiền thanh toán
+        if (maKhachHang != null) {
+            hoaDonRef.child("maKhachHang").setValue(maKhachHang); // Lưu mã khách hàng nếu có
+        }
         tvTrangThai.setText("Trạng thái: Đã thanh toán");
 
         // Xóa mã hóa đơn khỏi bàn
