@@ -17,28 +17,28 @@
         android:theme="@style/Theme.QuánĂnBìnhYên"
         tools:targetApi="31">
         <activity
-            android:name=".ThanhToanChiTiet"
+            android:name=".TT.ThanhToanChiTiet"
             android:exported="false" />
         <activity
-            android:name=".ThanhToan"
+            android:name=".TT.ThanhToan"
             android:exported="false" />
         <activity
-            android:name=".XoaNhanVienChiTiet"
+            android:name=".QLNV.XoaNhanVienChiTiet"
             android:exported="false" />
         <activity
-            android:name=".XoaNhanVien"
+            android:name=".QLNV.XoaNhanVien"
             android:exported="false" />
         <activity
-            android:name=".ChinhSuaThongTinChiTiet"
+            android:name=".QLNV.ChinhSuaThongTinChiTiet"
             android:exported="false" />
         <activity
-            android:name=".ChinhSuaThongTin"
+            android:name=".QLNV.ChinhSuaThongTin"
             android:exported="false" />
         <activity
-            android:name=".ThemNhanVien"
+            android:name=".QLNV.ThemNhanVien"
             android:exported="false" />
         <activity
-            android:name=".QuanLyNhanVien"
+            android:name=".QLNV.QuanLyNhanVien"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

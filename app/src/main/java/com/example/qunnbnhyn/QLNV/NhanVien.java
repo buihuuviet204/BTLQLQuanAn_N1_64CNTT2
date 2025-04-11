@@ -1,4 +1,4 @@
-package com.example.qunnbnhyn;
+package com.example.qunnbnhyn.QLNV;
 
 public class NhanVien {
     private String maNhanVien;

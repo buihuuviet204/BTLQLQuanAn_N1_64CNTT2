@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F8CFA8"
     android:backgroundTint="#F8CFA8"
-    tools:context=".ChinhSuaThongTin">
+    tools:context=".QLNV.ChinhSuaThongTin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"

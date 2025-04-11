@@ -1,12 +1,13 @@
-package com.example.qunnbnhyn;
+package com.example.qunnbnhyn.QLNV;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.qunnbnhyn.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,18 +15,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class XoaNhanVienChiTiet extends AppCompatActivity {
+public class ChinhSuaThongTinChiTiet extends AppCompatActivity {
+
     // Khai báo các trường nhập liệu và thành phần giao diện
     private TextInputEditText txtMaNhanVien, txtHoTen, txtNgaySinh, txtEmail, txtSoDienThoai, txtQueQuan, txtMatKhau;
     private AutoCompleteTextView actvGioiTinh, actvChucVu; // Dropdown cho giới tính và chức vụ
-    private Button btnXoa, btnBack;
+    private Button btnSua, btnQuayLai;
     private DatabaseReference database; // Tham chiếu tới Firebase
     private String maNhanVien; // Mã nhân viên được truyền vào
+    private String currentAvatarBase64; // Lưu trữ avatarBase64 hiện tại của nhân viên
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xoa_nhan_vien_chi_tiet);
+        setContentView(R.layout.activity_chinh_sua_thong_tin_chi_tiet); // Gán layout cho Activity
 
         // Lấy mã nhân viên từ Intent
         maNhanVien = getIntent().getStringExtra("maNhanVien");
@@ -46,8 +49,8 @@ public class XoaNhanVienChiTiet extends AppCompatActivity {
         txtMatKhau = findViewById(R.id.txt_mat_khau);
         actvGioiTinh = findViewById(R.id.actv_gioi_tinh);
         actvChucVu = findViewById(R.id.actv_chuc_vu);
-        btnXoa = findViewById(R.id.btn_xoa);
-        btnBack = findViewById(R.id.btn_quaylai);
+        btnSua = findViewById(R.id.btn_sua);
+        btnQuayLai = findViewById(R.id.btn_quaylai);
 
         // Kết nối tới node của nhân viên cụ thể trong Firebase
         database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
@@ -68,9 +71,9 @@ public class XoaNhanVienChiTiet extends AppCompatActivity {
         // Vô hiệu hóa trường mã nhân viên để không chỉnh sửa
         txtMaNhanVien.setEnabled(false);
         // Xử lý sự kiện nút quay lại
-        btnBack.setOnClickListener(v -> finish());
-        // Xử lý sự kiện nút xóa (trước đây là sửa)
-        btnXoa.setOnClickListener(v -> deleteNhanVien()); // Gọi hàm xóa
+        btnQuayLai.setOnClickListener(v -> finish());
+        // Xử lý sự kiện nút cập nhật
+        btnSua.setOnClickListener(v -> updateNhanVien());
     }
 
     // Hàm tải thông tin nhân viên từ Firebase
@@ -91,32 +94,54 @@ public class XoaNhanVienChiTiet extends AppCompatActivity {
                     txtQueQuan.setText(nhanVien.getHometown());
                     actvChucVu.setText(nhanVien.getPosition(), false);
                     txtMatKhau.setText(nhanVien.getPassword());
+                    currentAvatarBase64 = nhanVien.getAvatarBase64(); // Lưu avatarBase64 hiện tại
                 } else {
                     // Hiển thị thông báo nếu không tìm thấy dữ liệu
-                    Toast.makeText(XoaNhanVienChiTiet.this, "Không tìm thấy thông tin nhân viên", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChinhSuaThongTinChiTiet.this, "Không tìm thấy thông tin nhân viên", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
                 // Hiển thị thông báo lỗi nếu tải dữ liệu thất bại
-                Toast.makeText(XoaNhanVienChiTiet.this, "Lỗi tải dữ liệu: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ChinhSuaThongTinChiTiet.this, "Lỗi tải dữ liệu: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    // Hàm xóa thông tin nhân viên khỏi Firebase
-    private void deleteNhanVien() {
-        // Xóa node nhân viên khỏi Firebase
-        database.removeValue()
+    // Hàm cập nhật thông tin nhân viên
+    private void updateNhanVien() {
+        // Lấy dữ liệu từ các trường nhập liệu
+        String hoTen = txtHoTen.getText().toString().trim();
+        String ngaySinh = txtNgaySinh.getText().toString().trim();
+        String gioiTinh = actvGioiTinh.getText().toString().trim();
+        String email = txtEmail.getText().toString().trim();
+        String soDienThoai = txtSoDienThoai.getText().toString().trim();
+        String queQuan = txtQueQuan.getText().toString().trim();
+        String chucVu = actvChucVu.getText().toString().trim();
+        String matKhau = txtMatKhau.getText().toString().trim();
+
+        // Kiểm tra xem các trường có bị bỏ trống hay không
+        if (hoTen.isEmpty() || ngaySinh.isEmpty() || gioiTinh.isEmpty() || email.isEmpty() ||
+                soDienThoai.isEmpty() || queQuan.isEmpty() || chucVu.isEmpty() || matKhau.isEmpty()) {
+            Toast.makeText(this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Tạo đối tượng NhanVien mới với thông tin đã cập nhật, giữ nguyên avatar
+        NhanVien updatedNhanVien = new NhanVien(maNhanVien, hoTen, ngaySinh, gioiTinh, email,
+                soDienThoai, queQuan, chucVu, matKhau, currentAvatarBase64);
+
+        // Lưu dữ liệu vào Firebase
+        database.setValue(updatedNhanVien)
                 .addOnSuccessListener(aVoid -> {
                     // Hiển thị thông báo thành công và thoát
-                    Toast.makeText(this, "Xóa nhân viên thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                     finish();
                 })
                 .addOnFailureListener(e -> {
-                    // Hiển thị thông báo lỗi nếu xóa thất bại
-                    Toast.makeText(this, "Lỗi xóa nhân viên: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    // Hiển thị thông báo lỗi nếu cập nhật thất bại
+                    Toast.makeText(this, "Lỗi cập nhật: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
     }
 }

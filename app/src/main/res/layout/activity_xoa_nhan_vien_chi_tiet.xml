@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="#ffffff"
-    tools:context=".XoaNhanVienChiTiet">
+    tools:context=".QLNV.XoaNhanVienChiTiet">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
