@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Quán ăn bình yên</string>
+    <string name="back_button">Quay lại</string>
+    <string name="choose_gender">Chọn giới tính từ danh sách gợi ý</string>
 </resources>
