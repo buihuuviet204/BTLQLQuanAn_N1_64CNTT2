@@ -33,6 +33,17 @@ android {
 }
 
 dependencies {
+//    implementation ("androidx.cardview:cardview:1.0.0")
+//    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+//
+//    implementation ("androidx.appcompat:appcompat:1.6.1")
+//    implementation ("com.google.android.material:material:1.11.0")
+//    implementation ("androidx.activity:activity:1.8.0")
+//    implementation ("com.google.firebase:firebase-database:21.0.0")
+//    implementation ("com.google.firebase:firebase-storage:20.3.0")
+//    implementation ("com.google.firebase:firebase-auth:22.3.1")
+//    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
+//    implementation("com.google.firebase:firebase-auth")
     implementation ("androidx.cardview:cardview:1.0.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("com.github.4inodev:Neomorphic-FrameLayout-Android:1.03")
@@ -64,9 +75,8 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.database)
-    implementation(libs.credentials)
-    implementation(libs.credentials.play.services.auth)
-    implementation(libs.googleid)
+    implementation(libs.firebase.database)
+
     implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

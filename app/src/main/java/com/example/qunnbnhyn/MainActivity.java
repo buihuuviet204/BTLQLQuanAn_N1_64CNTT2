@@ -2,6 +2,7 @@ package com.example.qunnbnhyn;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +29,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+    private Button btnAdd, btnThanhtoan;
 
     private ImageView diningTableImageView, logout, finger;
     private ImageView supplies, customService, happyClient, discount;
@@ -36,6 +42,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        btnAdd = (Button) findViewById(R.id.btn_quanly);
+        btnThanhtoan = (Button) findViewById(R.id.btn_thanhtoan);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it1 = new Intent(MainActivity.this, QuanLyNhanVien.class);
+                startActivity(it1);
+            }
+        });
+        btnThanhtoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it2 = new Intent(MainActivity.this, ThanhToan.class);
+                startActivity(it2);
+            }
         setContentView(R.layout.activity_main_nv);
 
         // Lấy maNhanVien từ Intent trước
@@ -80,104 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, EmployeeListActivity.class);
                 startActivity(intent);
             }
-        });
 
-        // Sự kiện khi nhấn nút logout
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Hiển thị dialog xác nhận đăng xuất
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Xác nhận đăng xuất")
-                        .setMessage("Bạn có chắc chắn muốn đăng xuất không?")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Lấy thời gian hiện tại
-                                String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-
-                                // Cập nhật thời gian check-out vào node Chấm công
-                                timeTrackingRef.child("check-out").setValue(currentTime).addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) {
-                                        // Đăng xuất khỏi Firebase Authentication
-                                        myAuth.signOut();
-
-                                        // Hiển thị thông báo đăng xuất thành công
-                                        Toast.makeText(MainActivity.this, "Đăng xuất thành công!", Toast.LENGTH_SHORT).show();
-
-                                        // Chuyển về LoginActivity và xóa toàn bộ activity stack
-                                      /*  Intent intent = new Intent(MainActivity.this, Login.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
-                                        finish();*/
-                                        // Thoát ứng dụng
-                                        finishAffinity();
-                                    } else {
-                                        Toast.makeText(MainActivity.this, "Lỗi lưu giờ checkout: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                    }
-                                });
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss(); // Đóng dialog, không làm gì
-                            }
-                        })
-                        .show();
-            }
-        });
-
-        // Sự kiện khi nhấn nút finger (check-in)
-        finger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Lấy thông tin ca làm việc (shift) từ node Employees
-                database.child("shift").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-                        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-                        Map<String, String> cong = new HashMap<>();
-                        cong.put("check-in",currentTime);
-                        cong.put("check-out","null");
-                        cong.put("shift",snapshot.getValue(String.class));
-                        FirebaseDatabase.getInstance().getReference("Cham_cong").child(currentDate).child(maNhanVien).setValue(cong);
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-        });
-
-        supplies.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
-        customService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
-        happyClient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
-        discount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
     }
 }
-
-

@@ -4,4 +4,6 @@
     <string name="xoa_mon">Xoa mon</string>
     <string name="sua_thong_tin">Sua thong tin</string>
     <string name="them_mon">Them mon</string>
+    <string name="back_button">Quay lại</string>
+    <string name="choose_gender">Chọn giới tính từ danh sách gợi ý</string>
 </resources>

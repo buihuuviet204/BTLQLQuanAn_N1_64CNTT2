@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F6F6"
+    android:backgroundTint="#F8CFA8"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#F8CFA8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_ios_24"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txt_quan_ly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:text="QUẢN LÝ \nNHÂN VIÊN"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="1000dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/background"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_quan_ly"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/txt_chuc_nang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Các chức năng quản lý >"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.106"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_chuc_nang" />
+
+        <LinearLayout
+            android:id="@+id/ll_chuc_nang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_chuc_nang">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background2"
+                android:backgroundTint="#E3F2FD"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img_them"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="fitStart"
+                    app:srcCompat="@drawable/baseline_add_circle_outline_24"
+                    app:tint="#1976D2" />
+
+                <Button
+                    android:id="@+id/btn_them"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:backgroundTint="#E3F2FD"
+                    android:gravity="start"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="0dp"
+                    android:text="Thêm \nnhân viên"
+                    android:textColor="#000000"
+                    android:textColorLink="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background2"
+                android:backgroundTint="#FFFDE7"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img_sua"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="fitStart"
+                    app:srcCompat="@drawable/baseline_edit_24"
+                    app:tint="#F9A825" />
+
+                <Button
+                    android:id="@+id/btn_sua"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:backgroundTint="#FFFDE7"
+                    android:gravity="start"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="0dp"
+                    android:text="Chỉnh sửa \nthông tin"
+                    android:textColor="#000000"
+                    android:textColorLink="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background2"
+                android:backgroundTint="#FFEBEE"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img_xoa"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="fitStart"
+                    app:srcCompat="@drawable/baseline_delete_forever_24"
+                    app:tint="#D32F2F" />
+
+                <Button
+                    android:id="@+id/btn_xoa"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:backgroundTint="#FFEBEE"
+                    android:gravity="start"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="0dp"
+                    android:text="Xóa \nnhân viên"
+                    android:textColor="#000000"
+                    android:textColorLink="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

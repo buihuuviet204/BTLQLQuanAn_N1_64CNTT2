@@ -3,7 +3,6 @@ package com.example.qunnbnhyn;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,7 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
     @Override
     public NhanVienViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Tạo view từ file layout danh_sach_nhan_vien.xml
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.danhsachnv, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.danh_sach_nhan_vien, parent, false);
         return new NhanVienViewHolder(view); // Trả về ViewHolder chứa view vừa tạo
     }
 
@@ -42,9 +41,20 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
         holder.txtMaNhanVien.setText(nhanVien.getMaNhanVien()); // Gán mã nhân viên vào TextView
         holder.txtHoTen.setText(nhanVien.getName()); // Gán tên nhân viên vào TextView
 
+        // Xử lý hiển thị ảnh đại diện
+        if (nhanVien.getAvatarBase64() != null && !nhanVien.getAvatarBase64().isEmpty()) {
+            // Nếu có ảnh (chuỗi Base64 không rỗng)
+            byte[] decodedString = Base64.decode(nhanVien.getAvatarBase64(), Base64.DEFAULT); // Giải mã chuỗi Base64 thành mảng byte
+            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length); // Chuyển mảng byte thành ảnh Bitmap
+            holder.imgNhanVien.setImageBitmap(bitmap); // Hiển thị ảnh lên ImageView
+        } else {
+            // Nếu không có ảnh, dùng ảnh mặc định
+            holder.imgNhanVien.setImageResource(R.drawable.ic_launcher_background);
+        }
 
 
         // Xử lý sự kiện khi người dùng nhấn vào item
+        holder.itemView.setOnClickListener(v -> listener.onNhanVienClick(nhanVien)); // Gọi hàm trong listener khi nhấn
         holder.itemView.setOnClickListener(v -> {
             Log.d("NhanVienAdapter", "Item clicked: " + nhanVien.getMaNhanVien());
             listener.onNhanVienClick(nhanVien);
@@ -67,6 +77,9 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
         // Constructor: Liên kết các thành phần giao diện với ID trong layout
         public NhanVienViewHolder(@NonNull View itemView) {
             super(itemView);
+            imgNhanVien = itemView.findViewById(R.id.img_nhan_vien);     // Gắn ImageView với ID
+            txtMaNhanVien = itemView.findViewById(R.id.txt_ma_nhan_vien); // Gắn TextView mã nhân viên với ID
+            txtHoTen = itemView.findViewById(R.id.txt_ho_ten);           // Gắn TextView tên nhân viên với ID
             txtMaNhanVien = itemView.findViewById(R.id.tvEmployeeId); // Gắn TextView mã nhân viên với ID
             txtHoTen = itemView.findViewById(R.id.tvEmployeeName);           // Gắn TextView tên nhân viên với ID
         }
