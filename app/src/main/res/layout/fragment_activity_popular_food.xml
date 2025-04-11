@@ -27,7 +27,7 @@
                 android:id="@+id/tv_popular_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="MÓN ĂN THỊNH HÀNH"
                 android:textColor="#212121"
@@ -38,20 +38,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <Spinner
                     android:id="@+id/spinner_time_popular"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:background="@drawable/spinner_background"
                     android:entries="@array/time_options"
                     android:padding="8dp" />
 
                 <TextView
                     android:id="@+id/tv_date_picker_popular"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
@@ -62,8 +63,8 @@
 
                 <Button
                     android:id="@+id/btn_confirm_popular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="107dp"
+                    android:layout_height="45dp"
                     android:backgroundTint="#4CAF50"
                     android:text="Xác nhận"
                     android:textColor="#FFFFFF" />

@@ -192,9 +192,9 @@ public class ActivityFragmentIncome extends Fragment {
                     try {
                         String invoiceId = invoiceSnapshot.getKey();
                         String maKhach = invoiceSnapshot.child("maKhach").getValue(String.class);
-                        String dateStr = invoiceSnapshot.child("ngLap").getValue(String.class); // Now a string like "09/04/2025"
+                        String dateStr = invoiceSnapshot.child("ngLap").getValue(String.class);
                         Long tongTien = invoiceSnapshot.child("tongTien").getValue(Long.class);
-                        Boolean trangThai = invoiceSnapshot.child("trangthai").getValue(Boolean.class);
+                        String phuongThucThanhToan = invoiceSnapshot.child("phuongThucThanhToan").getValue(String.class);
 
                         // Parse the date string to a timestamp
                         Long timestamp = null;
@@ -205,7 +205,7 @@ public class ActivityFragmentIncome extends Fragment {
                             }
                         }
 
-                        Invoice invoice = new Invoice(invoiceId, maKhach, timestamp, tongTien, trangThai != null && trangThai ? "Chuyển khoản" : "Tiền mặt");
+                        Invoice invoice = new Invoice(invoiceId, maKhach, timestamp, tongTien,  phuongThucThanhToan, dateStr);
                         invoiceList.add(invoice);
                         Log.d("Invoice", "Added invoice: " + invoiceId + ", Date: " + (timestamp != null ? dayFormat.format(new Date(timestamp)) : "N/A"));
                     } catch (Exception e) {
