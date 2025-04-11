@@ -40,6 +40,9 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.TimeZone;
 
+import com.example.qunnbnhyn.ThongKe.Invoice;
+import com.example.qunnbnhyn.ThongKe.InvoiceAdapter;
+
 public class ActivityFragmentIncome extends Fragment {
 
     private ImageView imageView;
@@ -189,31 +192,72 @@ public class ActivityFragmentIncome extends Fragment {
             public void onDataChange(DataSnapshot snapshot) {
                 invoiceList.clear();
 
+                // Tạo tham chiếu đến node customers
+                DatabaseReference customersRef = FirebaseDatabase.getInstance("https://quananbinhyen-cntt2-default-rtdb.asia-southeast1.firebasedatabase.app")
+                        .getReference("customers");
+
                 for (DataSnapshot invoiceSnapshot : snapshot.getChildren()) {
                     try {
-                        String invoiceId = invoiceSnapshot.getKey();
-                        String maKhach = invoiceSnapshot.child("maKhach").getValue(String.class);
-                        String dateStr = invoiceSnapshot.child("ngLap").getValue(String.class);
-                        Long tongTien = invoiceSnapshot.child("tongTien").getValue(Long.class);
-                        String phuongThucThanhToan = invoiceSnapshot.child("phuongThucThanhToan").getValue(String.class);
+                        // Khai báo các biến với từ khóa final
+                        final String invoiceId = invoiceSnapshot.getKey();
+                        final String maKhach = invoiceSnapshot.child("maKhach").getValue(String.class); // Lấy mã khách từ hoa_don
+                        final String dateStr = invoiceSnapshot.child("ngLap").getValue(String.class);
+                        final Long tongTien = invoiceSnapshot.child("tongTienThanhToan").getValue(Long.class); // Sửa thành tongTienThanhToan
+                        final String phuongThucThanhToan = invoiceSnapshot.child("phuongThucThanhToan").getValue(String.class);
 
                         // Parse the date string to a timestamp
-                        Long timestamp = null;
+                        final Long timestamp;
                         if (dateStr != null) {
                             Date date = dayFormat.parse(dateStr);
                             if (date != null) {
                                 timestamp = date.getTime();
+                            } else {
+                                timestamp = null;
                             }
+                        } else {
+                            timestamp = null;
                         }
 
-                        Invoice invoice = new Invoice(invoiceId, maKhach, timestamp, tongTien,  phuongThucThanhToan, dateStr);
-                        invoiceList.add(invoice);
-                        Log.d("Invoice", "Added invoice: " + invoiceId + ", Date: " + (timestamp != null ? dayFormat.format(new Date(timestamp)) : "N/A"));
+                        // Nếu không có mã khách, gán tên khách là "Khách vãng lai"
+                        if (maKhach == null) {
+                            Invoice invoice = new Invoice(invoiceId, "Khách vãng lai", timestamp, tongTien, phuongThucThanhToan, dateStr);
+                            invoiceList.add(invoice);
+                            Log.d("Invoice", "Added invoice: " + invoiceId + ", Date: " + (timestamp != null ? dayFormat.format(new Date(timestamp)) : "N/A"));
+                            updateDateOptions(); // Cập nhật date options ngay sau khi thêm
+                            continue;
+                        }
+
+                        // Tra cứu tên khách hàng từ node customers
+                        customersRef.child(maKhach).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot customerSnapshot) {
+                                String tenKhach = customerSnapshot.child("name").getValue(String.class);
+                                if (tenKhach == null) {
+                                    tenKhach = "Khách vãng lai"; // Nếu không tìm thấy tên, gán mặc định
+                                }
+
+                                // Sử dụng các biến final
+                                Invoice invoice = new Invoice(invoiceId, tenKhach, timestamp, tongTien, phuongThucThanhToan, dateStr);
+                                invoiceList.add(invoice);
+                                Log.d("Invoice", "Added invoice: " + invoiceId + ", Customer: " + tenKhach + ", Date: " + (timestamp != null ? dayFormat.format(new Date(timestamp)) : "N/A"));
+
+                                // Cập nhật lại date options sau khi thêm hóa đơn
+                                updateDateOptions();
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError error) {
+                                Log.e("FirebaseError", "Lỗi khi lấy tên khách hàng: " + error.getMessage());
+                                // Nếu lỗi, gán tên khách là "Khách vãng lai"
+                                Invoice invoice = new Invoice(invoiceId, "Khách vãng lai", timestamp, tongTien, phuongThucThanhToan, dateStr);
+                                invoiceList.add(invoice);
+                                updateDateOptions();
+                            }
+                        });
                     } catch (Exception e) {
                         Toast.makeText(getContext(), "Lỗi khi đọc dữ liệu hóa đơn: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
-                updateDateOptions();
             }
 
             @Override
