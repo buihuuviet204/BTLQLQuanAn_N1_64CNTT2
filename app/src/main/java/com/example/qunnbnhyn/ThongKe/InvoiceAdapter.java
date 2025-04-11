@@ -60,9 +60,9 @@ public class InvoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             InvoiceViewHolder invoiceHolder = (InvoiceViewHolder) holder;
             Invoice invoice = (Invoice) invoiceList.get(position);
             invoiceHolder.tvInvoiceId.setText("Mã hóa đơn: " + invoice.getId());
-            invoiceHolder.tvMaKhach.setText("Mã khách hàng: "+invoice.getMaKhach());
-            invoiceHolder.tvTongTien.setText("Tổng tiền: "+(String.format("%,d VNĐ", invoice.getTongTien())));
-            invoiceHolder.tvPaymentMethod.setText("Phương thức thanh toán: "+invoice.getPaymentMethod());
+            invoiceHolder.tvMaKhach.setText("Tên khách: " + invoice.getTenKhach()); // Sửa getMaKhach thành getTenKhach
+            invoiceHolder.tvTongTien.setText("Tổng tiền: " + (String.format("%,d VNĐ", invoice.getTongTien())));
+            invoiceHolder.tvPaymentMethod.setText("Phương thức thanh toán: " + invoice.getPaymentMethod());
             Long timestamp = invoice.getTimestamp();
             invoiceHolder.tvDate.setText("Thời gian: " + invoice.getDateStr());
         }
