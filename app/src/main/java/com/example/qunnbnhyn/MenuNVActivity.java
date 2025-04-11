@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.qunnbnhyn.login.Login;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,9 +42,12 @@ public class MenuNVActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_nv);
 
         // Kết nối tới node Employees trên Firebase (sau khi maNhanVien đã được gán)
+        Intent intent = getIntent();
+        maNhanVien = intent.getStringExtra("maNhanVien");
+        Log.d("Ma NV",maNhanVien);
         database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
 
         // Kết nối tới node Chấm công
@@ -54,7 +58,6 @@ public class MenuNVActivity extends AppCompatActivity {
         myAuth = FirebaseAuth.getInstance();
 
         // Ánh xạ các view
-        Intent intent = getIntent();
         txtName = findViewById(R.id.txtName);
         Log.d("name",intent.getStringExtra("full_name"));
         txtName.setText(intent.getStringExtra("full_name"));

@@ -2,4 +2,7 @@
     <string name="app_name">Quán ăn bình yên</string>
     <string name="back_button">Quay lại</string>
     <string name="choose_gender">Chọn giới tính từ danh sách gợi ý</string>
+    <string name="sua_thong_tin">sua_thong_tin</string>
+    <string name="them_mon">them_mon</string>
+    <string name="xoa_mon">xoa_mon</string>
 </resources>

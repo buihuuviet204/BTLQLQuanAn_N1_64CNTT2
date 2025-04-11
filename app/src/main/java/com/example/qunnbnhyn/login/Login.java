@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.qunnbnhyn.MainActivity;
+import com.example.qunnbnhyn.MenuNVActivity;
 import com.example.qunnbnhyn.QLM.MonAn;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -83,13 +85,14 @@ public class Login extends AppCompatActivity {
                 String role = (String) snapshot.getValue(String.class);
                 Intent intent;
                 if (role != null && role.equals("Nhân viên")) {
-                    intent = new Intent(Login.this, ActivityMainNV.class);
+                    intent = new Intent(Login.this, MenuNVActivity.class);
                 } else {
                     intent = new Intent(Login.this, MainActivity.class);
                 }
                 Log.d("name: ", fullName);
                 intent.putExtra("maNhanVien",uid);
                 intent.putExtra("full_name", fullName);
+
                 startActivity(intent);
                 finish();
             }

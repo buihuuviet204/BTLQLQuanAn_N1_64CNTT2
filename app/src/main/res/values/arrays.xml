@@ -5,4 +5,9 @@
         <item>Theo tháng</item>
         <item>Tất cả</item>
     </array>
+
+        <string-array name="filter_type_options">
+            <item>Ngày</item>
+            <item>Tháng</item>
+        </string-array>
 </resources>
