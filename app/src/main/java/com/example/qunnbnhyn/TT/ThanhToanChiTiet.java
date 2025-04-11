@@ -331,37 +331,7 @@ public class ThanhToanChiTiet extends AppCompatActivity {
         int soBan = Integer.parseInt(tvSoBan.getText().toString().replace("Số bàn: ", ""));
         databaseReference.child("ban_an").child(String.valueOf(soBan - 1)).setValue("");
 
-        // Lưu thông tin thanh toán lên node thanh_toan_lich_su
-        String phuongThucNode = phuongThuc.equals("Tiền mặt") ? "tien_mat" : "chuyen_khoan";
-        DatabaseReference thanhToanRef = databaseReference.child("thanh_toan_lich_su").child(ngayHienTai).child(phuongThucNode);
-
-        thanhToanRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                int soLan = 0;
-                int tongTienHienTai = 0;
-
-                // Lấy dữ liệu hiện tại (nếu có)
-                if (snapshot.exists()) {
-                    Long soLanLong = snapshot.child("so_lan").getValue(Long.class);
-                    Long tongTienLong = snapshot.child("tong_tien").getValue(Long.class);
-                    soLan = soLanLong != null ? soLanLong.intValue() : 0;
-                    tongTienHienTai = tongTienLong != null ? tongTienLong.intValue() : 0;
-                }
-
-                // Cập nhật số lần và tổng tiền
-                soLan += 1;
-                tongTienHienTai += tongTienThanhToan;
-
-                // Lưu lại lên Firebase
-                thanhToanRef.child("so_lan").setValue(soLan);
-                thanhToanRef.child("tong_tien").setValue(tongTienHienTai);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {}
-        });
-
+        
         // Hiển thị thông báo thành công
         String thongBao = "Thanh toán bằng " + phuongThuc + " hoàn tất!";
         if (maKhachHang != null) {
