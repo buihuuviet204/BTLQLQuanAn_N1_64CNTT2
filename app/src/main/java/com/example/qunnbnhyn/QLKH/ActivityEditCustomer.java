@@ -1,6 +1,6 @@
-package com.example.qunnbnhyn;
+package com.example.qunnbnhyn.QLKH;
 
-import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -8,6 +8,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.qunnbnhyn.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,28 +18,33 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityDeleteCustomer extends AppCompatActivity {
+public class ActivityEditCustomer extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CustomerAdapter adapter;
     private List<Customer> customerList;
     private DatabaseReference databaseReference;
     ImageView imgViewBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_delete_customer);
+        setContentView(R.layout.activity_edit_customer);
 
-        recyclerView = findViewById(R.id.rcDeleteCustomer);
+        recyclerView = findViewById(R.id.rcEditCustomer);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         customerList = new ArrayList<>();
-        adapter = new CustomerAdapter(customerList, this::showDeleteConfirmation);
+        adapter = new CustomerAdapter(customerList, customer -> {
+            Intent intent = new Intent(this, ActivityEditCustomerDetail.class);
+            intent.putExtra("customerId", customer.getId());
+            startActivity(intent);
+        });
         recyclerView.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance("https://quananbinhyen-cntt2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("customers");
         loadCustomers();
-        imgViewBack = findViewById(R.id.imgViewBackDelete);
+        imgViewBack = findViewById(R.id.imgViewBackEdit);
         imgViewBack.setOnClickListener(v -> finish());
     }
 
@@ -53,25 +60,15 @@ public class ActivityDeleteCustomer extends AppCompatActivity {
                     }
                 }
                 adapter.notifyDataSetChanged();
+                if (customerList.isEmpty()) {
+                    Toast.makeText(ActivityEditCustomer.this, "Không có khách hàng nào để hiển thị", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ActivityDeleteCustomer.this, "Lỗi: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityEditCustomer.this, "Lỗi tải dữ liệu: " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    private void showDeleteConfirmation(Customer customer) {
-        new AlertDialog.Builder(this)
-                .setTitle("Xác nhận xóa")
-                .setMessage("Bạn có chắc muốn xóa khách hàng " + customer.getName() + "?")
-                .setPositiveButton("Có", (dialog, which) -> {
-                    databaseReference.child(customer.getId()).removeValue()
-                            .addOnSuccessListener(aVoid -> Toast.makeText(this, "Xóa thành công", Toast.LENGTH_SHORT).show())
-                            .addOnFailureListener(e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-                })
-                .setNegativeButton("Không", null)
-                .show();
     }
 }
