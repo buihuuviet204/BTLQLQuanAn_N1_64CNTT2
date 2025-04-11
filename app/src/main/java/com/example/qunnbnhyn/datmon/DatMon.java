@@ -45,7 +45,6 @@ public class DatMon extends AppCompatActivity implements OnChangeListener {
     private TextView txttongtien;
     private List<MonAn> listMiCay, listTraSua, listTraHQua, listDAVat, listCombo;
     private List<EditText> listEditText;
-    private boolean isRecyclerViewTouched = false;
     private ThucDonAdapter thucDonAdapter;
     private ImageButton btnFilter, btnHome;
     private Button btnAll;
@@ -90,8 +89,8 @@ public class DatMon extends AppCompatActivity implements OnChangeListener {
         initMenu();
         // Khởi tạo và gán adapter trước khi gọi filter và notifyDataSetChanged()
         filter("Tat ca");
-        thucDonAdapter = new ThucDonAdapter(thucdon, this);
-        thucDonAdapter.setCtdh(ctdh);
+        thucDonAdapter = new ThucDonAdapter(thucdon, this,ctdh);
+
         recyclerView.setAdapter(thucDonAdapter);
 
 

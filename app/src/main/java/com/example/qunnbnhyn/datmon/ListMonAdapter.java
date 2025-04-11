@@ -1,6 +1,8 @@
 package com.example.qunnbnhyn.datmon;
 
+import android.content.Context;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +38,8 @@ public class ListMonAdapter extends RecyclerView.Adapter<ListMonAdapter.ListMonV
         this.listener = listener;
         this.ctdh = ctdh;
     }
+
+
 
     public ListMonAdapter(List<MonAn> listmon, OnChangeListener listener) {
         this.listmon = listmon;
@@ -75,6 +80,7 @@ public class ListMonAdapter extends RecyclerView.Adapter<ListMonAdapter.ListMonV
 
             @Override
             public void afterTextChanged(Editable s) {
+
                 String sluong = s.toString().trim();
                 if (sluong.isEmpty()) {
                     ctdh.remove(monAn.getMaMon());
@@ -88,6 +94,7 @@ public class ListMonAdapter extends RecyclerView.Adapter<ListMonAdapter.ListMonV
                         }
                     } catch (NumberFormatException e) {
                         ctdh.remove(monAn.getMaMon());
+                        holder.editSoluong.setText("");
                     }
                 }
                 if (listener != null) {

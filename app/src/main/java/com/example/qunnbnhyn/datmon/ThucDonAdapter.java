@@ -1,6 +1,7 @@
 package com.example.qunnbnhyn.datmon;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,13 @@ public class ThucDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private List<ItemThucDon> items;
     private OnChangeListener listener;
     private HashMap<String, Integer> ctdh;
+
+
+    public ThucDonAdapter(List<ItemThucDon> items, OnChangeListener listener, HashMap<String, Integer> ctdh) {
+        this.items = items;
+        this.listener = listener;
+        this.ctdh = ctdh;
+    }
 
     public ThucDonAdapter(List<ItemThucDon> items, OnChangeListener listener) {
         this.items = items;
