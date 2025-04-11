@@ -1,8 +1,10 @@
-package com.example.qunnbnhyn;
+package com.example.qunnbnhyn.ThongKe;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.example.qunnbnhyn.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ActivityShowReport extends AppCompatActivity {

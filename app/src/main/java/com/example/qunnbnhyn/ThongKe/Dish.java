@@ -1,4 +1,4 @@
-package com.example.qunnbnhyn;
+package com.example.qunnbnhyn.ThongKe;
 
 public class Dish {
     private String id;

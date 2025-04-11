@@ -1,4 +1,4 @@
-package com.example.qunnbnhyn;
+package com.example.qunnbnhyn.ThongKe;
 
 public class InvoiceDetail {
     private String id; // ID của món ăn

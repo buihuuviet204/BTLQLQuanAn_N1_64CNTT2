@@ -1,9 +1,11 @@
-package com.example.qunnbnhyn;
+package com.example.qunnbnhyn.QLKH;
 
 import android.os.Bundle;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.qunnbnhyn.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;

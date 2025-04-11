@@ -1,4 +1,4 @@
-package com.example.qunnbnhyn;
+package com.example.qunnbnhyn.QLKH;
 
 public class Customer {
     private String id;

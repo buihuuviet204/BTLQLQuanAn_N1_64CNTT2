@@ -1,4 +1,4 @@
-package com.example.qunnbnhyn;
+package com.example.qunnbnhyn.ThongKe;
 
 public class Invoice {
     private String id;

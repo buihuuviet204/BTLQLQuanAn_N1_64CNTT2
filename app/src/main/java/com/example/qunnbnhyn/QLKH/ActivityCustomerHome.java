@@ -1,4 +1,4 @@
-package com.example.qunnbnhyn;
+package com.example.qunnbnhyn.QLKH;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.Button;
+
+import com.example.qunnbnhyn.ThongKe.ActivityShowReport;
+import com.example.qunnbnhyn.R;
 
 public class ActivityCustomerHome extends AppCompatActivity {
 
