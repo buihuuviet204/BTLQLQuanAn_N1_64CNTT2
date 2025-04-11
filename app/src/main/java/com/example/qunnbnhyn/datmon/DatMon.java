@@ -79,13 +79,27 @@ public class DatMon extends AppCompatActivity implements OnChangeListener {
         spinnerLoai.setAdapter(adapter);
         ctdh = new HashMap<>();
         menu = new HashMap<>();
-        thucDonAdapter = new ThucDonAdapter(thucdon, this);
-        thucDonAdapter.setCtdh(ctdh);
+
         hoadon = new HoaDon();
         hoadon.setCTDH(ctdh);
         editSearch = findViewById(R.id.edit_search);
         btnHome.setOnClickListener(v -> finish());
         recyclerView1 = findViewById(R.id.rcl_search);
+        Intent intentMenu = getIntent();
+        menu = (HashMap<String, MonAn>) intentMenu.getSerializableExtra("menu");
+        initMenu();
+        // Khởi tạo và gán adapter trước khi gọi filter và notifyDataSetChanged()
+        filter("Tat ca");
+        thucDonAdapter = new ThucDonAdapter(thucdon, this);
+        thucDonAdapter.setCtdh(ctdh);
+        recyclerView.setAdapter(thucDonAdapter);
+
+
+
+
+        for (String key : menu.keySet()) {
+            Log.d("DatMon", "Menu key: " + key + ", value: " + menu.get(key).getName());
+        }
         btnAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,7 +139,6 @@ public class DatMon extends AppCompatActivity implements OnChangeListener {
         spinnerLoai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                thucdon.clear();
                 String selectedCategory = (String) parent.getItemAtPosition(position);
                 filter(selectedCategory);
                 thucDonAdapter.notifyDataSetChanged();
@@ -136,7 +149,7 @@ public class DatMon extends AppCompatActivity implements OnChangeListener {
             }
         });
 
-        recyclerView.setAdapter(thucDonAdapter);
+
 
         btnFilter.setOnClickListener(v -> {
             if (spinnerLoai.getVisibility() == View.VISIBLE) {
@@ -153,7 +166,7 @@ public class DatMon extends AppCompatActivity implements OnChangeListener {
             startActivityForResult(intent, 1);
         });
 
-        readThucDonData();
+
     }
     public boolean isSubStringIgnoreCase(String main, String sub) {
         if (main == null || sub == null) {
@@ -161,7 +174,17 @@ public class DatMon extends AppCompatActivity implements OnChangeListener {
         }
         return main.toLowerCase().contains(sub.toLowerCase());
     }
+    private void initMenu(){
+        for(String key : menu.keySet()){
+            if (menu.get(key).getLoai().equals("Mi Kay"))   listMiCay.add(menu.get(key));
+            if (menu.get(key).getLoai().equals("Tra sua"))  listTraSua.add(menu.get(key));
+            if (menu.get(key).getLoai().equals("Tra hoa qua"))  listTraHQua.add(menu.get(key));
+            if (menu.get(key).getLoai().equals("Do an vat")) listDAVat.add(menu.get(key));
+            if (menu.get(key).getLoai().equals("Combo")) listCombo.add(menu.get(key));
+        }
+    }
     private void filter(String loai){
+        thucdon.clear();
         if (loai.equals("Tat ca")) {
             if (!listMiCay.isEmpty()) {
                 thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Mi Kay", null));
@@ -234,61 +257,6 @@ public class DatMon extends AppCompatActivity implements OnChangeListener {
     }
 
 
-    private void readThucDonData() {
-        monAnRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("Thay doi: ","Request");
-                listCombo.clear();
-                listMiCay.clear();
-                listTraSua.clear();
-                listDAVat.clear();
-                listTraHQua.clear();
-                thucdon.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    MonAn monAn = dataSnapshot.getValue(MonAn.class);
-                    monAn.setMaMon(dataSnapshot.getKey().toString());
-                    if (monAn != null) {
-                        String loai = monAn.getLoai();
-                        if (loai.equals("Mi Kay")) listMiCay.add(monAn);
-                        else if (loai.equals("Tra sua")) listTraSua.add(monAn);
-                        else if (loai.equals("Tra hoa qua")) listTraHQua.add(monAn);
-                        else if (loai.equals("Do an vat")) listDAVat.add(monAn);
-                        else if (loai.equals("Combo")) listCombo.add(monAn);
-                        Log.d("Key = ", dataSnapshot.getKey());
-                        Log.d("Url = ", monAn.getImageMonAn());
-                    }
-                    menu.put(dataSnapshot.getKey().toString(), monAn);
-                }
-                if (!listMiCay.isEmpty()) {
-                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Mì cay", null));
-                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listMiCay));
-                }
-                if (!listTraSua.isEmpty()) {
-                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Trà sữa", null));
-                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listTraSua));
-                }
-                if (!listTraHQua.isEmpty()) {
-                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Trà hoa quả", null));
-                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listTraHQua));
-                }
-                if (!listDAVat.isEmpty()) {
-                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Đồ ăn vặt", null));
-                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listDAVat));
-                }
-                if (!listCombo.isEmpty()) {
-                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_HEADER, "Combo", null));
-                    thucdon.add(new ItemThucDon(ItemThucDon.TYPE_LIST, null, listCombo));
-                }
-                thucDonAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(DatMon.this, "Lỗi khi tải dữ liệu", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

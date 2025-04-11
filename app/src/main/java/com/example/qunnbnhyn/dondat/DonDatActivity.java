@@ -43,7 +43,7 @@ public class DonDatActivity extends AppCompatActivity {
                 itemDonDats.clear();
                 for(DataSnapshot banSnapshot : snapshot.getChildren()){
                     DataSnapshot chiTietOrderSnapshot = banSnapshot.child("chi tiet order");
-                    if (chiTietOrderSnapshot.exists()) { // Kiểm tra xem có node "chi tiet order" hay không
+                    if (chiTietOrderSnapshot.exists()) {
                         List<ItemMonGoi> listMon = new ArrayList<>();
                         for (DataSnapshot orderSnapshot : chiTietOrderSnapshot.getChildren()) {
                             String tenMon = orderSnapshot.getKey();
@@ -57,7 +57,6 @@ public class DonDatActivity extends AppCompatActivity {
                         Log.d("DonDatActivity", "Đọc được đơn đặt cho bàn: " + maBan + ", số món: " + listMon.size());
                     } else {
                         Log.d("DonDatActivity", "Bàn " + banSnapshot.getKey() + " không có chi tiết order.");
-                        // Nếu bạn muốn bỏ qua những bàn này, không cần thêm vào itemDonDats
                     }
                 }
                 if (rclDonDat.getAdapter() != null) {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.qunnbnhyn.QLKH.ActivityCustomerHome;
+import com.example.qunnbnhyn.QLM.MonAn;
+import com.example.qunnbnhyn.TT.ThanhToan;
+import com.example.qunnbnhyn.datmon.DatMon;
+import com.example.qunnbnhyn.datmon.ItemThucDon;
+import com.example.qunnbnhyn.dondat.DonDatActivity;
 import com.example.qunnbnhyn.login.Login;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,8 +37,8 @@ import java.util.Map;
 
 public class MenuNVActivity extends AppCompatActivity {
 
-    private ImageView diningTableImageView, logout, finger;
-    private ImageView order, happyClient, payment;
+    private ImageButton btnShift, logout, finger,btnPhucVu;
+    private ImageButton order, happyClient, payment;
     private String maNhanVien;
     private DatabaseReference database;
     private TextView txtName;
@@ -56,20 +63,51 @@ public class MenuNVActivity extends AppCompatActivity {
 
         // Khởi tạo FirebaseAuth
         myAuth = FirebaseAuth.getInstance();
-
+        btnPhucVu = findViewById(R.id.btn_phuc_vu);
         // Ánh xạ các view
         txtName = findViewById(R.id.txtName);
         Log.d("name",intent.getStringExtra("full_name"));
         txtName.setText(intent.getStringExtra("full_name"));
 
         // Ánh xạ ImageView "Quản lý bàn ăn" từ GridLayout
-        diningTableImageView = findViewById(R.id.fram1).findViewById(R.id.dining_table_image);
-        order = findViewById(R.id.fram1).findViewById(R.id.order);
-        happyClient = findViewById(R.id.fram2).findViewById(R.id.happy_client);
-        payment = findViewById(R.id.fram2).findViewById(R.id.payment);
-        logout = findViewById(R.id.fram3).findViewById(R.id.logout);
+        btnShift = findViewById(R.id.btn_shift);
+        order = findViewById(R.id.order);
+        happyClient = findViewById(R.id.happy_client);
+        payment = findViewById(R.id.payment);
+        logout = findViewById(R.id.logout);
         finger = findViewById(R.id.finger);
+        HashMap<String, MonAn> menu = new HashMap<>();
+        FirebaseDatabase.getInstance().getReference("thuc_don").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    MonAn monAn = dataSnapshot.getValue(MonAn.class);
+                    monAn.setMaMon(dataSnapshot.getKey().toString());
+                    menu.put(dataSnapshot.getKey().toString(), monAn);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MenuNVActivity.this, "Lỗi khi tải dữ liệu", Toast.LENGTH_SHORT).show();
+            }
+        });
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intentOrder = new Intent(MenuNVActivity.this,DatMon.class);
+                intentOrder.putExtra("menu",menu);
+                Log.d("HHAA","AHHA");
+                startActivity(intentOrder);
+            }
+        });
+        btnPhucVu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MenuNVActivity.this, DonDatActivity.class);
+                startActivity(intent1);
+            }
+        });
 
         finger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +135,7 @@ public class MenuNVActivity extends AppCompatActivity {
         });
 
         // Gắn sự kiện onClick cho ImageView "Quản lý bàn ăn"
-        diningTableImageView.setOnClickListener(new View.OnClickListener() {
+        btnShift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Chuyển sang ManageTableActivity
@@ -150,24 +188,21 @@ public class MenuNVActivity extends AppCompatActivity {
         });
 
 
-        order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
 
         happyClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent1 = new Intent(MenuNVActivity.this, ActivityCustomerHome.class);
+                startActivity(intent1);
             }
         });
 
         payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent1 = new Intent(MenuNVActivity.this, ThanhToan.class);
+                startActivity(intent1);
             }
         });
 

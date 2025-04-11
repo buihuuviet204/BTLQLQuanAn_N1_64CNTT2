@@ -23,10 +23,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <ImageButton
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="centerCrop"
             android:id="@+id/finger"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:contentDescription="Menu"
             android:src="@drawable/checkin" />
@@ -124,7 +126,9 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <ImageButton
+                            android:backgroundTint="@android:color/transparent"
+                            android:scaleType="centerCrop"
                             android:id="@+id/supplies"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
@@ -150,7 +154,9 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <ImageButton
+                            android:backgroundTint="@android:color/transparent"
+                            android:scaleType="centerCrop"
                             android:id="@+id/dining_table_image"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
@@ -190,7 +196,9 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <ImageButton
+                            android:backgroundTint="@android:color/transparent"
+                            android:scaleType="centerCrop"
                             android:id="@+id/custom_service"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
@@ -212,7 +220,9 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <ImageButton
+                            android:backgroundTint="@android:color/transparent"
+                            android:scaleType="centerCrop"
                             android:id="@+id/happy_client"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
@@ -256,7 +266,9 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <ImageButton
+                            android:backgroundTint="@android:color/transparent"
+                            android:scaleType="centerCrop"
                             android:id="@+id/discount"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
@@ -279,7 +291,9 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <ImageButton
+                            android:backgroundTint="@android:color/transparent"
+                            android:scaleType="centerCrop"
                             android:id="@+id/logout"
                             android:layout_width="80dp"
                             android:layout_height="80dp"

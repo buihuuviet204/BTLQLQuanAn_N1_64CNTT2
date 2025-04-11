@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.qunnbnhyn.QLKH.ActivityCustomerHome;
+import com.example.qunnbnhyn.QLM.QLMON;
+import com.example.qunnbnhyn.ThongKe.ActivityShowReport;
 import com.example.qunnbnhyn.login.Login;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,8 +34,8 @@ import com.example.qunnbnhyn.TT.ThanhToan;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView diningTableImageView, logout, finger;
-    private ImageView supplies, customService, happyClient, discount;
+    private ImageButton diningTableImageView, logout, finger;
+    private ImageButton supplies, customService, happyClient, discount;
     private String maNhanVien;
     private DatabaseReference database;
     private DatabaseReference timeTrackingRef;
@@ -162,24 +166,32 @@ public class MainActivity extends AppCompatActivity {
         supplies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, QLMON.class);
+                startActivity(intent1);
             }
         });
 
         customService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, QuanLyNhanVien.class);
+                startActivity(intent1);
             }
         });
 
         happyClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, ActivityCustomerHome.class);
+                startActivity(intent1);
             }
         });
 
         discount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, ActivityShowReport.class);
+                startActivity(intent1);
             }
         });
     }
