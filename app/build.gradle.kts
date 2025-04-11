@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -34,10 +33,19 @@ android {
 
 dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
+    implementation ("com.github.4inodev:Neomorphic-FrameLayout-Android:1.03")
+    implementation("com.cloudinary:cloudinary-android:3.0.2")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
+   implementation("com.google.firebase:firebase-auth")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.firebase.database)
+    implementation(libs.credentials)
+    implementation(libs.credentials.play.services.auth)
+    implementation(libs.googleid)
     implementation(libs.firebase.database)
     implementation(libs.gridlayout)
     implementation(libs.firebase.firestore)
