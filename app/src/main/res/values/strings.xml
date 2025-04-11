@@ -1,6 +1,11 @@
 <resources>
+    <string-array name="filter_type_options">
+        <item>Ngày</item>
+        <item>Tháng</item>
+    </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_name">Quán ăn bình yên</string>
+    <string name="th_ng_k_l_ng">THỐNG KÊ LƯƠNG</string>
     <string name="xoa_mon">Xoa mon</string>
     <string name="sua_thong_tin">Sua thong tin</string>
     <string name="them_mon">Them mon</string>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- Mã hóa đơn -->
+        <TextView
+            android:id="@+id/tv_invoice_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Mã hóa đơn"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Mã khách -->
+        <TextView
+            android:id="@+id/tv_ma_khach"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Mã khách"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_invoice_id"
+            android:layout_marginTop="4dp" />
+
+        <!-- Tổng tiền -->
+        <TextView
+            android:id="@+id/tv_tong_tien"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Tổng tiền"
+            android:textSize="14sp"
+            android:textColor="#D81B60"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_ma_khach"
+            android:layout_marginTop="4dp" />
+
+        <!-- Phương thức thanh toán -->
+        <LinearLayout
+            android:id="@+id/ll_payment_method"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_tong_tien"
+            android:layout_marginTop="4dp">
+
+            <ImageView
+                android:id="@+id/iv_payment_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_revenue"
+                android:contentDescription="Payment Icon" />
+
+            <TextView
+                android:id="@+id/tv_payment_method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phương thức thanh toán"
+                android:textSize="14sp"
+                android:textColor="#424242"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Ngày -->
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ngày"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_payment_method"
+            android:layout_marginTop="4dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_income"
+        android:icon="@drawable/ic_income"
+        android:title="Doanh thu"/>
+    <item
+        android:id="@+id/nav_salary"
+        android:icon="@drawable/ic_salary"
+        android:title="Lương NV"/>
+    <item
+        android:id="@+id/nav_popular"
+        android:icon="@drawable/ic_popular"
+        android:title="Món ăn phổ biến"/>
+</menu>
