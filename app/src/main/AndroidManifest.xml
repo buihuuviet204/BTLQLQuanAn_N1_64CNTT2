@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.QuánĂnBìnhYên"
+        android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="31">
         <activity android:name=".TT.ThanhToan"
             android:exported="false"/>
@@ -54,6 +54,7 @@
             android:exported="false">
 
         </activity>
+
         <activity android:name=".EmployeeListActivity"/>
         <activity android:name="GanCaActivity"/>
         <activity android:name=".MenuNVActivity"/>
@@ -67,6 +68,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".QLKH.ActivityAddCustomer" />
+        <activity android:name=".QLKH.ActivityCustomerPriorityDetail" />
+        <activity android:name=".QLKH.ActivityDeleteCustomer" />
+        <activity android:name=".QLKH.ActivityEditCustomer" />
+        <activity android:name=".QLKH.ActivityEditCustomerDetail" />
+        <activity android:name=".QLKH.ActivityPriorityCustomer" />
+
     </application>
 
 </manifest>

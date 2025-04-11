@@ -19,8 +19,8 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 app:srcCompat="@drawable/ic_back" />
 
             <TextView
@@ -64,7 +64,7 @@
                 <Button
                     android:id="@+id/btn_confirm_popular"
                     android:layout_width="107dp"
-                    android:layout_height="45dp"
+                    android:layout_height="wrap_content"
                     android:backgroundTint="#4CAF50"
                     android:text="Xác nhận"
                     android:textColor="#FFFFFF" />

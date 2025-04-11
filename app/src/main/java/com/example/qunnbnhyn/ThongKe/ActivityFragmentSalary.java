@@ -223,12 +223,11 @@ public class ActivityFragmentSalary extends Fragment {
         employeesListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                employeesList.clear(); // Clear the list to prevent duplicates
+                employeesList.clear();
                 employeesToFetch = 0;
                 employeesFetched = 0;
 
                 Set<String> employeeIds = new HashSet<>();
-                // Collect all employee IDs from Cham_cong
                 for (DataSnapshot dateSnapshot : snapshot.getChildren()) {
                     for (DataSnapshot employeeSnapshot : dateSnapshot.getChildren()) {
                         String employeeId = employeeSnapshot.getKey();
@@ -252,10 +251,10 @@ public class ActivityFragmentSalary extends Fragment {
                                 String name = employeeSnapshot.child("name").getValue(String.class);
                                 String email = employeeSnapshot.child("email").getValue(String.class);
                                 String position = employeeSnapshot.child("position").getValue(String.class);
-
+                                String shiftType = employeeSnapshot.child("shift").getValue(String.class);
                                 // Nếu position là null hoặc là "Nhân viên", thì thêm vào danh sách
                                 if (position == null || "Nhân viên".equals(position)) {
-                                    fetchShiftsForEmployee(employeeId, name, email);
+                                    fetchShiftsForEmployee(employeeId, name, email, shiftType);
                                 } else {
                                     employeesFetched++;
                                     if (employeesFetched == employeesToFetch) {
@@ -285,7 +284,7 @@ public class ActivityFragmentSalary extends Fragment {
         databaseChamCong.addValueEventListener(employeesListener);
     }
 
-    private void fetchShiftsForEmployee(String employeeId, String name, String email) {
+    private void fetchShiftsForEmployee(String employeeId, String name, String email, String shiftType) {
         databaseChamCong.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -297,12 +296,11 @@ public class ActivityFragmentSalary extends Fragment {
                     if (employeeShiftSnapshot.exists()) {
                         String checkIn = employeeShiftSnapshot.child("check-in").getValue(String.class);
                         String checkOut = employeeShiftSnapshot.child("check-out").getValue(String.class);
-                        String shiftType = employeeShiftSnapshot.child("shift").getValue(String.class);
                         shifts.add(new Shift(date, checkIn, checkOut, shiftType));
                     }
                 }
 
-                Employee employee = new Employee(employeeId, name, email, shifts);
+                Employee employee = new Employee(employeeId, name, email, shifts, shiftType);
                 employeesList.add(employee);
                 employeesFetched++;
 
@@ -339,7 +337,7 @@ public class ActivityFragmentSalary extends Fragment {
 
                 // Tính lương cho nhân viên này
                 Long employeeSalary = calculateEmployeeSalary(filteredShifts);
-                Employee filteredEmployee = new Employee(emp.getEmployeeId(), emp.getName(), emp.getEmail(), filteredShifts);
+                Employee filteredEmployee = new Employee(emp.getEmployeeId(), emp.getName(), emp.getEmail(), filteredShifts, emp.getShiftType());
                 filteredEmployee.setSalary(employeeSalary);
                 displayList.add(filteredEmployee);
             }
@@ -366,7 +364,7 @@ public class ActivityFragmentSalary extends Fragment {
 
                 // Tính lương cho nhân viên này
                 Long employeeSalary = calculateEmployeeSalary(filteredShifts);
-                Employee filteredEmployee = new Employee(emp.getEmployeeId(), emp.getName(), emp.getEmail(), filteredShifts);
+                Employee filteredEmployee = new Employee(emp.getEmployeeId(), emp.getName(), emp.getEmail(), filteredShifts, emp.getShiftType());
                 filteredEmployee.setSalary(employeeSalary);
 
                 // Gom nhóm theo ngày
@@ -384,12 +382,22 @@ public class ActivityFragmentSalary extends Fragment {
             for (String date : sortedDates) {
                 displayList.add("Ngày: " + date); // Thêm header ngày
                 List<Employee> employeesOnDate = employeesByDate.get(date);
-                // Loại bỏ nhân viên trùng lặp (vì một nhân viên có thể có nhiều ca trong ngày)
+                // Loại bỏ nhân viên trùng lặp
                 Set<String> uniqueEmployeeIds = new HashSet<>();
                 List<Employee> uniqueEmployees = new ArrayList<>();
                 for (Employee emp : employeesOnDate) {
                     if (uniqueEmployeeIds.add(emp.getEmployeeId())) {
-                        uniqueEmployees.add(emp);
+                        // Tạo danh sách shift không trùng lặp dựa trên shiftType
+                        Set<String> uniqueShiftTypes = new HashSet<>();
+                        List<Shift> uniqueShifts = new ArrayList<>();
+                        for (Shift shift : emp.getShifts()) {
+                            if (shift.getDate().startsWith(selectedDateMonth) && uniqueShiftTypes.add(shift.getShiftType())) {
+                                uniqueShifts.add(shift);
+                            }
+                        }
+                        Employee uniqueEmployee = new Employee(emp.getEmployeeId(), emp.getName(), emp.getEmail(), uniqueShifts, emp.getShiftType());
+                        uniqueEmployee.setSalary(emp.getSalary());
+                        uniqueEmployees.add(uniqueEmployee);
                     }
                 }
                 displayList.addAll(uniqueEmployees); // Thêm danh sách nhân viên trong ngày đó
@@ -442,13 +450,15 @@ public class ActivityFragmentSalary extends Fragment {
         private String email;
         private List<Shift> shifts;
         private Long salary; // Lương của nhân viên
+        private String shiftType; // Thêm trường shiftType
 
-        public Employee(String employeeId, String name, String email, List<Shift> shifts) {
+        public Employee(String employeeId, String name, String email, List<Shift> shifts, String shiftType) {
             this.employeeId = employeeId;
             this.name = name;
             this.email = email;
             this.shifts = shifts;
             this.salary = null;
+            this.shiftType = shiftType;
         }
 
         public String getEmployeeId() {
@@ -473,6 +483,10 @@ public class ActivityFragmentSalary extends Fragment {
 
         public void setSalary(Long salary) {
             this.salary = salary;
+        }
+
+        public String getShiftType() {
+            return shiftType;
         }
     }
 
@@ -659,9 +673,10 @@ public class ActivityFragmentSalary extends Fragment {
             if (selectedFilter.equals("day")) {
                 shiftItems.addAll(employee.getShifts());
             } else {
-                // Chỉ hiển thị các ca làm trong tháng được chọn
+                // Chỉ hiển thị các ca làm trong tháng được chọn, không trùng lặp shiftType
+                Set<String> uniqueShiftTypes = new HashSet<>();
                 for (Shift shift : employee.getShifts()) {
-                    if (shift.getDate().startsWith(selectedDateMonth)) {
+                    if (shift.getDate().startsWith(selectedDateMonth) && uniqueShiftTypes.add(shift.getShiftType())) {
                         shiftItems.add(shift);
                     }
                 }

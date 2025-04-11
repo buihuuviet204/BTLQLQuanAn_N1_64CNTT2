@@ -6,6 +6,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.qunnbnhyn.ThongKe.ActivityShowReport;
 import com.example.qunnbnhyn.R;
@@ -23,14 +24,14 @@ public class ActivityCustomerHome extends AppCompatActivity {
         Button btnEditCustomer = findViewById(R.id.btnEditCustomer);
         Button btnDeleteCustomer = findViewById(R.id.btnDeleteCustomer);
         Button btnPriorityCustomer = findViewById(R.id.btnPriorityCustomer);
-        Button btnTest = findViewById(R.id.button);
+        ImageView imgViewBack = findViewById(R.id.imgViewBack);
 
         // Xử lý sự kiện click
         btnAddCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityAddCustomer.class)));
         btnEditCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityEditCustomer.class)));
         btnDeleteCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityDeleteCustomer.class)));
         btnPriorityCustomer.setOnClickListener(v -> startActivity(new Intent(this, ActivityPriorityCustomer.class)));
-        btnTest.setOnClickListener(v -> startActivity(new Intent(this, ActivityShowReport.class)));
+        imgViewBack.setOnClickListener(v -> finish());
 
     }
 }

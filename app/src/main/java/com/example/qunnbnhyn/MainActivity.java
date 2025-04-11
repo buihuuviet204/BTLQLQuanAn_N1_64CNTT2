@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.qunnbnhyn.QLKH.*;
+import com.example.qunnbnhyn.ThongKe.*;
 import com.example.qunnbnhyn.QLKH.ActivityCustomerHome;
 import com.example.qunnbnhyn.QLM.QLMON;
 import com.example.qunnbnhyn.ThongKe.ActivityShowReport;
@@ -182,16 +184,16 @@ public class MainActivity extends AppCompatActivity {
         happyClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(MainActivity.this, ActivityCustomerHome.class);
-                startActivity(intent1);
+                Intent intent = new Intent(MainActivity.this, ActivityCustomerHome.class);
+                startActivity(intent);
             }
         });
 
         discount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(MainActivity.this, ActivityShowReport.class);
-                startActivity(intent1);
+                Intent intent = new Intent(MainActivity.this, ActivityShowReport.class);
+                startActivity(intent);
             }
         });
     }

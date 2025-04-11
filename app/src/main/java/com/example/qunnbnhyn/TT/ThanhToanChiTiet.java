@@ -37,6 +37,7 @@ public class ThanhToanChiTiet extends AppCompatActivity {
     private int stt = 1;
     private String maKhachHang = null;
     private int currentPoints = 0;
+    private int currentVisitCount = 0; // To store the customer's visit count
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,23 +182,34 @@ public class ThanhToanChiTiet extends AppCompatActivity {
         databaseReference.child("customers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                boolean customerFound = false;
                 for (DataSnapshot customer : snapshot.getChildren()) {
                     String phone = customer.child("phoneNumber").getValue(String.class);
                     if (phone != null && phone.equals(sdt)) {
+                        customerFound = true;
                         maKhachHang = customer.getKey();
                         currentPoints = customer.child("points").getValue(Integer.class);
-                        hienThongBao("Thông báo", "Số điện thoại này có " + currentPoints + " điểm.");
+                        currentVisitCount = customer.child("visitCount").getValue(Integer.class);
+
+                        // Increment visit count
+                        currentVisitCount += 1;
+                        databaseReference.child("customers").child(maKhachHang).child("visitCount").setValue(currentVisitCount);
+
+                        hienThongBao("Thông báo", "Số điện thoại này có " + currentPoints + " điểm. Số lần đến: " + currentVisitCount);
                         if (currentPoints >= 50) {
                             hoiDoiDiem();
                         }
                         return;
                     }
                 }
-                maKhachHang = null;
-                currentPoints = 0;
-                etDoiDiem.setText("");
-                etDoiDiem.setEnabled(false);
-                hienThongBao("Thông báo", "Số điện thoại không tồn tại!");
+                if (!customerFound) {
+                    maKhachHang = null;
+                    currentPoints = 0;
+                    currentVisitCount = 0;
+                    etDoiDiem.setText("");
+                    etDoiDiem.setEnabled(false);
+                    hienThongBao("Thông báo", "Số điện thoại không tồn tại!");
+                }
             }
 
             @Override
@@ -294,6 +306,13 @@ public class ThanhToanChiTiet extends AppCompatActivity {
         int tienGiam = diemDoi * 1000;
         final int tongTienThanhToan = Math.max(tongTien - tienGiam, 0); // Tổng tiền thực tế sau khi trừ điểm
 
+        // Tính điểm tích lũy: 1 điểm cho mỗi 20,000 VNĐ
+        int pointsToAdd = tongTienThanhToan / 20000;
+        if (maKhachHang != null) {
+            currentPoints += pointsToAdd;
+            databaseReference.child("customers").child(maKhachHang).child("points").setValue(currentPoints);
+        }
+
         // Lấy ngày hiện tại (định dạng YYYY-MM-DD)
         String ngayHienTai = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
@@ -309,13 +328,7 @@ public class ThanhToanChiTiet extends AppCompatActivity {
         int soBan = Integer.parseInt(tvSoBan.getText().toString().replace("Số bàn: ", ""));
         databaseReference.child("ban_an").child(String.valueOf(soBan - 1)).setValue("");
 
-        // Cộng 1 điểm nếu có số điện thoại
-        if (maKhachHang != null) {
-            currentPoints += 1;
-            databaseReference.child("customers").child(maKhachHang).child("points").setValue(currentPoints);
-        }
-
-        // Lưu thông tin thanh toán lên node thanh_toan_lich_su (giữ nguyên logic cũ)
+        // Lưu thông tin thanh toán lên node thanh_toan_lich_su
         String phuongThucNode = phuongThuc.equals("Tiền mặt") ? "tien_mat" : "chuyen_khoan";
         DatabaseReference thanhToanRef = databaseReference.child("thanh_toan_lich_su").child(ngayHienTai).child(phuongThucNode);
 
@@ -349,7 +362,7 @@ public class ThanhToanChiTiet extends AppCompatActivity {
         // Hiển thị thông báo thành công
         String thongBao = "Thanh toán bằng " + phuongThuc + " hoàn tất!";
         if (maKhachHang != null) {
-            thongBao += " Đã cộng 1 điểm, bạn có " + currentPoints + " điểm.";
+            thongBao += " Đã cộng " + pointsToAdd + " điểm, bạn có " + currentPoints + " điểm.";
         }
         hienThongBao("Thành công", thongBao, true);
     }

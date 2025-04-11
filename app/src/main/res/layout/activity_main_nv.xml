@@ -40,6 +40,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:background="#E6B17F"
+            android:padding="5dp"
             tools:layout_editor_absoluteX="124dp"
             tools:layout_editor_absoluteY="5dp">
 
@@ -166,7 +167,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Thông tin ca"
+                            android:text="Phục vụ món ăn"
                             android:textColor="#000000"
                             android:textSize="18sp" />
                     </LinearLayout>
