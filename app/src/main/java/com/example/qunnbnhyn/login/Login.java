@@ -9,7 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.qunnbnhyn.MainActivity;
+import com.example.qunnbnhyn.MenuNVActivity;
 import com.example.qunnbnhyn.QLM.MonAn;
+import com.example.qunnbnhyn.datmon.DatMon;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -83,9 +86,9 @@ public class Login extends AppCompatActivity {
                 String role = (String) snapshot.getValue(String.class);
                 Intent intent;
                 if (role != null && role.equals("Nhân viên")) {
-                    intent = new Intent(Login.this, ActivityMainNV.class);
+                    intent = new Intent(Login.this, DatMon.class);
                 } else {
-                    intent = new Intent(Login.this, MainActivity.class);
+                    intent = new Intent(Login.this, DatMon.class);
                 }
                 Log.d("name: ", fullName);
                 intent.putExtra("maNhanVien",uid);

@@ -41,7 +41,7 @@ public class MenuNVActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_nv);
 
         // Kết nối tới node Employees trên Firebase (sau khi maNhanVien đã được gán)
         database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
