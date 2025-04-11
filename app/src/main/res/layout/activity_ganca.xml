@@ -83,7 +83,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:lay22h)"
+            android:layout_marginBottom="10dp"
+            android:text="Chọn ca làm:"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/rgShifts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbMorning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Ca sáng (8h - 12h)"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbAfternoon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Ca chiều (12h - 16h)"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbEvening"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ca tối (16h - 22h)"
                 android:textSize="16sp" />
         </RadioGroup>
     </LinearLayout>
