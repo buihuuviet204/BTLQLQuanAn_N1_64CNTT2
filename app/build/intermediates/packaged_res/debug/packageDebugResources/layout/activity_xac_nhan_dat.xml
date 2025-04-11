@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_back"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Chi tiet hoa don"
+        android:textSize="30dp"
+        android:fontFamily="@font/comfortaa"
+        android:gravity="center"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.chinodev.androidneomorphframelayout.NeomorphFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:neomorph_shadow_type="inner"
+            app:layout_constraintBottom_toTopOf="@+id/footer"
+            app:neomorph_corner_radius="40dp">
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                    <TextView
+                        android:fontFamily="@font/comfortaa"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Ten mon an"
+                        android:textSize="12dp"/>
+                    <TextView
+                        android:textSize="12dp"
+                        android:fontFamily="@font/comfortaa"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="Gia ban"/>
+                    <TextView
+                        android:textSize="12dp"
+                        android:fontFamily="@font/comfortaa"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="So luong"/>
+                    <TextView
+                        android:textSize="12dp"
+                        android:fontFamily="@font/comfortaa"
+                        android:gravity="center"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="Thanh tien"/>
+
+                </LinearLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcl_cthd"
+                        app:layout_constraintBottom_toTopOf="@+id/txt_tongtien"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"/>
+                    <TextView
+
+                        android:id="@+id/txt_tongtien"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tong tien: "
+                        android:fontFamily="@font/comfortaa"
+                        android:textSize="15dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="30dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </com.chinodev.androidneomorphframelayout.NeomorphFrameLayout>
+        <LinearLayout
+            android:layout_marginBottom="30dp"
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <TextView
+                android:fontFamily="@font/comfortaa"
+                android:gravity="center_vertical"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:textSize="17dp"
+                android:layout_marginLeft="10dp"
+                android:text="So ban:"/>
+            <com.chinodev.androidneomorphframelayout.NeomorphFrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:neomorph_shadow_type="inner">
+
+                <EditText
+                    android:gravity="center"
+                    android:id="@+id/edit_soban"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:background="@null"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            </com.chinodev.androidneomorphframelayout.NeomorphFrameLayout>
+            <Button
+                android:id="@+id/btn_xacnhandat"
+                android:layout_marginLeft="50dp"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="Xac nhan"
+                android:textSize="15dp"
+                android:backgroundTint="#2ACD84"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

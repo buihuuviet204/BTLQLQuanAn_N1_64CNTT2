@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8CFA8"
+    android:padding="16dp">
+
+    <!-- Header with Back Button and Title -->
+    <ImageView
+        android:id="@+id/imgViewBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="Back"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#212121" />
+
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="THÊM KHÁCH HÀNG"
+        android:textColor="#212121"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/imgViewBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="#FAF8F8"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toTopOf="@id/btnAddNewCustomer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <!-- Name Field -->
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Nhập thông tin khách hàng"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textLayoutName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                app:hintEnabled="true"
+                app:hintTextColor="#757575"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textBoxName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_marginTop="30dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:fontFamily="@font/inter"
+                    android:hint="Họ và tên"
+                    android:inputType="text"
+                    android:textColor="#101010"
+                    android:textColorHint="#757575" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Date Field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textLayoutDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:hintEnabled="true"
+                app:hintTextColor="#757575"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textLayoutName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textBoxDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FFFFFF"
+                    android:fontFamily="@font/inter"
+                    android:hint="Ngày tháng năm sinh"
+                    android:inputType="text"
+                    android:textColor="#101010"
+                    android:textColorHint="#757575" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Phone Field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textLayoutPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:hintEnabled="true"
+                app:hintTextColor="#757575"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textLayoutDate">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textBoxPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FFFFFF"
+                    android:fontFamily="@font/inter"
+                    android:hint="Số điện thoại"
+                    android:inputType="phone"
+                    android:textColor="#101010"
+                    android:textColorHint="#757575" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Address Field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textLayoutAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:hintEnabled="true"
+                app:hintTextColor="#757575"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textLayoutPhone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textBoxAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FFFFFF"
+                    android:fontFamily="@font/inter"
+                    android:hint="Địa chỉ"
+                    android:inputType="text"
+                    android:textColor="#101010"
+                    android:textColorHint="#757575" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ID Card Field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textLayoutIDCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:hintEnabled="true"
+                app:hintTextColor="#757575"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textLayoutAddress">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textBoxIDCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FFFFFF"
+                    android:hint="Số CCCD"
+                    android:inputType="number"
+                    android:textColor="#101010"
+                    android:textColorHint="#757575" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Confirm Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddNewCustomer"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="16dp"
+        android:text="Xác nhận"
+        android:textColor="#101010"
+        android:textSize="16sp"
+        app:backgroundTint="#FAF8F8"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="firebase_database_url" translatable="false">https://quananbinhyen-cntt2-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">214256695754</string>
+    <string name="google_api_key" translatable="false">AIzaSyAOrmQhpGEm4AJtHIb61SC0BGDTurgtxX0</string>
+    <string name="google_app_id" translatable="false">1:214256695754:android:b1ee51dc7cc1e74bacb733</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAOrmQhpGEm4AJtHIb61SC0BGDTurgtxX0</string>
+    <string name="google_storage_bucket" translatable="false">quananbinhyen-cntt2.firebasestorage.app</string>
+    <string name="project_id" translatable="false">quananbinhyen-cntt2</string>
+</resources>

@@ -1,0 +1,1173 @@
+Index: app/src/main/res/layout/fragment_activity_popular_food.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<ScrollView xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#F8CFA8\">\r\n\r\n    <androidx.cardview.widget.CardView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_margin=\"8dp\"\r\n        app:cardCornerRadius=\"16dp\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            android:padding=\"16dp\">\r\n\r\n            <ImageView\r\n                android:id=\"@+id/imageView3\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                app:srcCompat=\"@drawable/ic_back\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/tv_popular_title\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"12dp\"\r\n                android:fontFamily=\"@font/inter_bold\"\r\n                android:text=\"MÓN ĂN THỊNH HÀNH\"\r\n                android:textColor=\"#212121\"\r\n                android:textSize=\"30sp\"\r\n                android:textStyle=\"bold\" />\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"8dp\"\r\n                android:gravity=\"center\"\r\n                android:orientation=\"horizontal\">\r\n\r\n                <Spinner\r\n                    android:id=\"@+id/spinner_time_popular\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"45dp\"\r\n                    android:background=\"@drawable/spinner_background\"\r\n                    android:entries=\"@array/time_options\"\r\n                    android:padding=\"8dp\" />\r\n\r\n                <TextView\r\n                    android:id=\"@+id/tv_date_picker_popular\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"45dp\"\r\n                    android:layout_marginStart=\"8dp\"\r\n                    android:layout_marginEnd=\"8dp\"\r\n                    android:layout_weight=\"1\"\r\n                    android:background=\"@drawable/spinner_background\"\r\n                    android:hint=\"Thời gian\"\r\n                    android:padding=\"8dp\"\r\n                    android:textSize=\"16sp\" />\r\n\r\n                <Button\r\n                    android:id=\"@+id/btn_confirm_popular\"\r\n                    android:layout_width=\"107dp\"\r\n                    android:layout_height=\"45dp\"\r\n                    android:backgroundTint=\"#4CAF50\"\r\n                    android:text=\"Xác nhận\"\r\n                    android:textColor=\"#FFFFFF\" />\r\n            </LinearLayout>\r\n\r\n            <View\r\n                android:id=\"@+id/divider\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"1dp\"\r\n                android:layout_marginTop=\"8dp\"\r\n                android:background=\"#E0E0E0\" />\r\n\r\n            <LinearLayout\r\n                android:id=\"@+id/ll_popular_list\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"16dp\"\r\n                android:orientation=\"vertical\" />\r\n        </LinearLayout>\r\n    </androidx.cardview.widget.CardView>\r\n</ScrollView>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_activity_popular_food.xml b/app/src/main/res/layout/fragment_activity_popular_food.xml
+--- a/app/src/main/res/layout/fragment_activity_popular_food.xml	(revision 5817712903276a357327eb1593cc79e54764bac9)
++++ b/app/src/main/res/layout/fragment_activity_popular_food.xml	(date 1744357483105)
+@@ -19,8 +19,8 @@
+ 
+             <ImageView
+                 android:id="@+id/imageView3"
+-                android:layout_width="wrap_content"
+-                android:layout_height="wrap_content"
++                android:layout_width="30dp"
++                android:layout_height="30dp"
+                 app:srcCompat="@drawable/ic_back" />
+ 
+             <TextView
+Index: build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nplugins {\r\n    alias(libs.plugins.android.application) apply false\r\n    alias(libs.plugins.google.gms.google.services) apply false\r\n\r\n    alias(libs.plugins.google.gms.google.services) apply false\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle.kts b/build.gradle.kts
+--- a/build.gradle.kts	(revision 5817712903276a357327eb1593cc79e54764bac9)
++++ b/build.gradle.kts	(date 1744358305053)
+@@ -2,6 +2,4 @@
+ plugins {
+     alias(libs.plugins.android.application) apply false
+     alias(libs.plugins.google.gms.google.services) apply false
+-
+-    alias(libs.plugins.google.gms.google.services) apply false
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+new file mode 100644
+--- /dev/null	(date 1744358254419)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1744358254419)
+@@ -0,0 +1,304 @@
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="#F8CFA8"
++    android:clickable="true"
++    android:focusable="true">
++
++
++
++    <!-- Thanh trên cùng chứa avatar + icon đăng xuất -->
++    <LinearLayout
++        android:id="@+id/linearLayout"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:gravity="center_vertical"
++        android:orientation="horizontal"
++        android:padding="10dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent">
++
++        <ImageView
++            android:id="@+id/finger"
++            android:layout_width="34dp"
++            android:layout_height="34dp"
++            android:layout_marginStart="10dp"
++            android:contentDescription="Menu"
++            android:src="@drawable/checkin" />
++
++        <FrameLayout
++            android:id="@+id/frameLayout2"
++            android:layout_width="282dp"
++            android:layout_height="wrap_content"
++            android:layout_gravity="center"
++            android:layout_marginStart="20dp"
++            android:background="#E6B17F"
++            tools:layout_editor_absoluteX="124dp"
++            tools:layout_editor_absoluteY="5dp">
++
++            <LinearLayout
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                android:layout_marginStart="20dp"
++                android:orientation="horizontal">
++                <!-- Icon User -->
++
++                <ImageView
++                    android:layout_width="24dp"
++                    android:layout_height="24dp"
++                    android:layout_marginStart="1dp"
++                    android:contentDescription="User"
++                    android:src="@drawable/user" />
++
++                <TextView
++                    android:id="@+id/txtName"
++                    android:layout_width="197dp"
++                    android:layout_height="22dp"
++                    android:layout_weight="1"
++                    android:gravity="center"
++                    android:text="Nguyễn Thị Long Lanh"
++                    android:textColor="@android:color/black"
++                    android:textSize="16sp" />
++            </LinearLayout>
++        </FrameLayout>
++
++    </LinearLayout>
++
++
++    <TextView
++        android:id="@+id/tvTitle"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="8dp"
++        android:text="Trang chủ"
++        android:textColor="@android:color/black"
++        android:textSize="48sp"
++        android:textStyle="bold"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.497"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
++
++    <androidx.cardview.widget.CardView
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        app:cardCornerRadius="16dp"
++        app:cardElevation="4dp"
++        android:layout_marginTop="10dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@id/tvTitle">
++
++        <GridLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:columnCount="2"
++            android:rowCount="3">
++
++            <FrameLayout
++                android:id="@+id/fram1"
++                android:layout_width="match_parent"
++                android:layout_height="170dp"
++                android:layout_gravity="center"
++                android:layout_margin="20dp"
++                android:layout_marginStart="20dp"
++                android:layout_marginEnd="20dp"
++                android:background="@drawable/background_layout">
++
++                <GridLayout
++                    android:layout_width="match_parent"
++                    android:layout_height="561dp"
++                    android:columnCount="2">
++
++                    <LinearLayout
++                        android:layout_width="176dp"
++                        android:layout_height="174dp"
++                        android:layout_row="0"
++                        android:layout_column="0"
++                        android:gravity="center"
++                        android:orientation="vertical">
++
++                        <ImageView
++                            android:id="@+id/supplies"
++                            android:layout_width="90dp"
++                            android:layout_height="90dp"
++                            android:layout_marginStart="12dp"
++                            android:src="@drawable/supplies" />
++
++                        <TextView
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_marginStart="12dp"
++                            android:layout_marginTop="8dp"
++                            android:text="Quản lý món ăn"
++                            android:textColor="#000000"
++                            android:textSize="18sp" />
++                    </LinearLayout>
++
++                    <LinearLayout
++                        android:layout_width="180dp"
++                        android:layout_height="177dp"
++                        android:layout_row="0"
++                        android:layout_column="1"
++                        android:layout_marginStart="20dp"
++                        android:gravity="center"
++                        android:orientation="vertical">
++
++                        <ImageView
++                            android:id="@+id/dining_table_image"
++                            android:layout_width="90dp"
++                            android:layout_height="90dp"
++                            android:src="@drawable/calendar" />
++
++                        <TextView
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_marginTop="8dp"
++                            android:text="Quản lý ca làm"
++                            android:textColor="#000000"
++                            android:textSize="18sp" />
++                    </LinearLayout>
++                </GridLayout>
++            </FrameLayout>
++
++            <FrameLayout
++                android:id="@+id/fram2"
++                android:layout_width="match_parent"
++                android:layout_height="170dp"
++                android:layout_row="1"
++                android:layout_column="0"
++                android:layout_gravity="center"
++                android:layout_marginStart="20dp"
++                android:layout_marginEnd="20dp"
++                android:background="@drawable/background_layout">
++
++                <LinearLayout
++                    android:layout_width="match_parent"
++                    android:layout_height="match_parent"
++                    android:gravity="center"
++                    android:orientation="horizontal">
++
++                    <LinearLayout
++                        android:layout_width="175dp"
++                        android:layout_height="match_parent"
++                        android:gravity="center"
++                        android:orientation="vertical">
++
++                        <ImageView
++                            android:id="@+id/custom_service"
++                            android:layout_width="90dp"
++                            android:layout_height="90dp"
++                            android:src="@drawable/customer_service" />
++
++                        <TextView
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_marginTop="8dp"
++                            android:text="Quản lý nhân viên"
++                            android:textColor="#000000"
++                            android:textSize="18sp" />
++                    </LinearLayout>
++
++                    <LinearLayout
++                        android:layout_width="180dp"
++                        android:layout_height="match_parent"
++                        android:layout_marginStart="20dp"
++                        android:gravity="center"
++                        android:orientation="vertical">
++
++                        <ImageView
++                            android:id="@+id/happy_client"
++                            android:layout_width="90dp"
++                            android:layout_height="90dp"
++                            android:src="@drawable/happy_client" />
++
++                        <TextView
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_marginTop="8dp"
++                            android:text="Quản lý khách hàng"
++                            android:textColor="#000000"
++                            android:textSize="18sp" />
++
++                    </LinearLayout>
++                </LinearLayout>
++            </FrameLayout>
++
++            <FrameLayout
++                android:id="@+id/fram3"
++                android:layout_width="match_parent"
++                android:layout_height="170dp"
++                android:layout_row="2"
++                android:layout_column="0"
++                android:layout_gravity="center"
++                android:layout_margin="20dp"
++                android:layout_marginStart="20dp"
++                android:layout_marginEnd="20dp"
++                android:background="@drawable/background_layout">
++
++
++                <LinearLayout
++                    android:layout_width="match_parent"
++                    android:layout_height="match_parent"
++                    android:gravity="center"
++                    android:orientation="horizontal">
++
++                    <LinearLayout
++                        android:layout_width="158dp"
++                        android:layout_height="match_parent"
++                        android:layout_marginStart="20dp"
++                        android:gravity="center"
++                        android:orientation="vertical">
++
++                        <ImageView
++                            android:id="@+id/discount"
++                            android:layout_width="90dp"
++                            android:layout_height="90dp"
++                            android:src="@drawable/discount_voucher" />
++
++                        <TextView
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_marginTop="8dp"
++                            android:text="Thống kê"
++                            android:textColor="#000000"
++                            android:textSize="18sp" />
++
++                    </LinearLayout>
++
++                    <LinearLayout
++                        android:layout_width="158dp"
++                        android:layout_height="match_parent"
++                        android:layout_marginStart="20dp"
++                        android:gravity="center"
++                        android:orientation="vertical">
++
++                        <ImageView
++                            android:id="@+id/logout"
++                            android:layout_width="80dp"
++                            android:layout_height="80dp"
++                            android:src="@drawable/sign_out_alt" />
++
++                        <TextView
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_marginTop="8dp"
++                            android:text="Đăng xuất"
++                            android:textColor="#000000"
++                            android:textSize="18sp" />
++
++                    </LinearLayout>
++
++                </LinearLayout>
++
++
++            </FrameLayout>
++
++        </GridLayout>
++    </androidx.cardview.widget.CardView>
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_salary.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<ScrollView xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#F8CFA8\">\r\n\r\n    <androidx.cardview.widget.CardView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_margin=\"8dp\"\r\n        app:cardCornerRadius=\"16dp\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            android:padding=\"16dp\">\r\n\r\n            <!-- Back Button -->\r\n            <ImageView\r\n                android:id=\"@+id/imageView2\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                app:srcCompat=\"@drawable/ic_back\"\r\n                app:tint=\"#212121\" />\r\n\r\n            <!-- Title -->\r\n            <TextView\r\n                android:id=\"@+id/textView9\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"12dp\"\r\n                android:fontFamily=\"@font/inter_bold\"\r\n                android:text=\"THỐNG KÊ LƯƠNG NHÂN VIÊN\"\r\n                android:textColor=\"#070707\"\r\n                android:textSize=\"30sp\" />\r\n\r\n            <!-- Filter Section -->\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"8dp\"\r\n                android:gravity=\"center\"\r\n                android:orientation=\"horizontal\">\r\n\r\n                <!-- Filter Type Spinner (Day/Month) -->\r\n                <Spinner\r\n                    android:id=\"@+id/filter_type_spinner\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"45dp\"\r\n                    android:background=\"@drawable/spinner_background\"\r\n                    android:entries=\"@array/filter_type_options\"\r\n                    android:padding=\"8dp\" />\r\n\r\n                <!-- Date/Month Spinner -->\r\n                <Spinner\r\n                    android:id=\"@+id/date_month_spinner\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"45dp\"\r\n                    android:layout_marginStart=\"8dp\"\r\n                    android:layout_marginEnd=\"8dp\"\r\n                    android:layout_weight=\"1\"\r\n                    android:background=\"@drawable/spinner_background\"\r\n                    android:padding=\"8dp\"\r\n                    android:spinnerMode=\"dropdown\" />\r\n\r\n                <!-- Confirm Button -->\r\n                <Button\r\n                    android:id=\"@+id/btn_confirm\"\r\n                    android:layout_width=\"107dp\"\r\n                    android:layout_height=\"45dp\"\r\n                    android:backgroundTint=\"#4CAF50\"\r\n                    android:text=\"Xác nhận\"\r\n                    android:textColor=\"#FFFFFF\" />\r\n            </LinearLayout>\r\n\r\n            <!-- Divider -->\r\n            <View\r\n                android:id=\"@+id/divider\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"1dp\"\r\n                android:layout_marginTop=\"8dp\"\r\n                android:background=\"#E0E0E0\" />\r\n\r\n            <!-- Employee List -->\r\n            <TextView\r\n                android:id=\"@+id/textView11\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"8dp\"\r\n                android:fontFamily=\"@font/inter_bold\"\r\n                android:text=\"Danh sách nhân viên\"\r\n                android:textSize=\"20sp\" />\r\n\r\n            <androidx.recyclerview.widget.RecyclerView\r\n                android:id=\"@+id/rv_employees\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"8dp\" />\r\n\r\n        </LinearLayout>\r\n    </androidx.cardview.widget.CardView>\r\n</ScrollView>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_salary.xml b/app/src/main/res/layout/fragment_salary.xml
+--- a/app/src/main/res/layout/fragment_salary.xml	(revision 5817712903276a357327eb1593cc79e54764bac9)
++++ b/app/src/main/res/layout/fragment_salary.xml	(date 1744357483105)
+@@ -20,8 +20,8 @@
+             <!-- Back Button -->
+             <ImageView
+                 android:id="@+id/imageView2"
+-                android:layout_width="wrap_content"
+-                android:layout_height="wrap_content"
++                android:layout_width="30dp"
++                android:layout_height="30dp"
+                 app:srcCompat="@drawable/ic_back"
+                 app:tint="#212121" />
+ 
+Index: app/src/main/res/color/white.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/color/white.xml b/app/src/main/res/color/white.xml
+new file mode 100644
+--- /dev/null	(date 1744357483121)
++++ b/app/src/main/res/color/white.xml	(date 1744357483121)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="utf-8"?>
++<selector xmlns:android="http://schemas.android.com/apk/res/android">
++
++</selector>
+\ No newline at end of file
+Index: .idea/caches/deviceStreaming.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/caches/deviceStreaming.xml b/.idea/caches/deviceStreaming.xml
+new file mode 100644
+--- /dev/null	(date 1743644632599)
++++ b/.idea/caches/deviceStreaming.xml	(date 1743644632599)
+@@ -0,0 +1,607 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DeviceStreaming">
++    <option name="deviceSelectionList">
++      <list>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="27" />
++          <option name="brand" value="DOCOMO" />
++          <option name="codename" value="F01L" />
++          <option name="id" value="F01L" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="FUJITSU" />
++          <option name="name" value="F-01L" />
++          <option name="screenDensity" value="360" />
++          <option name="screenX" value="720" />
++          <option name="screenY" value="1280" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="OnePlus" />
++          <option name="codename" value="OP5552L1" />
++          <option name="id" value="OP5552L1" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="OnePlus" />
++          <option name="name" value="CPH2415" />
++          <option name="screenDensity" value="480" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2412" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="OPPO" />
++          <option name="codename" value="OP573DL1" />
++          <option name="id" value="OP573DL1" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="OPPO" />
++          <option name="name" value="CPH2557" />
++          <option name="screenDensity" value="480" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="28" />
++          <option name="brand" value="DOCOMO" />
++          <option name="codename" value="SH-01L" />
++          <option name="id" value="SH-01L" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="SHARP" />
++          <option name="name" value="AQUOS sense2 SH-01L" />
++          <option name="screenDensity" value="480" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2160" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="Lenovo" />
++          <option name="codename" value="TB370FU" />
++          <option name="formFactor" value="Tablet" />
++          <option name="id" value="TB370FU" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Lenovo" />
++          <option name="name" value="Tab P12" />
++          <option name="screenDensity" value="340" />
++          <option name="screenX" value="1840" />
++          <option name="screenY" value="2944" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="a15" />
++          <option name="id" value="a15" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="A15" />
++          <option name="screenDensity" value="450" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="a35x" />
++          <option name="id" value="a35x" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="A35" />
++          <option name="screenDensity" value="450" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="31" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="a51" />
++          <option name="id" value="a51" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy A51" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="akita" />
++          <option name="id" value="akita" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 8a" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="motorola" />
++          <option name="codename" value="arcfox" />
++          <option name="id" value="arcfox" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Motorola" />
++          <option name="name" value="razr plus 2024" />
++          <option name="screenDensity" value="360" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="1272" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="motorola" />
++          <option name="codename" value="austin" />
++          <option name="id" value="austin" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Motorola" />
++          <option name="name" value="moto g 5G (2022)" />
++          <option name="screenDensity" value="280" />
++          <option name="screenX" value="720" />
++          <option name="screenY" value="1600" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="b0q" />
++          <option name="id" value="b0q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S22 Ultra" />
++          <option name="screenDensity" value="600" />
++          <option name="screenX" value="1440" />
++          <option name="screenY" value="3088" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="32" />
++          <option name="brand" value="google" />
++          <option name="codename" value="bluejay" />
++          <option name="id" value="bluejay" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 6a" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="caiman" />
++          <option name="id" value="caiman" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9 Pro" />
++          <option name="screenDensity" value="360" />
++          <option name="screenX" value="960" />
++          <option name="screenY" value="2142" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="comet" />
++          <option name="default" value="true" />
++          <option name="id" value="comet" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9 Pro Fold" />
++          <option name="screenDensity" value="390" />
++          <option name="screenX" value="2076" />
++          <option name="screenY" value="2152" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="29" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="crownqlteue" />
++          <option name="id" value="crownqlteue" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Note9" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2220" />
++          <option name="screenY" value="1080" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="dm2q" />
++          <option name="id" value="dm2q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="S23 Plus" />
++          <option name="screenDensity" value="450" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="dm3q" />
++          <option name="id" value="dm3q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S23 Ultra" />
++          <option name="screenDensity" value="600" />
++          <option name="screenX" value="1440" />
++          <option name="screenY" value="3088" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="e1q" />
++          <option name="default" value="true" />
++          <option name="id" value="e1q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S24" />
++          <option name="screenDensity" value="480" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="e3q" />
++          <option name="id" value="e3q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S24 Ultra" />
++          <option name="screenDensity" value="450" />
++          <option name="screenX" value="1440" />
++          <option name="screenY" value="3120" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="eos" />
++          <option name="id" value="eos" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Eos" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="384" />
++          <option name="screenY" value="384" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="felix" />
++          <option name="id" value="felix" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Fold" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2208" />
++          <option name="screenY" value="1840" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="felix" />
++          <option name="id" value="felix" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Fold" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2208" />
++          <option name="screenY" value="1840" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="felix_camera" />
++          <option name="id" value="felix_camera" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Fold (Camera-enabled)" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2208" />
++          <option name="screenY" value="1840" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="motorola" />
++          <option name="codename" value="fogona" />
++          <option name="id" value="fogona" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Motorola" />
++          <option name="name" value="moto g play - 2024" />
++          <option name="screenDensity" value="280" />
++          <option name="screenX" value="720" />
++          <option name="screenY" value="1600" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="g0q" />
++          <option name="id" value="g0q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="SM-S906U1" />
++          <option name="screenDensity" value="450" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="gta9pwifi" />
++          <option name="id" value="gta9pwifi" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="SM-X210" />
++          <option name="screenDensity" value="240" />
++          <option name="screenX" value="1200" />
++          <option name="screenY" value="1920" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="gts7xllite" />
++          <option name="id" value="gts7xllite" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="SM-T738U" />
++          <option name="screenDensity" value="340" />
++          <option name="screenX" value="1600" />
++          <option name="screenY" value="2560" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="gts8uwifi" />
++          <option name="formFactor" value="Tablet" />
++          <option name="id" value="gts8uwifi" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Tab S8 Ultra" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="1848" />
++          <option name="screenY" value="2960" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="gts8wifi" />
++          <option name="formFactor" value="Tablet" />
++          <option name="id" value="gts8wifi" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Tab S8" />
++          <option name="screenDensity" value="274" />
++          <option name="screenX" value="1600" />
++          <option name="screenY" value="2560" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="gts9fe" />
++          <option name="id" value="gts9fe" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Tab S9 FE 5G" />
++          <option name="screenDensity" value="280" />
++          <option name="screenX" value="1440" />
++          <option name="screenY" value="2304" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="husky" />
++          <option name="id" value="husky" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 8 Pro" />
++          <option name="screenDensity" value="390" />
++          <option name="screenX" value="1008" />
++          <option name="screenY" value="2244" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="30" />
++          <option name="brand" value="motorola" />
++          <option name="codename" value="java" />
++          <option name="id" value="java" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Motorola" />
++          <option name="name" value="G20" />
++          <option name="screenDensity" value="280" />
++          <option name="screenX" value="720" />
++          <option name="screenY" value="1600" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="komodo" />
++          <option name="id" value="komodo" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9 Pro XL" />
++          <option name="screenDensity" value="360" />
++          <option name="screenX" value="1008" />
++          <option name="screenY" value="2244" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="lynx" />
++          <option name="id" value="lynx" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 7a" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="motorola" />
++          <option name="codename" value="maui" />
++          <option name="id" value="maui" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Motorola" />
++          <option name="name" value="moto g play - 2023" />
++          <option name="screenDensity" value="280" />
++          <option name="screenX" value="720" />
++          <option name="screenY" value="1600" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="o1q" />
++          <option name="id" value="o1q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S21" />
++          <option name="screenDensity" value="421" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="31" />
++          <option name="brand" value="google" />
++          <option name="codename" value="oriole" />
++          <option name="id" value="oriole" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 6" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="panther" />
++          <option name="id" value="panther" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 7" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="q5q" />
++          <option name="id" value="q5q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Z Fold5" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1812" />
++          <option name="screenY" value="2176" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="q6q" />
++          <option name="id" value="q6q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Z Fold6" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1856" />
++          <option name="screenY" value="2160" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="30" />
++          <option name="brand" value="google" />
++          <option name="codename" value="r11" />
++          <option name="formFactor" value="Wear OS" />
++          <option name="id" value="r11" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Watch" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="384" />
++          <option name="screenY" value="384" />
++          <option name="type" value="WEAR_OS" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="r11q" />
++          <option name="id" value="r11q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="SM-S711U" />
++          <option name="screenDensity" value="450" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="30" />
++          <option name="brand" value="google" />
++          <option name="codename" value="redfin" />
++          <option name="id" value="redfin" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 5" />
++          <option name="screenDensity" value="440" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="shiba" />
++          <option name="id" value="shiba" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 8" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="t2q" />
++          <option name="id" value="t2q" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S21 Plus" />
++          <option name="screenDensity" value="394" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="tangorpro" />
++          <option name="formFactor" value="Tablet" />
++          <option name="id" value="tangorpro" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Tablet" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="1600" />
++          <option name="screenY" value="2560" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="tokay" />
++          <option name="default" value="true" />
++          <option name="id" value="tokay" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2424" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="35" />
++          <option name="brand" value="google" />
++          <option name="codename" value="tokay" />
++          <option name="default" value="true" />
++          <option name="id" value="tokay" />
++          <option name="labId" value="google" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2424" />
++        </PersistentDeviceSelectionData>
++      </list>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+new file mode 100644
+--- /dev/null	(date 1744356615957)
++++ b/.idea/runConfigurations.xml	(date 1744356615957)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="com.intellij.execution.junit.AbstractAllInDirectoryConfigurationProducer" />
++        <option value="com.intellij.execution.junit.AllInPackageConfigurationProducer" />
++        <option value="com.intellij.execution.junit.PatternConfigurationProducer" />
++        <option value="com.intellij.execution.junit.TestInClassConfigurationProducer" />
++        <option value="com.intellij.execution.junit.UniqueIdConfigurationProducer" />
++        <option value="com.intellij.execution.junit.testDiscovery.JUnitTestDiscoveryConfigurationProducer" />
++        <option value="org.jetbrains.kotlin.idea.junit.KotlinJUnitRunConfigurationProducer" />
++        <option value="org.jetbrains.kotlin.idea.junit.KotlinPatternConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/values/arrays.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <array name=\"time_options\">\r\n        <item>Theo ngày</item>\r\n        <item>Theo tháng</item>\r\n        <item>Tất cả</item>\r\n    </array>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/arrays.xml b/app/src/main/res/values/arrays.xml
+--- a/app/src/main/res/values/arrays.xml	(revision 5817712903276a357327eb1593cc79e54764bac9)
++++ b/app/src/main/res/values/arrays.xml	(date 1744357483105)
+@@ -5,4 +5,5 @@
+         <item>Theo tháng</item>
+         <item>Tất cả</item>
+     </array>
++    <string-array name="filter_type_options">Tháng</string-array>
+ </resources>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1744359337494)
++++ b/.idea/compiler.xml	(date 1744359337494)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="21" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_income.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\"\r\n    android:background=\"@drawable/gradient_background\">\r\n\r\n    <ScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:background=\"#F8CFA8\"\r\n        android:fillViewport=\"true\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            android:padding=\"8dp\">\r\n\r\n            <androidx.cardview.widget.CardView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                app:cardBackgroundColor=\"@android:color/white\"\r\n                app:cardCornerRadius=\"16dp\">\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:orientation=\"vertical\"\r\n                    android:padding=\"16dp\">\r\n\r\n                    <!-- Back Button -->\r\n                    <ImageView\r\n                        android:id=\"@+id/imageView\"\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginBottom=\"12dp\"\r\n                        android:contentDescription=\"Back\"\r\n                        android:src=\"@drawable/ic_back\" />\r\n\r\n                    <!-- Title -->\r\n                    <TextView\r\n                        android:id=\"@+id/textView6\"\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginBottom=\"16dp\"\r\n                        android:fontFamily=\"@font/inter_bold\"\r\n                        android:text=\"THỐNG KÊ HÓA ĐƠN\"\r\n                        android:textColor=\"#000000\"\r\n                        android:textSize=\"30sp\"\r\n                        android:textStyle=\"bold\" />\r\n\r\n                    <!-- Bộ lọc ngày/tháng -->\r\n                    <LinearLayout\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginBottom=\"12dp\"\r\n                        android:orientation=\"horizontal\">\r\n\r\n                        <Spinner\r\n                            android:id=\"@+id/spinner_time\"\r\n                            android:layout_width=\"0dp\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginEnd=\"8dp\"\r\n                            android:layout_weight=\"1\" />\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tv_date_picker\"\r\n                            android:layout_width=\"0dp\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_weight=\"1\"\r\n                            android:background=\"@android:drawable/edit_text\"\r\n                            android:hint=\"Chọn ngày/tháng\"\r\n                            android:padding=\"12dp\"\r\n                            android:textSize=\"16sp\" />\r\n                    </LinearLayout>\r\n\r\n                    <!-- Nút xác nhận và tổng thu -->\r\n                    <LinearLayout\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginBottom=\"16dp\"\r\n                        android:gravity=\"clip_horizontal|left\"\r\n                        android:orientation=\"horizontal\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvTotal\"\r\n                            android:layout_width=\"218dp\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginBottom=\"8dp\"\r\n                            android:fontFamily=\"@font/inter\"\r\n                            android:gravity=\"center|left\"\r\n                            android:text=\"Tổng thu: 0 VNĐ\"\r\n                            android:textColor=\"#FF5722\"\r\n                            android:textSize=\"17sp\"\r\n                            android:textStyle=\"bold\" />\r\n\r\n                        <Button\r\n                            android:id=\"@+id/btn_confirm\"\r\n                            android:layout_width=\"120dp\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:backgroundTint=\"#FF5722\"\r\n                            android:fontFamily=\"@font/inter\"\r\n                            android:text=\"Xác nhận\"\r\n                            android:textColor=\"#FFFFFF\" />\r\n                    </LinearLayout>\r\n\r\n                    <!-- Phân loại thanh toán -->\r\n                    <LinearLayout\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginBottom=\"12dp\"\r\n                        android:gravity=\"center\"\r\n                        android:orientation=\"horizontal\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvCashPayment\"\r\n                            android:layout_width=\"0dp\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_weight=\"1\"\r\n                            android:fontFamily=\"@font/inter\"\r\n                            android:gravity=\"start\"\r\n                            android:text=\"Tiền mặt: 0 VNĐ\"\r\n                            android:textColor=\"#4CAF50\"\r\n                            android:textSize=\"14sp\" />\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/tvTransferPayment\"\r\n                            android:layout_width=\"0dp\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_weight=\"1\"\r\n                            android:fontFamily=\"@font/inter\"\r\n                            android:gravity=\"end\"\r\n                            android:text=\"Chuyển khoản: 0 VNĐ\"\r\n                            android:textColor=\"#2196F3\"\r\n                            android:textSize=\"14sp\" />\r\n                    </LinearLayout>\r\n\r\n                    <!-- Tiêu đề danh sách hóa đơn -->\r\n                    <TextView\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginBottom=\"8dp\"\r\n                        android:fontFamily=\"@font/inter\"\r\n                        android:text=\"Danh sách hóa đơn\"\r\n                        android:textColor=\"#212121\"\r\n                        android:textSize=\"20sp\"\r\n                        android:textStyle=\"bold\" />\r\n\r\n                    <!-- Danh sách hóa đơn -->\r\n                    <androidx.recyclerview.widget.RecyclerView\r\n                        android:id=\"@+id/rv_invoices\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:nestedScrollingEnabled=\"true\" />\r\n\r\n                </LinearLayout>\r\n            </androidx.cardview.widget.CardView>\r\n\r\n        </LinearLayout>\r\n    </ScrollView>\r\n</LinearLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_income.xml b/app/src/main/res/layout/fragment_income.xml
+--- a/app/src/main/res/layout/fragment_income.xml	(revision 5817712903276a357327eb1593cc79e54764bac9)
++++ b/app/src/main/res/layout/fragment_income.xml	(date 1744357483121)
+@@ -33,8 +33,8 @@
+                     <!-- Back Button -->
+                     <ImageView
+                         android:id="@+id/imageView"
+-                        android:layout_width="wrap_content"
+-                        android:layout_height="wrap_content"
++                        android:layout_width="30dp"
++                        android:layout_height="30dp"
+                         android:layout_marginBottom="12dp"
+                         android:contentDescription="Back"
+                         android:src="@drawable/ic_back" />
+Index: .idea/assetWizardSettings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/assetWizardSettings.xml b/.idea/assetWizardSettings.xml
+new file mode 100644
+--- /dev/null	(date 1743871541772)
++++ b/.idea/assetWizardSettings.xml	(date 1743871541772)
+@@ -0,0 +1,46 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="WizardSettings">
++    <option name="children">
++      <map>
++        <entry key="vectorWizard">
++          <value>
++            <PersistentState>
++              <option name="children">
++                <map>
++                  <entry key="vectorAssetStep">
++                    <value>
++                      <PersistentState>
++                        <option name="children">
++                          <map>
++                            <entry key="clipartAsset">
++                              <value>
++                                <PersistentState>
++                                  <option name="values">
++                                    <map>
++                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/brunch_dining/baseline_brunch_dining_24.xml" />
++                                    </map>
++                                  </option>
++                                </PersistentState>
++                              </value>
++                            </entry>
++                          </map>
++                        </option>
++                        <option name="values">
++                          <map>
++                            <entry key="outputName" value="ic_popular" />
++                            <entry key="sourceFile" value="D:\LAPTRINH\Project Push github" />
++                          </map>
++                        </option>
++                      </PersistentState>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </PersistentState>
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n    <uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />\r\n    <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.QuánĂnBìnhYên\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".TT.ThanhToanChiTiet\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".TT.ThanhToan\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".QLNV.XoaNhanVienChiTiet\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".QLNV.XoaNhanVien\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".QLNV.ChinhSuaThongTinChiTiet\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".QLNV.ChinhSuaThongTin\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".QLNV.ThemNhanVien\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".QLNV.QuanLyNhanVien\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity android:name=\".Login\"/>\r\n        <activity android:name=\".EmployeeListActivity\"/>\r\n        <activity android:name=\"GanCaActivity\"/>\r\n        <activity android:name=\".MenuNVActivity\"/>\r\n        <activity android:name=\".NVListActivity\"/>\r\n        <activity android:name=\".CheckCaActivity\"/>\r\n\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 5817712903276a357327eb1593cc79e54764bac9)
++++ b/app/src/main/AndroidManifest.xml	(date 1744358254430)
+@@ -8,11 +8,11 @@
+ 
+     <application
+         android:allowBackup="true"
+-        android:dataExtractionRules="@xml/data_extraction_rules"
++
+         android:fullBackupContent="@xml/backup_rules"
+-        android:icon="@mipmap/ic_launcher"
++
+         android:label="@string/app_name"
+-        android:roundIcon="@mipmap/ic_launcher_round"
++
+         android:supportsRtl="true"
+         android:theme="@style/Theme.QuánĂnBìnhYên"
+         tools:targetApi="31">

@@ -1,0 +1,3 @@
+com.example.qunnbnhyn.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

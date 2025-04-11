@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="filter_type_options">
+            <item>Ngày</item>
+            <item>Tháng</item>
+        </string-array>
+    <array name="time_options">
+        <item>Theo ngày</item>
+        <item>Theo tháng</item>
+        <item>Tất cả</item>
+    </array>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Quán ăn bình yên</string>
+    <string name="back_button">Quay lại</string>
+    <string name="choose_gender">Chọn giới tính từ danh sách gợi ý</string>
+    <string name="firebase_database_url" translatable="false">https://quananbinhyen-cntt2-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">214256695754</string>
+    <string name="google_api_key" translatable="false">AIzaSyAOrmQhpGEm4AJtHIb61SC0BGDTurgtxX0</string>
+    <string name="google_app_id" translatable="false">1:214256695754:android:b1ee51dc7cc1e74bacb733</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAOrmQhpGEm4AJtHIb61SC0BGDTurgtxX0</string>
+    <string name="google_storage_bucket" translatable="false">quananbinhyen-cntt2.firebasestorage.app</string>
+    <string name="project_id" translatable="false">quananbinhyen-cntt2</string>
+    <string name="sua_thong_tin">sua_thong_tin</string>
+    <string name="them_mon">them_mon</string>
+    <string name="xoa_mon">xoa_mon</string>
+    <style name="Base.Theme.QuánĂnBìnhYên" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+        <item name="buttonStyle">@style/CustomButtonStyle</item>
+
+    </style>
+    <style name="CustomButtonStyle" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/rounded_button</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="CustomSpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:fontFamily">@font/comfortaa</item>
+    </style>
+    <style name="Theme.QuánĂnBìnhYên" parent="Base.Theme.QuánĂnBìnhYên"/>
+</resources>

@@ -8,20 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.cloudinary.android.MediaManager;
-import com.example.qunnbnhyn.MainActivity;
-import com.example.qunnbnhyn.MenuNVActivity;
-import com.example.qunnbnhyn.QLM.MonAn;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cloudinary.android.MediaManager;
+import com.example.qunnbnhyn.MainActivity;
+import com.example.qunnbnhyn.MenuNVActivity;
 import com.example.qunnbnhyn.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,92 +32,104 @@ public class Login extends AppCompatActivity {
     private Button btn_login;
     private EditText editUsername, editPassword;
     private TextView txtMessage;
-    private HashMap<String, MonAn> menu;
-    FirebaseAuth myAuth;
-    private String fullName;
-    private String uid;
+    private FirebaseAuth myAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // Ánh xạ view
         btn_login = findViewById(R.id.btn_login);
         txtMessage = findViewById(R.id.txt_message);
         editPassword = findViewById(R.id.edit_password);
         editUsername = findViewById(R.id.edit_username);
         myAuth = FirebaseAuth.getInstance();
+
+        // Khởi tạo Cloudinary
         Map config = new HashMap();
-        config.put("cloud_name","dr94s8psw");
-        config.put("api_key","391264998483567");
-        config.put("api_secret","JfVY6wjk278v4hU3zodwvdDhTWI");
-        MediaManager.init(this,config);
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = editUsername.getText().toString();
-                String password = editPassword.getText().toString();
-                if (TextUtils.isEmpty(email)) {
-                    editUsername.setError("Vui long nhap email");
-                    return;
-                }
-                if (TextUtils.isEmpty(password)) {
-                    editPassword.setError("Vui long nhap mat khau");
-                    return;
-                }
-                myAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    FirebaseUser user = myAuth.getCurrentUser();
-                                    uid = user.getUid();
-                                    getFullName(uid);
-                                } else {
-                                    txtMessage.setVisibility(View.VISIBLE);
-                                }
+        config.put("cloud_name", "dr94s8psw");
+        config.put("api_key", "391264998483567");
+        config.put("api_secret", "JfVY6wjk278v4hU3zodwvdDhTWI");
+        MediaManager.init(this, config);
+
+        // Sự kiện nút đăng nhập
+        btn_login.setOnClickListener(v -> {
+            String email = editUsername.getText().toString().trim();
+            String password = editPassword.getText().toString().trim();
+
+            // Kiểm tra đầu vào
+            if (TextUtils.isEmpty(email)) {
+                editUsername.setError("Vui lòng nhập email");
+                return;
+            }
+            if (TextUtils.isEmpty(password)) {
+                editPassword.setError("Vui lòng nhập mật khẩu");
+                return;
+            }
+
+            // Đăng nhập với Firebase Authentication
+            myAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = myAuth.getCurrentUser();
+                            if (user != null) {
+                                String uid = user.getUid();
+                                getEmployeeData(uid);
+                            } else {
+                                Toast.makeText(Login.this, "Lỗi: Không lấy được thông tin người dùng", Toast.LENGTH_SHORT).show();
                             }
-                        });
-            }
+                        } else {
+                            txtMessage.setVisibility(View.VISIBLE);
+                            txtMessage.setText("Đăng nhập thất bại: " + task.getException().getMessage());
+                        }
+                    });
         });
     }
-    private void changActivityByRole() {
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Employees").child(uid).child("position");
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+    // Lấy thông tin nhân viên từ Firebase
+    private void getEmployeeData(String uid) {
+        DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("Employees").child(uid);
+        employeeRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String role = (String) snapshot.getValue(String.class);
-                Intent intent;
-                if (role != null && role.equals("Nhân viên")) {
-                    intent = new Intent(Login.this, MenuNVActivity.class);
+                if (snapshot.exists()) {
+                    // Lấy thông tin từ Firebase
+                    String fullName = snapshot.child("name").getValue(String.class);
+                    String position = snapshot.child("position").getValue(String.class);
+
+                    // Kiểm tra dữ liệu
+                    if (TextUtils.isEmpty(fullName) || TextUtils.isEmpty(position)) {
+                        Toast.makeText(Login.this, "Lỗi: Dữ liệu nhân viên không đầy đủ", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    // Sử dụng uid làm maNhanVien
+                    String maNhanVien = uid;
+
+                    // Chuyển activity theo vai trò
+                    Intent intent;
+                    if (position.equals("Nhân viên")) {
+                        intent = new Intent(Login.this, MenuNVActivity.class);
+                    } else {
+                        intent = new Intent(Login.this, MainActivity.class);
+                    }
+
+                    // Truyền dữ liệu
+                    intent.putExtra("maNhanVien", maNhanVien);
+                    intent.putExtra("full_name", fullName);
+                    Log.d("Login", "Truyền maNhanVien: " + maNhanVien + ", fullName: " + fullName);
+                    startActivity(intent);
+                    finish();
                 } else {
-                    intent = new Intent(Login.this, MainActivity.class);
+                    Toast.makeText(Login.this, "Lỗi: Không tìm thấy thông tin nhân viên", Toast.LENGTH_SHORT).show();
                 }
-                Log.d("name: ", fullName);
-                intent.putExtra("maNhanVien",uid);
-                intent.putExtra("full_name", fullName);
-
-                startActivity(intent);
-                finish();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
-    private void getFullName(String uid) {
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Employees").child(uid).child("name");
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                fullName = (String) snapshot.getValue(String.class);
-                changActivityByRole();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("Login", "Lỗi khi lấy tên: " + error.getMessage());
-                fullName = null;
+                Toast.makeText(Login.this, "Lỗi truy vấn dữ liệu: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                Log.e("Login", "Lỗi Firebase: " + error.getMessage());
             }
         });
     }

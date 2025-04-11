@@ -1,0 +1,35 @@
+Index: app/src/main/java/com/example/qunnbnhyn/MainActivity.java
+===================================================================
+diff --git a/app/src/main/java/com/example/qunnbnhyn/MainActivity.java b/app/src/main/java/com/example/qunnbnhyn/MainActivity.java
+deleted file mode 100644
+--- a/app/src/main/java/com/example/qunnbnhyn/MainActivity.java	(revision acb7dbf40b45e2445ac4f749726200fd8e5f30c6)
++++ /dev/null	(revision acb7dbf40b45e2445ac4f749726200fd8e5f30c6)
+@@ -1,27 +0,0 @@
+-package com.example.qunnbnhyn;
+-
+-import android.os.Bundle;
+-
+-import androidx.activity.EdgeToEdge;
+-import androidx.appcompat.app.AppCompatActivity;
+-import androidx.core.graphics.Insets;
+-import androidx.core.view.ViewCompat;
+-import androidx.core.view.WindowInsetsCompat;
+-
+-import com.example.qunnbnhyn.QLNV.QuanLyNhanVien;
+-import com.example.qunnbnhyn.TT.ThanhToan;
+-
+-public class MainActivity extends AppCompatActivity {
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        EdgeToEdge.enable(this);
+-        setContentView(R.layout.activity_main);
+-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+-            return insets;
+-        });
+-    }
+-}
+\ No newline at end of file

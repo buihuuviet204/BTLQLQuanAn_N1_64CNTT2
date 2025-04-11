@@ -1,0 +1,586 @@
+[
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_customer_home_page.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_customer_home_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_edit_customer.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_edit_customer.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_danh_sach_nhan_vien.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\danh_sach_nhan_vien.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_xac_nhan_dat.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_xac_nhan_dat.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_them_nhan_vien.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_them_nhan_vien.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\font_italianno.ttf.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\font\\italianno.ttf"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_list_mon_an_theo_loai.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_list_mon_an_theo_loai.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_more.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\more.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_rcl_dondat.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_rcl_dondat.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_baseline_arrow_back_ios_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\baseline_arrow_back_ios_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_sign_out_alt.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\sign_out_alt.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_fingerprint.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\fingerprint.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_fragment_them_mon.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\fragment_them_mon.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_logoquanan.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\logoquanan.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_bg_button.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\bg_button.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_baseline_manage_search_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\baseline_manage_search_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_gradient_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\gradient_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_button_thanh_toan.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\button_thanh_toan.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_employee_card_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\employee_card_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_supplies.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\supplies.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_editing.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\editing.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_salary.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_salary.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_total_income.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_total_income.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_status_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\status_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_placeholder.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\placeholder.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_rcl_sua.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_rcl_sua.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_income.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_income.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_baseline_attach_money_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\baseline_attach_money_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_employee.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_employee.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_don_dat.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_don_dat.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_search_view_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\search_view_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_cashless_payment.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\cashless_payment.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_filter.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\filter.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_customer_service.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\customer_service.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_inventory.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\inventory.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_customer.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_customer.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_qlmon.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_qlmon.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_shift.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_shift.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_transfer.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_transfer.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_customer.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_customer.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_dat_mon.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_dat_mon.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_spinner_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\spinner_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\menu_bottom_nav_menu_monan.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\menu\\bottom_nav_menu_monan.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_delete_customer.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_delete_customer.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_fragment_activity_popular_food.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\fragment_activity_popular_food.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_fragment_salary.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\fragment_salary.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_delete.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\delete.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_timetable.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\timetable.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_employee_list.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_employee_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_search.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_search.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_customer_priority_detail.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_customer_priority_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_phucvu.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_phucvu.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_happy_client.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\happy_client.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_dialog_qr_payment.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\dialog_qr_payment.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\font_inter_bold.otf.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\font\\inter_bold.otf"
+    },
+    {
+        "merged": "com.example.qunnbnhyn.app-debug-53:/layout_activity_main_nv.xml.flat",
+        "source": "com.example.qunnbnhyn.app-main-55:/layout/activity_main_nv.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_fragment_sua_mon.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\fragment_sua_mon.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_bg_round.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\bg_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_customer_priority.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_customer_priority.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_baseline_delete_forever_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\baseline_delete_forever_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_qr_code_payment.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\qr_code_payment.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_sector_nav_color.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\sector_nav_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_revenue.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_revenue.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_baseline_access_time_filled_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\baseline_access_time_filled_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_order_food.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\order_food.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_menu_burger.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\menu_burger.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_main_nv.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_main_nv.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_card_gradient_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\card_gradient_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_home.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_show_report.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_show_report.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_background_layout.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\background_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_star.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_star.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_item_selected.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\item_selected.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_rounded_button.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\rounded_button.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_user.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\user.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_change_infomation_customer.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_change_infomation_customer.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_list_header.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_list_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_outline_add_to_home_screen_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\outline_add_to_home_screen_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\font_inter.otf.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\font\\inter.otf"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_chinh_sua_thong_tin.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_chinh_sua_thong_tin.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_edit_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\edit_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_item_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\item_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_edit_text_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\edit_text_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_thanh_toan_chi_tiet.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_thanh_toan_chi_tiet.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_calendar.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\calendar.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_baseline_calendar_month_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\baseline_calendar_month_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_priority_customer.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_priority_customer.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_list_mon_order.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_list_mon_order.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_invoice.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_invoice.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_custom_progress_bar.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\custom_progress_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_rounded_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\rounded_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_circle_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\circle_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_fragment_xoa_mon.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\fragment_xoa_mon.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_layout_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\layout_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_back.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_back.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_danhsachnv.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\danhsachnv.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\font_comfortaa.ttf.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\font\\comfortaa.ttf"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_employee_header.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_employee_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_baseline_arrow_back_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\baseline_arrow_back_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_checkca.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_checkca.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_xoa_nhan_vien.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_xoa_nhan_vien.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_filter.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_filter.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_dining_table.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\dining_table.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_icontint.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\icontint.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_xoa_nhan_vien_chi_tiet.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_xoa_nhan_vien_chi_tiet.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_bottom_nav_background.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\bottom_nav_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_users.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\users.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_chinh_sua_thong_tin_chi_tiet.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_chinh_sua_thong_tin_chi_tiet.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_discount_voucher.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\discount_voucher.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_date_header.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_date_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_checkin.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\checkin.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_quan_ly_nhan_vien.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_quan_ly_nhan_vien.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_cash.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_cash.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_background2.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\background2.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_upload.png.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_upload.png"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_fragment_income.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\fragment_income.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_baseline_edit_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\baseline_edit_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_add_new_customer.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_add_new_customer.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_rcl_xoa.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_rcl_xoa.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_ic_popular.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\ic_popular.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_ganca.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_ganca.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_search.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_search.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_item_rcl_cthd.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\item_rcl_cthd.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\drawable_baseline_add_circle_outline_24.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\drawable\\baseline_add_circle_outline_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\layout_activity_thanh_toan.xml.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\layout\\activity_thanh_toan.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-debug-53:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.10.2\\com.example.qunnbnhyn.app-main-55:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    }
+]

@@ -1,0 +1,5 @@
+com.example.qunnbnhyn.test.app-core-1.6.1-0 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\e538cb128b8287890e42d6c11efd0c88\transformed\core-1.6.1\res
+com.example.qunnbnhyn.test.app-androidTest-1 D:\LAPTRINH\Project Push github\app\build\generated\res\resValues\androidTest\debug
+com.example.qunnbnhyn.test.app-mergeDebugAndroidTestResources-2 D:\LAPTRINH\Project Push github\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.qunnbnhyn.test.app-mergeDebugAndroidTestResources-3 D:\LAPTRINH\Project Push github\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.qunnbnhyn.test.app-debugAndroidTest-4 D:\LAPTRINH\Project Push github\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

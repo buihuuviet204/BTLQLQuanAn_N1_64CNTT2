@@ -4,10 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +17,6 @@ import com.example.qunnbnhyn.QLKH.ActivityCustomerHome;
 import com.example.qunnbnhyn.QLM.MonAn;
 import com.example.qunnbnhyn.TT.ThanhToan;
 import com.example.qunnbnhyn.datmon.DatMon;
-import com.example.qunnbnhyn.datmon.ItemThucDon;
 import com.example.qunnbnhyn.dondat.DonDatActivity;
 import com.example.qunnbnhyn.login.Login;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,13 +33,11 @@ import java.util.Locale;
 import java.util.Map;
 
 public class MenuNVActivity extends AppCompatActivity {
-
-    private ImageButton btnShift, logout, finger,btnPhucVu;
+    private ImageButton btnShift, logout, finger, btnPhucVu;
     private ImageButton order, happyClient, payment;
     private String maNhanVien;
-    private DatabaseReference database;
     private TextView txtName;
-
+    private DatabaseReference database;
     private DatabaseReference timeTrackingRef;
     private FirebaseAuth myAuth;
 
@@ -51,160 +46,139 @@ public class MenuNVActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_nv);
 
-        // Kết nối tới node Employees trên Firebase (sau khi maNhanVien đã được gán)
-        Intent intent = getIntent();
-        maNhanVien = intent.getStringExtra("maNhanVien");
-        Log.d("Ma NV",maNhanVien);
-        database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
+        // Lấy maNhanVien từ Intent
+        Intent incomingIntent = getIntent();
+        maNhanVien = incomingIntent.getStringExtra("maNhanVien");
+        String fullName = incomingIntent.getStringExtra("full_name");
+        Log.d("MenuNV", "Received maNhanVien: " + maNhanVien + ", fullName: " + fullName);
 
-        // Kết nối tới node Chấm công
-        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        timeTrackingRef = FirebaseDatabase.getInstance().getReference("Cham_cong").child(currentDate).child(maNhanVien);
+        // Kiểm tra maNhanVien
+        if (maNhanVien == null) {
+            Toast.makeText(this, "Lỗi: Không nhận được mã nhân viên", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
-        // Khởi tạo FirebaseAuth
-        myAuth = FirebaseAuth.getInstance();
-        btnPhucVu = findViewById(R.id.btn_phuc_vu);
-        // Ánh xạ các view
+        // Ánh xạ view
         txtName = findViewById(R.id.txtName);
-        Log.d("name",intent.getStringExtra("full_name"));
-        txtName.setText(intent.getStringExtra("full_name"));
-
-        // Ánh xạ ImageView "Quản lý bàn ăn" từ GridLayout
         btnShift = findViewById(R.id.btn_shift);
         order = findViewById(R.id.order);
         happyClient = findViewById(R.id.happy_client);
         payment = findViewById(R.id.payment);
         logout = findViewById(R.id.logout);
         finger = findViewById(R.id.finger);
+        btnPhucVu = findViewById(R.id.btn_phuc_vu);
+
+        // Hiển thị tên nhân viên
+        txtName.setText(fullName != null ? fullName : "N/A");
+
+        // Khởi tạo Firebase
+        myAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        timeTrackingRef = FirebaseDatabase.getInstance().getReference("Cham_cong").child(currentDate).child(maNhanVien);
+
+        // Tải menu từ Firebase
         HashMap<String, MonAn> menu = new HashMap<>();
         FirebaseDatabase.getInstance().getReference("thuc_don").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                menu.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     MonAn monAn = dataSnapshot.getValue(MonAn.class);
-                    monAn.setMaMon(dataSnapshot.getKey().toString());
-                    menu.put(dataSnapshot.getKey().toString(), monAn);
+                    monAn.setMaMon(dataSnapshot.getKey());
+                    menu.put(dataSnapshot.getKey(), monAn);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MenuNVActivity.this, "Lỗi khi tải dữ liệu", Toast.LENGTH_SHORT).show();
-            }
-        });
-        order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intentOrder = new Intent(MenuNVActivity.this,DatMon.class);
-                intentOrder.putExtra("menu",menu);
-                Log.d("HHAA","AHHA");
-                startActivity(intentOrder);
-            }
-        });
-        btnPhucVu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(MenuNVActivity.this, DonDatActivity.class);
-                startActivity(intent1);
+                Toast.makeText(MenuNVActivity.this, "Lỗi tải thực đơn: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        finger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Lấy thông tin ca làm việc (shift) từ node Employees
-                database.child("shift").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+        // Sự kiện nút Đặt món
+        order.setOnClickListener(v -> {
+            Intent orderIntent = new Intent(MenuNVActivity.this, DatMon.class);
+            orderIntent.putExtra("menu", menu);
+            startActivity(orderIntent);
+        });
+
+        // Sự kiện nút Phục vụ
+        btnPhucVu.setOnClickListener(v -> {
+            Intent phucVuIntent = new Intent(MenuNVActivity.this, DonDatActivity.class);
+            startActivity(phucVuIntent);
+        });
+
+        // Sự kiện nút Chấm công
+        finger.setOnClickListener(v -> {
+            String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
+            database.child("shift").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String shift = snapshot.getValue(String.class);
+                    Map<String, String> cong = new HashMap<>();
+                    cong.put("check-in", currentTime);
+                    cong.put("check-out", "null");
+                    cong.put("shift", shift != null ? shift : "Chưa gán");
+                    FirebaseDatabase.getInstance().getReference("Cham_cong").child(currentDate).child(maNhanVien).setValue(cong)
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(MenuNVActivity.this, "Chấm công thành công", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(MenuNVActivity.this, "Lỗi chấm công: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(MenuNVActivity.this, "Lỗi tải ca làm: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+
+        // Sự kiện nút Check ca
+        btnShift.setOnClickListener(v -> {
+            Intent shiftIntent = new Intent(MenuNVActivity.this, CheckCaActivity.class);
+            shiftIntent.putExtra("maNhanVien", maNhanVien);
+            startActivity(shiftIntent);
+        });
+
+        // Sự kiện nút Đăng xuất
+        logout.setOnClickListener(v -> {
+            new AlertDialog.Builder(MenuNVActivity.this)
+                    .setTitle("Xác nhận đăng xuất")
+                    .setMessage("Bạn có chắc chắn muốn đăng xuất không?")
+                    .setPositiveButton("OK", (dialog, which) -> {
                         String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-                        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-                        Map<String, String> cong = new HashMap<>();
-                        cong.put("check-in",currentTime);
-                        cong.put("check-out","null");
-                        cong.put("shift",snapshot.getValue(String.class));
-                        FirebaseDatabase.getInstance().getReference("Cham_cong").child(currentDate).child(maNhanVien).setValue(cong);
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-        });
-
-        // Gắn sự kiện onClick cho ImageView "Quản lý bàn ăn"
-        btnShift.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chuyển sang ManageTableActivity
-                Intent intent = new Intent(MenuNVActivity.this, NVListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Hiển thị dialog xác nhận đăng xuất
-                new AlertDialog.Builder(MenuNVActivity.this)
-                        .setTitle("Xác nhận đăng xuất")
-                        .setMessage("Bạn có chắc chắn muốn đăng xuất không?")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Lấy thời gian hiện tại
-                                String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-
-                                // Cập nhật thời gian check-out vào node Chấm công
-                                timeTrackingRef.child("check-out").setValue(currentTime).addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) {
-                                        // Đăng xuất khỏi Firebase Authentication
-                                        myAuth.signOut();
-
-                                        // Hiển thị thông báo đăng xuất thành công
-                                        Toast.makeText(MenuNVActivity.this, "Đăng xuất thành công!", Toast.LENGTH_SHORT).show();
-
-                                        // Chuyển về LoginActivity và xóa toàn bộ activity stack
-                                        Intent intent = new Intent(MenuNVActivity.this, Login.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(MenuNVActivity.this, "Lỗi lưu giờ checkout: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                    }
-                                });
+                        timeTrackingRef.child("check-out").setValue(currentTime).addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                myAuth.signOut();
+                                Toast.makeText(MenuNVActivity.this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
+                                Intent loginIntent = new Intent(MenuNVActivity.this, Login.class);
+                                loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(loginIntent);
+                                finish();
+                            } else {
+                                Toast.makeText(MenuNVActivity.this, "Lỗi lưu giờ checkout: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss(); // Đóng dialog, không làm gì
-                            }
-                        })
-                        .show();
-            }
+                        });
+                    })
+                    .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
+                    .show();
         });
 
-
-
-
-        happyClient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(MenuNVActivity.this, ActivityCustomerHome.class);
-                startActivity(intent1);
-            }
+        // Sự kiện nút Khách hàng
+        happyClient.setOnClickListener(v -> {
+            Intent clientIntent = new Intent(MenuNVActivity.this, ActivityCustomerHome.class);
+            startActivity(clientIntent);
         });
 
-        payment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(MenuNVActivity.this, ThanhToan.class);
-                startActivity(intent1);
-            }
+        // Sự kiện nút Thanh toán
+        payment.setOnClickListener(v -> {
+            Intent paymentIntent = new Intent(MenuNVActivity.this, ThanhToan.class);
+            startActivity(paymentIntent);
         });
-
     }
 }

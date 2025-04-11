@@ -1,0 +1,56 @@
+com.example.qunnbnhyn.app-jetified-play-services-auth-20.7.0-0 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\05de9d0774aefb53cefd22adac82c156\transformed\jetified-play-services-auth-20.7.0\res
+com.example.qunnbnhyn.app-gridlayout-1.0.0-1 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\067e060c815d162ea90ef8c0a1074c01\transformed\gridlayout-1.0.0\res
+com.example.qunnbnhyn.app-jetified-lifecycle-service-2.6.2-2 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\087bfb0238581091e52933f86fb6c721\transformed\jetified-lifecycle-service-2.6.2\res
+com.example.qunnbnhyn.app-jetified-annotation-experimental-1.4.0-3 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\0a4270ded19a6e5cf8dd662d76a704a4\transformed\jetified-annotation-experimental-1.4.0\res
+com.example.qunnbnhyn.app-jetified-firebase-common-21.0.0-4 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\17e56d3a460828162a191caec7307cd3\transformed\jetified-firebase-common-21.0.0\res
+com.example.qunnbnhyn.app-material-1.12.0-5 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\1aa4618172ca2d41cf328a1a8527ba56\transformed\material-1.12.0\res
+com.example.qunnbnhyn.app-drawerlayout-1.1.1-6 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\1e08abfbc1855e694853c8909913ac7f\transformed\drawerlayout-1.1.1\res
+com.example.qunnbnhyn.app-jetified-activity-1.10.1-7 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\258936fb9cd1a7545f6e4638c0a432d3\transformed\jetified-activity-1.10.1\res
+com.example.qunnbnhyn.app-jetified-drawee-3.2.0-8 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\2644565bf2990d1a95b114b14cad50bf\transformed\jetified-drawee-3.2.0\res
+com.example.qunnbnhyn.app-jetified-media3-ui-1.1.1-9 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\28318a575a7810d5af38921209ad88cc\transformed\jetified-media3-ui-1.1.1\res
+com.example.qunnbnhyn.app-jetified-appcompat-resources-1.7.0-10 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\32b1ff845a61cba70a585b73576399ac\transformed\jetified-appcompat-resources-1.7.0\res
+com.example.qunnbnhyn.app-jetified-savedstate-1.2.1-11 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\3af0b7feddbf18e3090fc44d134dfcbf\transformed\jetified-savedstate-1.2.1\res
+com.example.qunnbnhyn.app-coordinatorlayout-1.1.0-12 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\40b80ccfde11b02cca65c5a044bc94d4\transformed\coordinatorlayout-1.1.0\res
+com.example.qunnbnhyn.app-work-runtime-2.7.1-13 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\4597cd583660a64994ef66f695a1e86a\transformed\work-runtime-2.7.1\res
+com.example.qunnbnhyn.app-core-1.13.0-14 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\45ec56e70210c1304dc4be1b0109130b\transformed\core-1.13.0\res
+com.example.qunnbnhyn.app-jetified-core-common-2.0.3-15 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\4bb92bc1420f46b145620c8a2e5b0562\transformed\jetified-core-common-2.0.3\res
+com.example.qunnbnhyn.app-fragment-1.5.4-16 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\4d67633bd29a02fd4b947fb7ad9f1e1c\transformed\fragment-1.5.4\res
+com.example.qunnbnhyn.app-browser-1.4.0-17 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\522fbb917276f571f1f1dd0e712ab817\transformed\browser-1.4.0\res
+com.example.qunnbnhyn.app-lifecycle-viewmodel-2.6.2-18 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\5815d03d54ce385493b349cfd716c698\transformed\lifecycle-viewmodel-2.6.2\res
+com.example.qunnbnhyn.app-jetified-credentials-1.2.0-rc01-19 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\71f7bec24185953ae0d55fa917cc4f19\transformed\jetified-credentials-1.2.0-rc01\res
+com.example.qunnbnhyn.app-jetified-glide-4.16.0-20 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\76e9b012d095860ca29a08a748398060\transformed\jetified-glide-4.16.0\res
+com.example.qunnbnhyn.app-jetified-core-ktx-1.13.0-21 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\814e4be4554e83887c6c57b550004f4a\transformed\jetified-core-ktx-1.13.0\res
+com.example.qunnbnhyn.app-jetified-media3-exoplayer-1.1.1-22 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\88b093f6f99b6005d48fa80c63a0bb4c\transformed\jetified-media3-exoplayer-1.1.1\res
+com.example.qunnbnhyn.app-jetified-viewpager2-1.0.0-23 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\8b53bf09cf0682580424cdcc2d7ff095\transformed\jetified-viewpager2-1.0.0\res
+com.example.qunnbnhyn.app-appcompat-1.7.0-24 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\8e8b5ae7c0a350aafe3968c0f42bb1ea\transformed\appcompat-1.7.0\res
+com.example.qunnbnhyn.app-transition-1.5.0-25 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\913320d2eaf6d53521989187bdb340b4\transformed\transition-1.5.0\res
+com.example.qunnbnhyn.app-jetified-emoji2-views-helper-1.3.0-26 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\97832d101f6c1c4de7b6397f84961c22\transformed\jetified-emoji2-views-helper-1.3.0\res
+com.example.qunnbnhyn.app-jetified-cloudinary-android-preprocess-3.0.2-27 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\97aaa3cab74a9be5df868522afa9fb12\transformed\jetified-cloudinary-android-preprocess-3.0.2\res
+com.example.qunnbnhyn.app-jetified-Neomorphic-FrameLayout-Android-1.03-28 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\9915848521c703d415342a401d18e643\transformed\jetified-Neomorphic-FrameLayout-Android-1.03\res
+com.example.qunnbnhyn.app-core-runtime-2.2.0-29 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\9a67a13e4d1c13884a42e9ff4af88265\transformed\core-runtime-2.2.0\res
+com.example.qunnbnhyn.app-lifecycle-runtime-2.6.2-30 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\9eae1155cfa3eba40d6c1927e3910d2d\transformed\lifecycle-runtime-2.6.2\res
+com.example.qunnbnhyn.app-lifecycle-livedata-core-2.6.2-31 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\a77251dc1866b75756f7e643747bc6c9\transformed\lifecycle-livedata-core-2.6.2\res
+com.example.qunnbnhyn.app-jetified-cloudinary-android-ui-3.0.2-32 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\ad8bfd3fe40d62b0e465046a338389f7\transformed\jetified-cloudinary-android-ui-3.0.2\res
+com.example.qunnbnhyn.app-jetified-emoji2-1.3.0-33 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\ae761cb6acc77015f7e7e4946b6b4d5a\transformed\jetified-emoji2-1.3.0\res
+com.example.qunnbnhyn.app-jetified-profileinstaller-1.4.0-34 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\b2b4d30b455cda08f60d146c5d4cb272\transformed\jetified-profileinstaller-1.4.0\res
+com.example.qunnbnhyn.app-recyclerview-1.3.0-35 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\b3770665f4ba9f9a2f80ef3ac42d45c3\transformed\recyclerview-1.3.0\res
+com.example.qunnbnhyn.app-jetified-play-services-basement-18.4.0-36 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\b65da303feb4d14fd7c62504ed6cb5d5\transformed\jetified-play-services-basement-18.4.0\res
+com.example.qunnbnhyn.app-constraintlayout-2.2.1-37 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\b8c9e6f17b8fcdfdceff37591ac4e800\transformed\constraintlayout-2.2.1\res
+com.example.qunnbnhyn.app-jetified-customview-poolingcontainer-1.0.0-38 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\b942f787af228040d6736ff688969232\transformed\jetified-customview-poolingcontainer-1.0.0\res
+com.example.qunnbnhyn.app-cardview-1.0.0-39 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c572bd1a0241da29630c2f69f911c718\transformed\cardview-1.0.0\res
+com.example.qunnbnhyn.app-media-1.6.0-40 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\d1662264e1641228ba5f0b5505d25404\transformed\media-1.6.0\res
+com.example.qunnbnhyn.app-jetified-lifecycle-process-2.6.2-41 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\d346f0cbfbd79cbd1e67bb1ecb2a99dd\transformed\jetified-lifecycle-process-2.6.2\res
+com.example.qunnbnhyn.app-jetified-startup-runtime-1.1.1-42 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\d7bd7f187fb093c57205c65819a16af4\transformed\jetified-startup-runtime-1.1.1\res
+com.example.qunnbnhyn.app-lifecycle-livedata-2.6.2-43 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\e58c59f1a69866fcd28b170f3d6abec0\transformed\lifecycle-livedata-2.6.2\res
+com.example.qunnbnhyn.app-jetified-play-services-base-18.1.0-44 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\e88d0d2fa80044071324ab78ce370654\transformed\jetified-play-services-base-18.1.0\res
+com.example.qunnbnhyn.app-jetified-core-viewtree-1.0.0-45 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\f2c6449d4a7b1b2916dca00c312e561e\transformed\jetified-core-viewtree-1.0.0\res
+com.example.qunnbnhyn.app-jetified-credentials-play-services-auth-1.2.0-rc01-46 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\fa969b27e421c28b56ee799e64d21bcd\transformed\jetified-credentials-play-services-auth-1.2.0-rc01\res
+com.example.qunnbnhyn.app-jetified-lifecycle-viewmodel-savedstate-2.6.2-47 C:\Users\ASUS\.gradle\caches\8.10.2\transforms\fd64fea766c9c918a360e24b27c6a663\transformed\jetified-lifecycle-viewmodel-savedstate-2.6.2\res
+com.example.qunnbnhyn.app-pngs-48 D:\LAPTRINH\Project Push github\app\build\generated\res\pngs\debug
+com.example.qunnbnhyn.app-res-49 D:\LAPTRINH\Project Push github\app\build\generated\res\processDebugGoogleServices
+com.example.qunnbnhyn.app-resValues-50 D:\LAPTRINH\Project Push github\app\build\generated\res\resValues\debug
+com.example.qunnbnhyn.app-packageDebugResources-51 D:\LAPTRINH\Project Push github\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.qunnbnhyn.app-packageDebugResources-52 D:\LAPTRINH\Project Push github\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.qunnbnhyn.app-debug-53 D:\LAPTRINH\Project Push github\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.qunnbnhyn.app-debug-54 D:\LAPTRINH\Project Push github\app\src\debug\res
+com.example.qunnbnhyn.app-main-55 D:\LAPTRINH\Project Push github\app\src\main\res

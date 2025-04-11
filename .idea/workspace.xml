@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="pixel_2_xl" />
+        <device id="_device_class_phone" />
+      </config>
+    </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_new_customer.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_change_infomation_customer.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_checkca.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_chinh_sua_thong_tin.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_chinh_sua_thong_tin_chi_tiet.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_customer_home_page.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_customer_priority.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_customer_priority_detail.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dat_mon.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_delete_customer.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_don_dat.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_edit_customer.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_nv.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_qlmon.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_quan_ly_nhan_vien.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_show_report.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_thanh_toan.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_thanh_toan_chi_tiet.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_them_nhan_vien.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_xac_nhan_dat.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_xoa_nhan_vien.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_xoa_nhan_vien_chi_tiet.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/danh_sach_nhan_vien.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_qr_payment.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_activity_popular_food.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_income.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_salary.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sua_mon.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_them_mon.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_xoa_mon.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_customer.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_date_header.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_employee.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_employee_header.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_invoice.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_list_header.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_list_mon_an_theo_loai.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_list_mon_order.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_priority_customer.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_rcl_cthd.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_shift.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml">
+        <config>
+          <theme>@style/Theme.Material3.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu_monan.xml">
+        <config>
+          <theme>@style/Theme.QuánĂnBìnhYên</theme>
+        </config>
+      </layout>
+    </layouts>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de187b6d-2cf5-4237-81d1-6208b94374c1" name="Changes" comment="Update cac Class">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/qunnbnhyn/CheckCaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/qunnbnhyn/CheckCaActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/qunnbnhyn/MenuNVActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/qunnbnhyn/MenuNVActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/qunnbnhyn/login/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/qunnbnhyn/login/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_nv.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_nv.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=e559f24d0722)]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="valueResourceFile" />
+        <option value="resourceFile" />
+        <option value="layoutResourceFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {}
+}</component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: [
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOOTHIVM6SMym9&quot;,
+        &quot;number&quot;: 5
+      },
+      &quot;lastSeen&quot;: 1744348032873
+    },
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOOTHIVM6SM3kB&quot;,
+        &quot;number&quot;: 6
+      },
+      &quot;lastSeen&quot;: 1744348628207
+    },
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOOTHIVM6SMo-N&quot;,
+        &quot;number&quot;: 4
+      },
+      &quot;lastSeen&quot;: 1744353911836
+    },
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOOTHIVM6SNfKf&quot;,
+        &quot;number&quot;: 8
+      },
+      &quot;lastSeen&quot;: 1744354903201
+    },
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOOTHIVM6SMna7&quot;,
+        &quot;number&quot;: 3
+      },
+      &quot;lastSeen&quot;: 1744354909905
+    },
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOOTHIVM6SNizH&quot;,
+        &quot;number&quot;: 9
+      },
+      &quot;lastSeen&quot;: 1744356077500
+    }
+  ]
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/buihuuviet204/BTLQLQuanAn_N1_64CNTT2.git&quot;,
+    &quot;accountId&quot;: &quot;8fce297f-ef67-4709-a2bd-35539e553a52&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;buihuuviet204&quot;,
+    &quot;repository&quot;: &quot;BTLQLQuanAn_N1_64CNTT2&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2vCMFqsH44UAdzkLxC0gEUVj658" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/LAPTRINH/Project Push github/app/src/main/res/font&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\LAPTRINH\Project Push github\app\src\main\res\font" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="Quán_ăn_bình_yên.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de187b6d-2cf5-4237-81d1-6208b94374c1" name="Changes" comment="" />
+      <created>1743644501606</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1743644501606</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Update Thêm khách hàng">
+      <option name="closed" value="true" />
+      <created>1743819541897</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743819541897</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Update Thêm khách hàng">
+      <option name="closed" value="true" />
+      <created>1743819889263</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743819889263</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update Thêm khách hàng">
+      <option name="closed" value="true" />
+      <created>1743820383856</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1743820383856</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Update Thêm, Sửa, Xóa">
+      <option name="closed" value="true" />
+      <created>1743846393930</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743846393930</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Update Thêm, Sửa, Xóa, KHTX">
+      <option name="closed" value="true" />
+      <created>1743850350995</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743850350995</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Update KHTX">
+      <option name="closed" value="true" />
+      <created>1744081552171</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1744081552171</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update KHTX">
+      <option name="closed" value="true" />
+      <created>1744125087185</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1744125087185</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update Thu nhập">
+      <option name="closed" value="true" />
+      <created>1744211098937</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1744211098937</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Update Thu nhập">
+      <option name="closed" value="true" />
+      <created>1744221015828</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1744221015828</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Update Thu nhập">
+      <option name="closed" value="true" />
+      <created>1744342875115</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1744342875115</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Update Thu nhập">
+      <option name="closed" value="true" />
+      <created>1744344427622</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744344427622</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Update Thu nhập">
+      <option name="closed" value="true" />
+      <created>1744346310285</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1744346310285</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Update Thu nhập">
+      <option name="closed" value="true" />
+      <created>1744346401204</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1744346401204</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Update cac Class">
+      <option name="closed" value="true" />
+      <created>1744348656562</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1744348656562</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Update cac Class">
+      <option name="closed" value="true" />
+      <created>1744379562581</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1744379562581</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update Thêm khách hàng" />
+    <MESSAGE value="Update Thêm, Sửa, Xóa" />
+    <MESSAGE value="Update Thêm, Sửa, Xóa, KHTX" />
+    <MESSAGE value="Update KHTX" />
+    <MESSAGE value="Update Thu nhập" />
+    <MESSAGE value="Update cac Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update cac Class" />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.example.qunnbnhyn">
+          <value>
+            <CheckInfo lastCheckTimestamp="1744353965380" />
+          </value>
+        </entry>
+        <entry key="com.example.qunnbnhyn.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1744353965380" />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
