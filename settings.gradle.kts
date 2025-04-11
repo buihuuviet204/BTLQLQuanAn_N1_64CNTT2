@@ -17,4 +17,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Quán ăn bình yên"
 include(":app")
- 

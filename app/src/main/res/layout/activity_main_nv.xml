@@ -61,7 +61,7 @@
                     android:layout_height="22dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Nguyễn Thị Long Lanh"
+                    android:text="Nguyễn Văn Bình Minh"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -125,18 +125,18 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/supplies"
+                            android:id="@+id/order"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
                             android:layout_marginStart="12dp"
-                            android:src="@drawable/supplies" />
+                            android:src="@drawable/order_food" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="8dp"
-                            android:text="Quản lý món ăn"
+                            android:text="Đặt món"
                             android:textColor="#000000"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -160,7 +160,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Quản lý ca làm"
+                            android:text="Thông tin ca"
                             android:textColor="#000000"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -191,16 +191,16 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/custom_service"
+                            android:id="@+id/happy_client"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
-                            android:src="@drawable/customer_service" />
+                            android:src="@drawable/happy_client" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Quản lý nhân viên"
+                            android:text="Quản lý khách hàng"
                             android:textColor="#000000"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -213,16 +213,16 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/happy_client"
+                            android:id="@+id/payment"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
-                            android:src="@drawable/happy_client" />
+                            android:src="@drawable/cashless_payment" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Quản lý khách hàng"
+                            android:text="Thanh toán"
                             android:textColor="#000000"
                             android:textSize="18sp" />
 
@@ -257,29 +257,6 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/discount"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:src="@drawable/discount_voucher" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Thống kê"
-                            android:textColor="#000000"
-                            android:textSize="18sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="158dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="20dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
                             android:id="@+id/logout"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
@@ -292,6 +269,15 @@
                             android:text="Đăng xuất"
                             android:textColor="#000000"
                             android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="158dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                     </LinearLayout>
 

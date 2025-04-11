@@ -49,6 +49,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Login"/>
+        <activity android:name=".EmployeeListActivity"/>
+        <activity android:name="GanCaActivity"/>
+        <activity android:name=".MenuNVActivity"/>
+        <activity android:name=".NVListActivity"/>
+        <activity android:name=".CheckCaActivity"/>
+
     </application>
 
 </manifest>
