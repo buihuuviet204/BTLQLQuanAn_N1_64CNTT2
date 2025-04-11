@@ -17,19 +17,12 @@ public class QLMON extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Spinner spinner;
     String[] options = {"Mi Kay","Tra sua","Tra hoa qua","Nuoc co ga","Do an vat","Combo"};
-    Boolean isMediaManagerInited = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qlmon);
         bottomNavigationView = findViewById(R.id.navbarbottom);
-        if(!isMediaManagerInited){
-            Map config = new HashMap();
-            config.put("cloud_name","dr94s8psw");
-            config.put("api_key","391264998483567");
-            config.put("api_secret","JfVY6wjk278v4hU3zodwvdDhTWI");
-            MediaManager.init(this,config);
-        }
+
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.framelayout,new ThemMonFragment())

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.cloudinary.android.MediaManager;
 import com.example.qunnbnhyn.MainActivity;
 import com.example.qunnbnhyn.MenuNVActivity;
 import com.example.qunnbnhyn.QLM.MonAn;
@@ -29,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Login extends AppCompatActivity {
     private Button btn_login;
@@ -48,6 +50,11 @@ public class Login extends AppCompatActivity {
         editPassword = findViewById(R.id.edit_password);
         editUsername = findViewById(R.id.edit_username);
         myAuth = FirebaseAuth.getInstance();
+        Map config = new HashMap();
+        config.put("cloud_name","dr94s8psw");
+        config.put("api_key","391264998483567");
+        config.put("api_secret","JfVY6wjk278v4hU3zodwvdDhTWI");
+        MediaManager.init(this,config);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
