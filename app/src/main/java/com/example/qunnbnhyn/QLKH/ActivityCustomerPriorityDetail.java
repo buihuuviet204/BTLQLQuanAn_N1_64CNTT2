@@ -104,7 +104,7 @@ public class ActivityCustomerPriorityDetail extends AppCompatActivity {
 
                 for (DataSnapshot invoiceSnapshot : snapshot.getChildren()) {
                     String maKhach = invoiceSnapshot.child("maKhach").getValue(String.class);
-                    if (maKhach != null && maKhach.equals(customerPhoneNumber)) {
+                    if (maKhach != null && maKhach.equals(customerId)) {
                         visitCount++;
                         long tongTien = invoiceSnapshot.child("tongTien").getValue(Long.class) != null ?
                                 invoiceSnapshot.child("tongTien").getValue(Long.class) : 0;
