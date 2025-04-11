@@ -59,18 +59,18 @@ public class MainActivity extends AppCompatActivity {
                 Intent it2 = new Intent(MainActivity.this, ThanhToan.class);
                 startActivity(it2);
             }
-        setContentView(R.layout.activity_main_nv);
+        });
 
         // Lấy maNhanVien từ Intent trước
         Intent intent = getIntent();
-        maNhanVien = intent.getStringExtra("maNhanVien");
-        if (maNhanVien == null || maNhanVien.isEmpty()) {
-            Toast.makeText(this, "Không tìm thấy mã nhân viên. Vui lòng đăng nhập lại.", Toast.LENGTH_SHORT).show();
-            Intent loginIntent = new Intent(MainActivity.this, Login.class);
-            startActivity(loginIntent);
-            finish();
-            return;
-        }
+//        maNhanVien = intent.getStringExtra("maNhanVien");
+//        if (maNhanVien == null || maNhanVien.isEmpty()) {
+//            Toast.makeText(this, "Không tìm thấy mã nhân viên. Vui lòng đăng nhập lại.", Toast.LENGTH_SHORT).show();
+//            Intent loginIntent = new Intent(MainActivity.this, Login.class);
+//            startActivity(loginIntent);
+//            finish();
+//            return;
+//        }
 
         // Kết nối tới node Employees trên Firebase (sau khi maNhanVien đã được gán)
         database = FirebaseDatabase.getInstance().getReference("Employees").child(maNhanVien);
@@ -83,26 +83,29 @@ public class MainActivity extends AppCompatActivity {
         myAuth = FirebaseAuth.getInstance();
 
         // Ánh xạ các view
-        txtName = findViewById(R.id.txtName);
-        String fullName = intent.getStringExtra("full_name");
-        Log.d("name", fullName != null ? fullName : "null");
-        txtName.setText(fullName != null ? fullName : "Khách");
-
-        diningTableImageView = findViewById(R.id.fram1).findViewById(R.id.dining_table_image);
-        supplies = findViewById(R.id.fram1).findViewById(R.id.supplies);
-        customService = findViewById(R.id.fram2).findViewById(R.id.custom_service);
-        happyClient = findViewById(R.id.fram2).findViewById(R.id.happy_client);
-        discount = findViewById(R.id.fram3).findViewById(R.id.discount);
-        logout = findViewById(R.id.fram3).findViewById(R.id.logout);
-        finger = findViewById(R.id.finger);
-
-        // Gắn sự kiện onClick cho ImageView "Quản lý bàn ăn"
-        diningTableImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, EmployeeListActivity.class);
-                startActivity(intent);
-            }
-
+//        txtName = findViewById(R.id.txtName);
+//        String fullName = intent.getStringExtra("full_name");
+//        Log.d("name", fullName != null ? fullName : "null");
+//        txtName.setText(fullName != null ? fullName : "Khách");
+//
+//        diningTableImageView = findViewById(R.id.fram1).findViewById(R.id.dining_table_image);
+//        supplies = findViewById(R.id.fram1).findViewById(R.id.supplies);
+//        customService = findViewById(R.id.fram2).findViewById(R.id.custom_service);
+//        happyClient = findViewById(R.id.fram2).findViewById(R.id.happy_client);
+//        discount = findViewById(R.id.fram3).findViewById(R.id.discount);
+//        logout = findViewById(R.id.fram3).findViewById(R.id.logout);
+//        finger = findViewById(R.id.finger);
+//
+//        // Gắn sự kiện onClick cho ImageView "Quản lý bàn ăn"
+//        diningTableImageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, EmployeeListActivity.class);
+//                startActivity(intent);
+//            }
+//
+//    }
+//    });
+//    });
     }
 }
