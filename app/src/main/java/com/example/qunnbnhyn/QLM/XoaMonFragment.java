@@ -81,7 +81,7 @@ public class XoaMonFragment extends Fragment {
         // Khởi tạo RecyclerView và Adapter
         rcl_xoa = view.findViewById(R.id.rcl_xoa);
         listMon = new ArrayList<>();
-        adapter = new XoaMonAdapter(listMon); // Khởi tạo adapter với danh sách rỗng
+        adapter = new XoaMonAdapter(listMon,view.getContext()); // Khởi tạo adapter với danh sách rỗng
         rcl_xoa.setLayoutManager(new LinearLayoutManager(view.getContext()));
         rcl_xoa.setAdapter(adapter);
 
